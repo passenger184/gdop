@@ -1,0 +1,15 @@
+{
+  "build": [
+    {
+      "src": "landing_page_mint/wsgi.py",
+      "use": "@vercel/python",
+      "config": { "maxLambdaSize": "15mb", "runtime": "python3.10.10" }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "landing_page_mint/wsgi.py"
+    }
+  ]
+}
