@@ -1,5 +1,5 @@
 {
-  "build": [
+  "builds": [
     {
       "src": "landing_page_mint/wsgi.py",
       "use": "@vercel/python",
