@@ -3,7 +3,7 @@
     {
       "src": "landing_page_mint/wsgi.py",
       "use": "@vercel/python",
-      "config": { "maxLambdaSize": "15mb", "runtime": "python 3.10.10" }
+      "config": { "maxLambdaSize": "15mb" }
     }
   ],
   "routes": [
