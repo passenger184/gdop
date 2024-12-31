@@ -1,2 +1,12 @@
 .vscode
 db.sqlite3
+
+# Virtual environment
+venv/
+
+# Python-related files
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.env
