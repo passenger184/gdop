@@ -5,6 +5,7 @@ chardet==5.2.0
 distlib==0.3.9
 Django==5.1.4
 django-allauth==65.3.1
+django-unfold==0.43.0
 filelock==3.16.1
 html5lib==1.1
 pillow==11.0.0
