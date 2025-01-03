@@ -5,7 +5,7 @@ from django.contrib.auth.models import User, Group
 
 from unfold.admin import ModelAdmin
 
-from .models import FAQ, AboutUs, Announcement, ContactUs, HeroSection, NumberStatistic, Project
+from .models import FAQ, AboutUs, Announcement, Resource, HeroSection, Figure, GDOPComponent
 
 
 class BaseAdmin(ModelAdmin):
@@ -54,8 +54,8 @@ class HeroSectionAdmin(BaseAdmin):
     list_filter = ["created_at", "updated_at"]
 
 
-@admin.register(Project)
-class ProjectAdmin(BaseAdmin):
+@admin.register(GDOPComponent)
+class GDOPComponentsAdmin(BaseAdmin):
     list_display = ['title', 'button_url', 'updated_at',
                     'is_active', 'updated_at', 'created_by', 'updated_by']
     list_filter = ('updated_at',)
@@ -77,8 +77,8 @@ class AboutUsAdmin(BaseAdmin):
     list_filter = ['updated_at']
 
 
-@admin.register(NumberStatistic)
-class NumberStatisticAdmin(BaseAdmin):
+@admin.register(Figure)
+class FiguresAdmin(BaseAdmin):
     list_display = ['title', 'value', 'updated_at', 'created_by', 'updated_by']
     search_fields = ['title', 'value']
     list_filter = ['title', 'value', 'updated_at']
@@ -90,7 +90,7 @@ class FAQAdmin(BaseAdmin):
     search_fields = ['question', 'answer']
 
 
-@admin.register(ContactUs)
-class ContactUsAdmin(BaseAdmin):
+@admin.register(Resource)
+class ResourceAdmin(BaseAdmin):
     list_display = ['title', 'address', 'email', 'phone',
                     'updated_at', 'created_by', 'updated_by']

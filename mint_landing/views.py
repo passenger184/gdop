@@ -4,20 +4,20 @@ from django.conf import settings
 from django.http import JsonResponse
 from django.shortcuts import render
 
-from mint_landing.models import FAQ, AboutUs, Announcement, ContactUs, HeroSection, NumberStatistic, Project
+from mint_landing.models import FAQ, AboutUs, Announcement, Resource, HeroSection, Figure, GDOPComponent
 
 # Render the homepage
 
 
 def home(request):
     hero_section = HeroSection.objects.last()
-    projects = Project.objects.all()
+    projects = GDOPComponent.objects.all()
     announcements = Announcement.objects.all()
     about_us = AboutUs.objects.last()
     about_us_items = AboutUs.objects.last().bullet_points.split(',')
-    numbers = NumberStatistic.objects.all()
+    numbers = Figure.objects.all()
     faqs = FAQ.objects.all()
-    contact_us = ContactUs.objects.last()
+    contact_us = Resource.objects.last()
     return render(
         request, 'index.html',
         {'hero_section': hero_section,

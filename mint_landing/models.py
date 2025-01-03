@@ -24,25 +24,26 @@ class HeroSection(models.Model):
         return self.title
 
 
-class Project(models.Model):
-    title = models.CharField(max_length=100, help_text="Title of the project")
-    subtitle = models.TextField(help_text="Description of the project")
+class GDOPComponent(models.Model):
+    title = models.CharField(
+        max_length=100, help_text="Title of the component")
+    subtitle = models.TextField(help_text="Description of the component")
     is_active = models.BooleanField(default=False)
     icon_name = models.CharField(
         max_length=100, help_text="Bootstrap icon class name (e.g., bi-people")
     button_url = models.URLField(
         help_text="URL the button points to", blank=True, null=True)
     created_by = models.ForeignKey(
-        User, on_delete=models.SET_NULL, null=True, related_name='project_created_by')
+        User, on_delete=models.SET_NULL, null=True, related_name='component_created_by')
     updated_by = models.ForeignKey(
-        User, on_delete=models.SET_NULL, null=True, related_name='project_updated_by')
+        User, on_delete=models.SET_NULL, null=True, related_name='component_updated_by')
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
-        verbose_name = "Project"
-        verbose_name_plural = "Projects"
+        verbose_name = "GDOP Component"
+        verbose_name_plural = "GDOP Components"
 
     def __str__(self):
         return self.title
@@ -90,21 +91,21 @@ class AboutUs(models.Model):
         return self.title
 
 
-class NumberStatistic(models.Model):
+class Figure(models.Model):
     title = models.CharField(
-        max_length=100, help_text="Title for the statistic (e.g., Users, Projects)")
+        max_length=100, help_text="Title for the figure (e.g., Users, Projects)")
     value = models.PositiveIntegerField(help_text="Value of the statistic")
     created_at = models.DateTimeField(
         auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     created_by = models.ForeignKey(
-        User, on_delete=models.SET_NULL, null=True, related_name='number_created_by')
+        User, on_delete=models.SET_NULL, null=True, related_name='figure_created_by')
     updated_by = models.ForeignKey(
-        User, on_delete=models.SET_NULL, null=True, related_name='number_updated_by')
+        User, on_delete=models.SET_NULL, null=True, related_name='figure_updated_by')
 
     class Meta:
-        verbose_name = "Numbers"
-        verbose_name_plural = "Numbers"
+        verbose_name = "Figures"
+        verbose_name_plural = "Figures"
 
     def __str__(self):
         return f"{self.title}: {self.value}"
@@ -130,7 +131,7 @@ class FAQ(models.Model):
         return self.question
 
 
-class ContactUs(models.Model):
+class Resource(models.Model):
     title = models.CharField(
         max_length=100, help_text="Title of the contact us section")
     address = models.CharField(max_length=200, help_text="Address")
@@ -145,7 +146,3 @@ class ContactUs(models.Model):
 
     def __str__(self):
         return f"{self.email} - {self.phone}"
-
-    class Meta:
-        verbose_name = "Contact Us"
-        verbose_name_plural = "Contact Us"
