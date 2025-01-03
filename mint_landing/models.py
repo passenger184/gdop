@@ -1,5 +1,5 @@
-import datetime
 from django.db import models
+from django.contrib.auth.models import User
 
 
 class HeroSection(models.Model):
@@ -11,6 +11,10 @@ class HeroSection(models.Model):
         max_length=50, help_text="Text for the call-to-action button")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    created_by = models.ForeignKey(
+        User, on_delete=models.SET_NULL, null=True, related_name='hero_created_by')
+    updated_by = models.ForeignKey(
+        User, on_delete=models.SET_NULL, null=True, related_name='hero_updated_by')
 
     class Meta:
         verbose_name = "Hero Section"
@@ -28,6 +32,10 @@ class Project(models.Model):
         max_length=100, help_text="Bootstrap icon class name (e.g., bi-people")
     button_url = models.URLField(
         help_text="URL the button points to", blank=True, null=True)
+    created_by = models.ForeignKey(
+        User, on_delete=models.SET_NULL, null=True, related_name='project_created_by')
+    updated_by = models.ForeignKey(
+        User, on_delete=models.SET_NULL, null=True, related_name='project_updated_by')
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -50,6 +58,10 @@ class Announcement(models.Model):
         max_length=100, help_text="Bootstrap icon class name (e.g., bi-people")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    created_by = models.ForeignKey(
+        User, on_delete=models.SET_NULL, null=True, related_name='announcement_created_by')
+    updated_by = models.ForeignKey(
+        User, on_delete=models.SET_NULL, null=True, related_name='announcement_updated_by')
 
     def __str__(self):
         return self.title
@@ -65,6 +77,10 @@ class AboutUs(models.Model):
     bullet_points = models.CharField(
         max_length=255, help_text="Comma separated list of bullet points")
     updated_at = models.DateTimeField(auto_now=True)
+    created_by = models.ForeignKey(
+        User, on_delete=models.SET_NULL, null=True, related_name='about_created_by')
+    updated_by = models.ForeignKey(
+        User, on_delete=models.SET_NULL, null=True, related_name='about_updated_by')
 
     class Meta:
         verbose_name = "About Us"
@@ -81,6 +97,10 @@ class NumberStatistic(models.Model):
     created_at = models.DateTimeField(
         auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    created_by = models.ForeignKey(
+        User, on_delete=models.SET_NULL, null=True, related_name='number_created_by')
+    updated_by = models.ForeignKey(
+        User, on_delete=models.SET_NULL, null=True, related_name='number_updated_by')
 
     class Meta:
         verbose_name = "Numbers"
@@ -96,6 +116,10 @@ class FAQ(models.Model):
     answer = models.TextField(help_text="Answer to the question")
     order = models.PositiveIntegerField(
         default=0, help_text="Display order of the FAQ")
+    created_by = models.ForeignKey(
+        User, on_delete=models.SET_NULL, null=True, related_name='faq_created_by')
+    updated_by = models.ForeignKey(
+        User, on_delete=models.SET_NULL, null=True, related_name='faq_updated_by')
 
     class Meta:
         verbose_name = "FAQ"
@@ -114,6 +138,10 @@ class ContactUs(models.Model):
     phone = models.CharField(max_length=10, help_text="Phone number")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    created_by = models.ForeignKey(
+        User, on_delete=models.SET_NULL, null=True, related_name='contact_created_by')
+    updated_by = models.ForeignKey(
+        User, on_delete=models.SET_NULL, null=True, related_name='contact_updated_by')
 
     def __str__(self):
         return f"{self.email} - {self.phone}"
