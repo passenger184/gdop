@@ -196,16 +196,14 @@
                   </svg>
                   <i class="bi {{ item.icon_name }}"></i>
                 </div>
-                <a href="#" class="stretched-link">
                   <h3>{{item.title}}</h3>
-                </a>
                 <span class="updates_cart"
                   >{{item.sub_title}}</span
                 >
-                <p>
+                <p style="display: -webkit-box; -webkit-line-clamp: 5; -webkit-box-orient: vertical; overflow: hidden;">
                   {{item.description}}
                 </p>
-                <a href="#" class="stretched-link"></a>
+                <a href="announcement/{{item.id}}" class="stretched-link"></a>
               </div>
             </div>
             {% endfor %}

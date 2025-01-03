@@ -2,7 +2,7 @@ import json
 import os
 from django.conf import settings
 from django.http import JsonResponse
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 
 from mint_landing.models import FAQ, AboutUs, Announcement, Resource, HeroSection, Figure, GDOPComponent
 
@@ -34,6 +34,11 @@ def home(request):
 
 def news(request):
     return render(request, 'news.html')
+
+
+def announcement_detail(request, id):
+    announcement = get_object_or_404(Announcement, id=id)
+    return render(request, 'announcement.html', {'announcement': announcement})
 
 
 def about(request):

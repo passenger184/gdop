@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils.text import slugify
+from unidecode import unidecode
 
 
 class HeroSection(models.Model):
@@ -54,6 +56,8 @@ class Announcement(models.Model):
         max_length=100, help_text="Title of the announcement")
     sub_title = models.CharField(
         max_length=100, help_text="Subtitle of the announcement")
+    image = models.ImageField(
+        upload_to='uploads/announcements/', blank=True, null=True, help_text="Image for the announcement")
     description = models.TextField(help_text="Description of the announcement")
     icon_name = models.CharField(
         max_length=100, help_text="Bootstrap icon class name (e.g., bi-people")
