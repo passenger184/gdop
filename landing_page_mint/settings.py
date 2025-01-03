@@ -21,10 +21,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = os.environ.get('SECRET_KEY', 'secret key')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = os.environ.get('DEBUG', True)
 
 ALLOWED_HOSTS = ['.vercel.app', '.now.sh', '127.0.0.1', 'localhost']
 
@@ -86,11 +86,11 @@ WSGI_APPLICATION = 'landing_page_mint.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('DB_NAME'),
-        'USER': os.environ.get('DB_USER'),
-        'PASSWORD': os.environ.get('DB_PASSWORD'),
-        'HOST': os.environ.get('DB_HOST', default='localhost'),
-        'PORT': os.environ.get('DB_PORT', default='5432'),
+        'NAME': os.environ.get('DB_NAME', 'gdop'),
+        'USER': os.environ.get('DB_USER', 'root'),
+        'PASSWORD': os.environ.get('DB_PASSWORD', 'root'),
+        'HOST': os.environ.get('HOST', 'localhost'),
+        'PORT': os.environ.get('PORT', '5432'),
     }
 }
 
@@ -152,4 +152,19 @@ UNFOLD = {
             "href": lambda request: static("assets/img/miii_logo.jpg"),
         },
     ],
+    "COLORS": {
+        "primary": {
+            "50": "250 250 243",
+            "100": "237 225 199",
+            "200": "224 163 85",
+            "300": "159 178 180",
+            "400": "51 84 81",
+            "500": "51 84 81",
+            "600": "44 73 70",
+            "700": "38 63 60",
+            "800": "33 54 51",
+            "900": "28 45 43",
+            "950": "23 37 35",
+        },
+    }
 }
