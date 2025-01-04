@@ -40,16 +40,16 @@
       <div
         class="container-fluid container-xl position-relative d-flex align-items-center"
       >
-        <a href="#" class="logo d-flex align-items-center me-auto">
+        <a href="/" class="logo d-flex align-items-center me-auto">
           <img src="{% static 'assets/img/mint_logo.png' %}" alt="" />
         </a>
 
-        <nav id="navmenu" class="navmenu" style="margin-right: 100px">
+        <nav id="navmenu" class="navmenu">
           <ul>
             <li>
               <a href="/" id="nav-home">Home<br /></a>
             </li>
-            <li><a href="news" class="active" id="nav-news">News</a></li>
+            <li><a href="news" id="nav-news" class="active">News</a></li>
             <li class="dropdown">
               <a
                 ><span id="nav-about-us">About Us</span>
@@ -68,8 +68,20 @@
                 <li><a href="power-duties">Power & Duties</a></li>
               </ul>
             </li>
-            <li><a href="contact" id="nav-contact-us">Contact Us</a></li>
-            <li><a href="/" id="nav-contact-us">FAQ</a></li>
+            <li><a href="/#faq" id="nav-contact-us">FAQ</a></li>
+            <!-- <li><select
+              id="language-selector"
+              class="ms-4"
+            >
+              <option value="en">English</option>
+              <option value="am">አማርኛ</option>
+            </select></li> -->
+
+            <li>
+              <a href="request-support" id="nav-contact-uss" class=""
+                >Request Support</a
+              >
+            </li>
           </ul>
           <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>

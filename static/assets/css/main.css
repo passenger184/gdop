@@ -1374,6 +1374,7 @@ herobtn-getstarted
   background-color: #e9ecef;
   border-radius: 20px;
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
 }
 
 .form-switch-sm .form-check-input:checked {
@@ -1503,4 +1504,36 @@ herobtn-getstarted
   justify-content: center;
   align-items: center;
   margin-top: 20px;
+}
+
+/* contact us section  */
+.contact .info-item + .info-item {
+  margin-top: 40px;
+}
+
+.contact .info-item i {
+  color: var(--contrast-color);
+  background: var(--accent-color);
+  font-size: 20px;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  transition: all 0.3s ease-in-out;
+  margin-right: 15px;
+}
+
+.contact .info-item h3 {
+  padding: 0;
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.contact .info-item p {
+  padding: 0;
+  margin-bottom: 0;
+  font-size: 14px;
 }
