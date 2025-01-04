@@ -1,10 +1,6 @@
 #!/bin/bash
 
 # Install dependencies
-apt-get install build-essential python3-dev \
-    libldap2-dev libsasl2-dev slapd ldap-utils tox \
-    lcov valgrind
-
 python3 -m pip install -r requirements.txt
 
 # Collect static files
