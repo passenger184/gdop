@@ -84,11 +84,13 @@
             data-aos="fade-up"
             data-aos-delay="100"
           >
+            {% if announcement.image %}
             <img
               src="{{announcement.image.url}}"
               alt="{{announcement.subtitle}}"
               style="max-width: 100%; height: auto"
             />
+            {% endif %}
           </div>
           <div class="col-lg-6 content" data-aos="fade-up" data-aos-delay="200">
             <h3>{{announcement.title}}</h3>
