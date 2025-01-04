@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 import os
 from pathlib import Path
 from django.templatetags.static import static
+from django_auth_ldap.config import LDAPSearch
+import ldap
+from django_auth_ldap.backend import populate_user
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -168,3 +171,31 @@ UNFOLD = {
         },
     }
 }
+
+
+# LDAP configurations
+AUTH_LDAP_SERVER_URI = "ldap://127.0.0.1:389"
+AUTH_LDAP_BIND_DN = "cn=admin,dc=mint,dc=gov,dc=et"
+AUTH_LDAP_BIND_PASSWORD = "admin"
+AUTH_LDAP_USER_SEARCH = LDAPSearch(
+    "ou=users,dc=mint,dc=gov,dc=et",
+    ldap.SCOPE_SUBTREE,
+    "(uid=%(user)s)"
+)
+AUTH_LDAP_USER_ATTR_MAP = {
+    "first_name": "cn",
+    "email": "mail",
+}
+
+AUTHENTICATION_BACKENDS = (
+    'django_auth_ldap.backend.LDAPBackend',
+    'django.contrib.auth.backends.ModelBackend',  # Keep Django's default user model
+)
+AUTH_LDAP_ALWAYS_UPDATE_USER = True
+
+
+def set_staff_status(user, ldap_user, **kwargs):
+    user.is_staff = True
+
+
+populate_user.connect(set_staff_status)
