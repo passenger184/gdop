@@ -9,6 +9,6 @@ urlpatterns = [
     path('vision-mission-values', views.v_m_s, name='vms'),
     path('organizational-structure', views.o_s, name='o_s'),
     path('power-duties', views.p_d, name='p_d'),
-    path("get_translations/", views.get_translations, name="get_translations")
+    path("get_translations", views.get_translations, name="get_translations")
 ]
 

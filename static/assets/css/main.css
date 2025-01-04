@@ -121,6 +121,20 @@ h6 {
   transition: 0.3s;
 }
 
+#nav-contact-uss {
+  background-color: #2487ce;
+  color: white;
+  font-size: 14px;
+  padding: 6px 15px;
+  margin: 0 0 0 200px;
+  border-radius: 4px;
+  transition: 0.3s;
+}
+
+#nav-contact-uss:hover {
+  background: color-mix(in srgb, var(--accent-color), transparent 15%);
+}
+
 .header .btn-getstarted:hover,
 .header .btn-getstarted:focus:hover {
   color: var(--contrast-color);
@@ -230,6 +244,25 @@ h6 {
 
   .navmenu .dropdown ul a i {
     font-size: 12px;
+  }
+
+  #language-selector {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    color: var(--nav-dropdown-color);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+
+  #language-selector:hover {
+    background-color: #f0f0f0;
+    cursor: pointer;
+  }
+
+  #language-selector:focus {
+    outline: none;
+    border: 2px solid #007bff;
+    background-color: #f0f0f0;
   }
 
   .navmenu .dropdown ul a:hover,
@@ -777,6 +810,7 @@ herobtn-getstarted
   font-size: 15px;
   margin-bottom: 0;
   color: color-mix(in srgb, var(--default-color), transparent 40%);
+  text-align: justify;
 }
 
 .hero .icon-box .icon {
@@ -787,6 +821,7 @@ herobtn-getstarted
   font-size: 36px;
   line-height: 1;
   color: var(--accent-color);
+  font-size: 50px;
 }
 
 @media (min-width: 640px) {
@@ -875,85 +910,6 @@ herobtn-getstarted
   font-family: var(--heading-font);
   font-size: 15px;
   font-weight: 600;
-}
-
-/*--------------------------------------------------------------
-# Contact Section
---------------------------------------------------------------*/
-.contact .info-item + .info-item {
-  margin-top: 40px;
-}
-
-.contact .info-item i {
-  color: var(--contrast-color);
-  background: var(--accent-color);
-  font-size: 20px;
-  width: 44px;
-  height: 44px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 4px;
-  transition: all 0.3s ease-in-out;
-  margin-right: 15px;
-}
-
-.contact .info-item h3 {
-  padding: 0;
-  font-size: 18px;
-  font-weight: 700;
-  margin-bottom: 5px;
-}
-
-.contact .info-item p {
-  padding: 0;
-  margin-bottom: 0;
-  font-size: 14px;
-}
-
-.contact .php-email-form {
-  height: 100%;
-}
-
-.contact .php-email-form input[type="text"],
-.contact .php-email-form input[type="email"],
-.contact .php-email-form textarea {
-  font-size: 14px;
-  padding: 10px 15px;
-  box-shadow: none;
-  border-radius: 0;
-  color: var(--default-color);
-  background-color: color-mix(
-    in srgb,
-    var(--background-color),
-    transparent 50%
-  );
-  border-color: color-mix(in srgb, var(--default-color), transparent 80%);
-}
-
-.contact .php-email-form input[type="text"]:focus,
-.contact .php-email-form input[type="email"]:focus,
-.contact .php-email-form textarea:focus {
-  border-color: var(--accent-color);
-}
-
-.contact .php-email-form input[type="text"]::placeholder,
-.contact .php-email-form input[type="email"]::placeholder,
-.contact .php-email-form textarea::placeholder {
-  color: color-mix(in srgb, var(--default-color), transparent 70%);
-}
-
-.contact .php-email-form button[type="submit"] {
-  color: var(--contrast-color);
-  background: var(--accent-color);
-  border: 0;
-  padding: 10px 30px;
-  transition: 0.4s;
-  border-radius: 4px;
-}
-
-.contact .php-email-form button[type="submit"]:hover {
-  background: color-mix(in srgb, var(--accent-color), transparent 20%);
 }
 
 /* faq section */
@@ -1264,4 +1220,287 @@ herobtn-getstarted
   margin-bottom: 10px;
   font-size: 15px;
   text-align: justify;
+}
+
+/* Resources Section */
+.resources .service-item {
+  background-color: var(--surface-color);
+  height: 100%;
+  padding: 60px 30px;
+  text-align: center;
+  transition: 0.3s;
+  border-radius: 5px;
+  transition: all 0.3s ease-in-out;
+}
+
+@media (min-width: 640px) {
+  .resources .service-item:hover {
+    transform: scale(1.08);
+  }
+}
+.resources .service-item .icon {
+  margin: 0 auto;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: ease-in-out 0.3s;
+  position: relative;
+}
+
+.resources .service-item .icon i {
+  font-size: 50px;
+  transition: 0.5s;
+  position: relative;
+}
+
+.resources .service-item h3 {
+  font-weight: 700;
+  margin-bottom: 5px;
+  font-size: 22px;
+}
+
+.updates_cart {
+  font-size: smaller;
+}
+
+.resources .service-item:hover {
+  box-shadow: 0px 5px 35px 0px rgba(0, 0, 0, 0.1);
+}
+
+#resouce-icon {
+  color: #fd7e14;
+}
+/* test */
+/* Swiper-specific styles */
+.swiper {
+  width: 100%;
+  padding: 20px 0;
+}
+
+.swiper-slide {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.service-item {
+  /* width: 90%;  */
+  /* background: #f9f9f9; */
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* .icon {
+  font-size: 40px;
+  margin-bottom: 15px;
+} */
+
+.swiper-pagination-bullet {
+  background: #ffbb00;
+  opacity: 1;
+}
+
+.swiper-pagination-bullet-active {
+  background: #03b300;
+}
+
+#resouce-icon {
+  color: #fd7e14;
+}
+
+.swiper-pagination {
+  margin-top: 20px;
+  position: relative;
+}
+
+.swiper-pagination .swiper-pagination-bullet {
+  width: 12px;
+  height: 12px;
+  background-color: var(--background-color);
+  opacity: 1;
+  border: 1px solid var(--accent-color);
+}
+
+.swiper-pagination .swiper-pagination-bullet-active {
+  background-color: var(--accent-color);
+}
+
+/* Card hover effect */
+.form-card {
+  border-radius: 15px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0px 5px 90px 0px rgba(0, 0, 0, 0.2);
+}
+
+@media (min-width: 640px) {
+  .form-card:hover {
+    transform: scale(1.05);
+  }
+}
+
+.form-label {
+  color: #124265;
+  font-weight: 600;
+}
+/* Input fields custom styling */
+.input-custom {
+  border: 2px solid #ced4da;
+  border-radius: 8px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  font-size: small;
+  font-style: italic;
+}
+
+.form-check-label {
+  color: #124265;
+  font-weight: 500;
+}
+
+.input-custom:focus {
+  border-color: #0d6efd;
+  box-shadow: 0 0 5px rgba(13, 110, 253, 0.5);
+}
+
+/* Small toggle switch custom styling */
+.form-switch-sm .form-check-input {
+  width: 35px;
+  height: 20px;
+  background-color: #e9ecef;
+  border-radius: 20px;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-switch-sm .form-check-input:checked {
+  background-color: #0d6efd;
+  border-color: #0d6efd;
+}
+
+/* Submit button styling */
+.help .btn-primary {
+  background-color: #0d6efd;
+  border: none;
+  border-radius: 25px;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  font-size: 20px;
+}
+
+.help .btn-primary:hover {
+  background-color: #0b5ed7;
+  box-shadow: 0 4px 10px rgba(30, 118, 250, 0.3);
+}
+
+/* Support team */
+.team .team-member {
+  background-color: var(--surface-color);
+  overflow: hidden;
+  border-radius: 5px;
+  box-shadow: 0px 0 10px rgba(0, 0, 0, 0.1);
+  height: 100%;
+}
+
+.team .team-member .member-img {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  object-fit: cover;
+}
+
+.team .team-member .social {
+  position: absolute;
+  left: 0;
+  bottom: 30px;
+  right: 0;
+  transition: ease-in-out 0.3s;
+  text-align: center;
+}
+
+.team .team-member .social a {
+  background: color-mix(in srgb, var(--contrast-color), transparent 25%);
+  color: color-mix(in srgb, var(--default-color), transparent 20%);
+  margin: 0 3px;
+  border-radius: 4px;
+  width: 36px;
+  height: 36px;
+  transition: ease-in-out 0.3s;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.team .team-member .social a:hover {
+  color: var(--contrast-color);
+  background: var(--accent-color);
+}
+
+.team .team-member .social i {
+  font-size: 18px;
+  line-height: 0;
+}
+
+.team .team-member .member-info {
+  padding: 25px 15px;
+}
+
+.team .team-member .member-info h4 {
+  font-weight: 700;
+  margin-bottom: 5px;
+  font-size: 18px;
+  text-align: center;
+}
+
+.team .team-member .member-info p {
+  font-size: 13px;
+  font-weight: 500;
+  color: color-mix(in srgb, var(--default-color), transparent 30%);
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.card-text-team span {
+  display: block;
+  font-size: 13px;
+  text-align: start;
+  font-weight: 450;
+  color: color-mix(in srgb, var(--default-color), transparent 10%);
+}
+
+.team .team-member:hover .social {
+  opacity: 1;
+  bottom: 15px;
+}
+
+#load-more {
+  font-size: 16px;
+  padding: 10px 20px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+#load-more:hover {
+  background-color: #0056b3; /* Darker blue for hover effect */
+  color: white;
+  border: 1px solid #0056b3;
+}
+#load-more:focus {
+  outline: none;
+}
+.spinner-border {
+  width: 20px;
+  height: 20px;
+  border-width: 3px;
+  display: none; /* Initially hidden */
+}
+#load-more.loading .spinner-border {
+  display: inline-block; /* Show spinner when loading */
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
 }
