@@ -1,10 +1,10 @@
 import json
 import os
 from django.conf import settings
-from django.http import JsonResponse
-from django.shortcuts import get_object_or_404, render
+from django.http import HttpRequest, JsonResponse
+from django.shortcuts import get_object_or_404, redirect, render
 
-from mint_landing.models import FAQ, AboutUs, Announcement, Resource, HeroSection, Figure, GDOPComponent
+from mint_landing.models import FAQ, AboutUs, Announcement, Resource, HeroSection, Figure, GDOPComponent, SupportRequest
 
 # Render the homepage
 
@@ -47,6 +47,32 @@ def about(request):
 
 def contact(request):
     return render(request, 'contact.html')
+
+
+def submit_support_request(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        support_type = request.POST.get('supportType')
+        description = request.POST.get('description')
+        attachment = request.FILES.get('attachment')
+        urgency = request.POST.get('urgency')
+
+        SupportRequest.objects.create(
+            name=name,
+            email=email,
+            support_type=support_type,
+            description=description,
+            attachment=attachment,
+            urgency=urgency,
+        )
+
+        return redirect('success_view')
+    return render(request, 'contact.html')
+
+
+def success_view(request):
+    return render(request, 'support_request_success.html')
 
 
 def v_m_s(request):

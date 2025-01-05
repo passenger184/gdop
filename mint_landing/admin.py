@@ -5,7 +5,7 @@ from django.contrib.auth.models import User, Group
 
 from unfold.admin import ModelAdmin
 
-from .models import FAQ, AboutUs, Announcement, Resource, HeroSection, Figure, GDOPComponent
+from .models import FAQ, AboutUs, Announcement, Resource, HeroSection, Figure, GDOPComponent, SupportRequest
 
 
 class BaseAdmin(ModelAdmin):
@@ -94,3 +94,17 @@ class FAQAdmin(BaseAdmin):
 class ResourceAdmin(BaseAdmin):
     list_display = ['title', 'address', 'email', 'phone',
                     'updated_at', 'created_by', 'updated_by']
+
+
+@admin.register(SupportRequest)
+class SupportRequestAdmin(BaseAdmin):
+    list_display = ['name', 'email', 'support_type', 'urgency', 'status']
+    search_fields = ['name', 'email', 'support_type', 'description']
+    list_filter = ['support_type', 'status', 'urgency']
+    ordering = ['status']
+
+    # Make all fields readonly except 'status' for admins
+    def get_readonly_fields(self, request, obj=None):
+        if obj:
+            return [field.name for field in obj._meta.fields if field.name != 'status']
+        return ['name', 'email', 'support_type', 'description', 'attachment', 'urgency', 'submitted_at', 'created_at', 'updated_at', 'status']
