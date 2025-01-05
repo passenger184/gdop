@@ -13,6 +13,9 @@ cp -r staticfiles/ .vercel/output/static/
 python3 manage.py makemigrations
 python3 manage.py migrate
 
+# Seed the database
+python manage.py seed
+
 # Create a default superuser
 python3 manage.py shell <<EOF
 from django.contrib.auth.models import User
