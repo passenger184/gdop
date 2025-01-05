@@ -11,6 +11,10 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 import os
 from pathlib import Path
+from django.templatetags.static import static
+# from django_auth_ldap.config import LDAPSearch
+# import ldap
+# from django_auth_ldap.backend import populate_user
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,17 +24,23 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-xd#is9vh1cgv78znym%94%^$fr@1jurj8(uwj^k$@+y5dyw7*3'
+SECRET_KEY = os.environ.get('SECRET_KEY', 'secret key')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DEBUG', True)
 
 ALLOWED_HOSTS = ['.vercel.app', '.now.sh', 'localhost', '127.0.0.1']
 
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
 
 # Application definition
 
 INSTALLED_APPS = [
+    "unfold",  # before django.contrib.admin
+    "unfold.contrib.filters",
+    "unfold.contrib.forms",
+    "unfold.contrib.inlines",
     'whitenoise.runserver_nostatic',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -78,8 +88,12 @@ WSGI_APPLICATION = 'landing_page_mint.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ.get('DB_NAME', 'gdop'),
+        'USER': os.environ.get('DB_USER', 'root'),
+        'PASSWORD': os.environ.get('DB_PASSWORD', 'root'),
+        'HOST': os.environ.get('HOST', 'localhost'),
+        'PORT': os.environ.get('PORT', '5432'),
     }
 }
 
@@ -127,3 +141,61 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Unfold admin theme settings
+UNFOLD = {
+    "SITE_TITLE": "GDOP Admin",
+    "SITE_HEADER": "GDOP Admin",
+    "SITE_ICON": lambda request: static('assets/img/miii_logo.jpg'),
+    "SITE_FAVICONS": [
+        {
+            "rel": "icon",
+            "sizes": "32x32",
+            "type": "image/jpg",
+            "href": lambda request: static("assets/img/miii_logo.jpg"),
+        },
+    ],
+    "COLORS": {
+        "primary": {
+            "50": "250 250 243",
+            "100": "237 225 199",
+            "200": "224 163 85",
+            "300": "159 178 180",
+            "400": "51 84 81",
+            "500": "51 84 81",
+            "600": "44 73 70",
+            "700": "38 63 60",
+            "800": "33 54 51",
+            "900": "28 45 43",
+            "950": "23 37 35",
+        },
+    }
+}
+
+
+# LDAP configurations
+# AUTH_LDAP_SERVER_URI = "ldap://127.0.0.1:389"
+# AUTH_LDAP_BIND_DN = "cn=admin,dc=mint,dc=gov,dc=et"
+# AUTH_LDAP_BIND_PASSWORD = "admin"
+# AUTH_LDAP_USER_SEARCH = LDAPSearch(
+#     "ou=users,dc=mint,dc=gov,dc=et",
+#     ldap.SCOPE_SUBTREE,
+#     "(uid=%(user)s)"
+# )
+# AUTH_LDAP_USER_ATTR_MAP = {
+#     "first_name": "cn",
+#     "email": "mail",
+# }
+
+# AUTHENTICATION_BACKENDS = (
+#     'django_auth_ldap.backend.LDAPBackend',
+#     'django.contrib.auth.backends.ModelBackend',  # Keep Django's default user model
+# )
+# AUTH_LDAP_ALWAYS_UPDATE_USER = True
+
+
+# def set_staff_status(user, ldap_user, **kwargs):
+#     user.is_staff = True
+
+
+# populate_user.connect(set_staff_status)
