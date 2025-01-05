@@ -40,7 +40,7 @@
       <div
         class="container-fluid container-xl position-relative d-flex align-items-center"
       >
-        <a href="#" class="logo d-flex align-items-center me-auto">
+        <a href="/" class="logo d-flex align-items-center me-auto">
           <img src="{% static 'assets/img/mint_logo.png' %}" alt="" />
         </a>
 
@@ -68,19 +68,27 @@
                 <li><a href="power-duties">Power & Duties</a></li>
               </ul>
             </li>
+            <li><a href="/#faq" id="nav-contact-us">FAQ</a></li>
+            <!-- <li><select
+              id="language-selector"
+              class="ms-4"
+            >
+              <option value="en">English</option>
+              <option value="am">አማርኛ</option>
+            </select></li> -->
+
             <li>
-              <a href="contact" class="active" id="nav-contact-us"
-                >Contact Us</a
+              <a href="request-support" id="nav-contact-uss" class="active"
+                >Request Support</a
               >
             </li>
-            <li><a href="/" id="nav-contact-us">FAQ</a></li>
           </ul>
           <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
-
-       
       </div>
     </header>
+
+    <!-- Card Item -->
 
     <section id="contact" class="contact section">
       <!-- Section Title -->
@@ -95,8 +103,8 @@
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
         <div class="row gy-4">
-          <div class="col-lg-4">
-            <h5 class="mb-3"><b>General Assistance</b></h5>
+          <div class="col-lg-6">
+            <h5 class="mb-4"><b>General Assistance</b></h5>
             <div
               class="info-item d-flex"
               data-aos="fade-up"
@@ -123,7 +131,7 @@
             </div>
             <!-- End Info Item -->
 
-            <h5 class="mb-3 mt-5"><b>IT Support</b></h5>
+            <h5 class="mb-4 mt-5"><b>IT Support</b></h5>
             <div
               class="info-item d-flex"
               data-aos="fade-up"
@@ -148,88 +156,124 @@
                 <p>support@mint.gov.et</p>
               </div>
             </div>
-            <h5 class="mt-5 mb-3"><b>Location</b></h5>
-            <div
-              class="info-item d-flex"
-              data-aos="fade-up"
-              data-aos-delay="300"
-            >
-              <i class="bi bi-geo-alt flex-shrink-0"></i>
-              <div>
-                <h3 id="contact-address-title">Address</h3>
-                <p id="contact-address-content">
-                  Lisie G/Mariam, Arada Sub-City, Addis Ababa, Ethiopia
-                </p>
-              </div>
-            </div>
+
             <!-- End Info Item -->
           </div>
 
-          <div class="col-lg-8">
-            <form
-              action=""
-              method="post"
-              class="php-email-form"
-              data-aos="fade-up"
-              data-aos-delay="200"
-            >
-              <div class="row gy-4">
-                <div class="col-md-6">
-                  <input
-                    id="form-name-label"
-                    type="text"
-                    name="name"
-                    class="form-control"
-                    placeholder="Your Name"
-                    required=""
-                  />
-                </div>
-
-                <div class="col-md-6">
-                  <input
-                    id="form-email-label"
-                    type="email"
-                    class="form-control"
-                    name="email"
-                    placeholder="Your Email"
-                    required=""
-                  />
-                </div>
-
-                <div class="col-md-12">
-                  <input
-                    id="form-subject-label"
-                    type="text"
-                    class="form-control"
-                    name="subject"
-                    placeholder="Subject"
-                    required=""
-                  />
-                </div>
-
-                <div class="col-md-12">
-                  <textarea
-                    id="form-message-label"
-                    class="form-control"
-                    name="message"
-                    rows="6"
-                    placeholder="Message"
-                    required=""
-                  ></textarea>
-                </div>
-
-                <div class="col-md-12 text-center">
-                  <button type="submit" id="form-submit-btn">
-                    Send Message
-                  </button>
-                </div>
+          <div class="col-lg-6">
+            <div class="card shadow form-card">
+              <div class="card-body support">
+                <form>
+                  <!-- Name Input -->
+                  <div class="mb-4 mt-3">
+                    <label for="name" class="form-label">Full Name</label>
+                    <input
+                      type="text"
+                      class="form-control form-control-lg input-custom"
+                      id="name"
+                      placeholder="Enter your name"
+                      required
+                    />
+                  </div>
+                  <!-- Email Input -->
+                  <div class="mb-4">
+                    <label for="email" class="form-label">Email</label>
+                    <input
+                      type="email"
+                      class="form-control form-control-lg input-custom"
+                      id="email"
+                      placeholder="Enter your email"
+                      required
+                    />
+                  </div>
+                  <!-- Support Type Select -->
+                  <div class="mb-4">
+                    <label for="supportType" class="form-label"
+                      >Type of Support</label
+                    >
+                    <select
+                      class="form-select form-control-lg input-custom"
+                      id="supportType"
+                      required
+                    >
+                      <option value="" disabled selected>
+                        Select support type
+                      </option>
+                      <option value="technical">Technical Issue</option>
+                      <option value="System Access">System Access</option>
+                      <option value="general">General Inquiry</option>
+                      <option value="Feedback">Feedback</option>
+                      <option value="Other">Other</option>
+                    </select>
+                  </div>
+                  <!-- Description Textarea -->
+                  <div class="mb-4">
+                    <label for="description" class="form-label"
+                      >Description</label
+                    >
+                    <textarea
+                      class="form-control form-control-lg input-custom"
+                      id="description"
+                      rows="4"
+                      placeholder="Briefly describe your issue"
+                      required
+                    ></textarea>
+                  </div>
+                  <div class="mb-4">
+                    <label for="attachment" class="form-label"
+                      >Attachment (Optional)</label
+                    >
+                    <input
+                      type="file"
+                      class="form-control input-custom"
+                      id="attachment"
+                    />
+                  </div>
+                  <div class="mb-4">
+                    <label for="urgency" class="form-label"
+                      >Urgency Level</label
+                    >
+                    <select
+                      class="form-select input-custom"
+                      id="urgency"
+                      required
+                    >
+                      <option value="" disabled selected>
+                        Select an urgency level
+                      </option>
+                      <option value="Low">Low</option>
+                      <option value="Medium">Medium</option>
+                      <option value="High">High</option>
+                      <option value="Critical">Critical</option>
+                    </select>
+                  </div>
+                  <!-- Toggle Switch -->
+                  <div class="form-check form-switch form-switch-sm mb-4">
+                    <input
+                      type="checkbox"
+                      class="form-check-input"
+                      id="consent"
+                      required
+                    />
+                    <label for="consent" class="form-check-label">
+                      I agree to the privacy policy for support purposes.
+                    </label>
+                  </div>
+                  <!-- Submit Button -->
+                  <div class="text-center help">
+                    <button type="submit" class="btn btn-primary px-5 mt-4">
+                      Submit
+                    </button>
+                  </div>
+                </form>
               </div>
-            </form>
+            </div>
           </div>
           <!-- End Contact Form -->
         </div>
       </div>
     </section>
+    <!-- Card Item -->
 
     <footer id="footer" class="footer light-background">
       <div class="container footer-top">

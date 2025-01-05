@@ -40,11 +40,11 @@
       <div
         class="container-fluid container-xl position-relative d-flex align-items-center"
       >
-        <a href="/" class="logo d-flex align-items-center me-auto">
+        <a href="#" class="logo d-flex align-items-center me-auto">
           <img src="{% static 'assets/img/mint_logo.png' %}" alt="" />
         </a>
 
-        <nav id="navmenu" class="navmenu">
+        <nav id="navmenu" class="navmenu" style="margin-right: 100px">
           <ul>
             <li>
               <a href="/" id="nav-home">Home<br /></a>
@@ -52,7 +52,7 @@
             <li><a href="news" id="nav-news">News</a></li>
             <li class="dropdown">
               <a
-                ><span id="nav-about-us" class="active">About Us</span>
+                ><span id="nav-about-us">About Us</span>
                 <i class="bi bi-chevron-down toggle-dropdown"></i
               ></a>
               <ul>
@@ -68,75 +68,33 @@
                 <li><a href="power-duties">Power & Duties</a></li>
               </ul>
             </li>
-            <li><a href="/#faq" id="nav-contact-us">FAQ</a></li>
-            <!-- <li><select
-              id="language-selector"
-              class="ms-4"
-            >
-              <option value="en">English</option>
-              <option value="am">አማርኛ</option>
-            </select></li> -->
-
-            <li>
-              <a href="request-support" id="nav-contact-uss" class=""
-                >Request Support</a
-              >
-            </li>
+            <li><a href="contact" id="nav-contact-us">Contact Us</a></li>
+            <li><a href="/" id="nav-contact-us">FAQ</a></li>
           </ul>
           <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
       </div>
     </header>
 
-    <section>
+    <section id="about-alt" class="about-alt section">
       <div class="container">
-        <div class="row">
-          <div class="col-lg-3">
-            <h3 style="text-align: center"><b>Vision </b></h3>
-            <p style="text-align: justify; font-size: 15px">
-              Build a country that is conducive for job and wealth creation
-              through technology and innovation.
-            </p>
+        <div class="row gy-4">
+          <div
+            class="col-lg-6 position-relative align-self-start"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            {% if announcement.image %}
+            <img
+              src="{{announcement.image.url}}"
+              alt="{{announcement.subtitle}}"
+              style="max-width: 100%; height: auto"
+            />
+            {% endif %}
           </div>
-          <div class="col-lg-3 core_space">
-            <h3 style="text-align: center"><b>Mission</b></h3>
-            <ul>
-              <li>
-                The Miss ion also to ensure the sustainability of the country’s
-                development by creating an environment in which innovation
-                systems are implemented.
-              </li>
-              <li>
-                Creating an environment for the digital economy of the country.
-              </li>
-              <li>
-                Building the capacity to increase the competitiveness of the
-                country's technology industry development.
-              </li>
-            </ul>
-          </div>
-          <div class="col-lg-3 core_space">
-            <h3 style="text-align: center"><b>Our values</b></h3>
-            <ul>
-              <li>Decent conscience and good heart</li>
-              <li>An limitless thirst for learning</li>
-              <li>Love of work and dedication</li>
-              <li>Unlimited thought and imagination</li>
-              <li>A foundation for generations</li>
-            </ul>
-          </div>
-          <div class="col-lg-3 core_space">
-            <h3 style="text-align: center"><b>Organizational Philosophy</b></h3>
-            <ul>
-              <li>Knowledge is wealth</li>
-              <li>We acknowledge new ideas</li>
-              <li>Diligence is the power of positive change</li>
-              <li>
-                Technology and innovation is the language of the new generation
-              </li>
-              <li>Encouraging innovation for the next generation</li>
-              <li>Modern digital economy is the basis of our development</li>
-            </ul>
+          <div class="col-lg-6 content" data-aos="fade-up" data-aos-delay="200">
+            <h3>{{announcement.title}}</h3>
+            <p style="white-space: pre-wrap">{{announcement.description}}</p>
           </div>
         </div>
       </div>

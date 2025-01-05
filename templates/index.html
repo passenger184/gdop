@@ -34,6 +34,7 @@
       href="{% static 'assets/vendor/glightbox/css/glightbox.min.css' %}"
       rel="stylesheet"
     />
+    <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
 
     <!-- Main CSS File -->
     <link href="{% static 'assets/css/main.css' %}" rel="stylesheet" />
@@ -44,7 +45,7 @@
       <div
         class="container-fluid container-xl position-relative d-flex align-items-center"
       >
-        <a href="#" class="logo d-flex align-items-center me-auto">
+        <a href="/" class="logo d-flex align-items-center me-auto">
           <img src="{% static 'assets/img/mint_logo.png' %}" alt="" />
         </a>
 
@@ -72,21 +73,31 @@
                 <li><a href="power-duties">Power & Duties</a></li>
               </ul>
             </li>
-            <li><a href="contact" id="nav-contact-us">Contact Us</a></li>
             <li><a href="#faq" id="nav-contact-us">FAQ</a></li>
+            <!-- <li><select
+              id="language-selector"
+              class="ms-4"
+            >
+              <option value="en">English</option>
+              <option value="am">አማርኛ</option>
+            </select></li> -->
+
+            <li><a href="request-support" id="nav-contact-uss" class="">Request Support</a></li>
+
+
           </ul>
           <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
 
-        <div style="margin-left: 150px">
+        <!-- <div style="margin-left: 20px; text-decoration: none; right: 35px;">
           <select
             id="language-selector"
-            class="btn btn-sm btn-light border border-success"
+            class=""
           >
             <option value="en">English</option>
             <option value="am">አማርኛ</option>
           </select>
-        </div>
+        </div> -->
       </div>
     </header>
 
@@ -103,13 +114,9 @@
         <div class="container">
           <div class="row justify-content-center" data-aos="zoom-out">
             <div class="col-xl-8 col-lg-9 text-center">
-              <h1 class="pt-4" id="hero-title">
-                Government Digital Office Platforms Portal
-              </h1>
+              <h1 class="pt-4" id="hero-title">{{ hero_section.title }}</h1>
               <p class="pt-2" id="hero-description">
-                A paperless back office system automation.
-                <br />
-                Modern Office | Automated Process | Digital Services
+                {{ hero_section.subtitle }}
               </p>
             </div>
           </div>
@@ -119,128 +126,38 @@
             data-aos-delay="100"
           >
             <a href="#about" class="btn-get-started" id="hero-btn"
-              >Learn More</a
+              >{{ hero_section.button_text }}</a
             >
           </div>
 
           <div class="row gy-4 mt-5 pt-5">
+            {% for project in projects %}
             <div
               class="col-md-6 col-lg-4"
               data-aos="zoom-out"
               data-aos-delay="100"
             >
               <div class="icon-box text-center">
-                <div class="icon"><i class="bi bi-people"></i></div>
+                <div class="icon"><i class="bi {{ project.icon_name }}"></i></div>
                 <h4 class="title">
-                  <a href="" id="visitors-title">Visitors Management</a>
+                  <a href="" id="visitors-title">{{ project.title }}</a>
                 </h4>
                 <p class="description mb-4" id="visitors-description">
-                  Simplify and secure the process of managing visitor
-                  interactions and records.
+                  {{ project.description }}
                 </p>
+                {% if project.is_active %}
                 <button class="btn btn-primary mt-5" id="visitors-btn">
                   View Details
                 </button>
-              </div>
-            </div>
-            <!--End Icon Box -->
-
-            <div
-              class="col-md-6 col-lg-4"
-              data-aos="zoom-out"
-              data-aos-delay="200"
-            >
-              <div class="icon-box text-center">
-                <div class="icon"><i class="bi bi-file-earmark-text"></i></div>
-                <h4 class="title">
-                  <a href="" id="document-title">Document Management</a>
-                </h4>
-                <p class="description mb-4" id="document-description">
-                  Ensure efficent and secure letter flow and document storage
-                  with digital tools.
-                </p>
-                <button class="btn btn-primary mt-5" id="document-btn">
-                  View Details
-                </button>
-              </div>
-            </div>
-            <!--End Icon Box -->
-
-            <div
-              class="col-md-6 col-lg-4"
-              data-aos="zoom-out"
-              data-aos-delay="300"
-            >
-              <div class="icon-box text-center">
-                <div class="icon"><i class="bi bi-bar-chart"></i></div>
-                <h4 class="title">
-                  <a id="monitoring-title">Monitoring and Evaluation</a>
-                </h4>
-                <p class="description mb-4" id="monitoring-description">
-                  Track and assess performance metrics to improve
-                  decision-making and outcomes.
-                </p>
-                <button
-                  class="btn btn btn-secondary disabled mt-5"
-                  id="document-btn"
-                >
+                {% else %}
+                <button class="btn mt-5" id="visitors-btn" disabled>
                   Coming Soon
                 </button>
+                {% endif %}
+              </div>
               </div>
             </div>
-            <!--End Icon Box -->
-
-            <div
-              class="col-md-6 col-lg-4"
-              data-aos="zoom-out"
-              data-aos-delay="400"
-            >
-              <div
-                class="icon-box text-center"
-                style="margin-left: 200px; margin-top: 50px"
-              >
-                <div class="icon"><i class="bi bi-truck"></i></div>
-                <h4 class="title">
-                  <a id="transport-title">Transport Management</a>
-                </h4>
-                <p class="description mb-4" id="transport-description">
-                  Efficiently manage and optimize transportation operations with
-                  smart tools.
-                </p>
-                <button
-                  class="btn btn btn-secondary disabled mt-5"
-                  id="document-btn"
-                >
-                  Coming Soon
-                </button>
-              </div>
-            </div>
-            <!--End Icon Box -->
-
-            <div
-              class="col-md-6 col-lg-4"
-              data-aos="zoom-out"
-              data-aos-delay="500"
-            >
-              <div
-                class="icon-box text-center"
-                style="margin-left: 250px; margin-top: 50px"
-              >
-                <div class="icon"><i class="bi bi-file-earmark-text"></i></div>
-                <h4 class="title">
-                  <a id="document-title">Contact Management System</a>
-                </h4>
-                <p class="description mb-4" id="document-description">
-                  Organize and access contact information effortlessly with a
-                  secure and efficient system.
-                </p>
-                <button
-                  class="btn btn btn-secondary disabled mt-5"
-                  id="document-btn"
-                >
-                  Coming Soon
-                </button>
-              </div>
+            {% endfor %}
             </div>
             <!-- End Icon Box -->
           </div>
@@ -266,10 +183,11 @@
 
         <div class="container">
           <div class="row gy-4">
+            {% for item in announcements %}
             <div
               class="col-lg-4 col-md-6"
               data-aos="fade-up"
-              data-aos-delay="400"
+              data-aos-delay="100"
             >
               <div class="service-item item-red position-relative">
                 <div class="icon">
@@ -286,203 +204,19 @@
                       d="M300,503.46388370962813C374.79870501325706,506.71871716319447,464.8034551963731,527.1746412648533,510.4981551193396,467.86667711651364C555.9287308511215,408.9015244558933,512.6030010748507,327.5744911775523,490.211057578863,256.5855673507754C471.097692560561,195.9906835881958,447.69079081568157,138.11976852964426,395.19560036434837,102.3242989838813C329.3053358748298,57.3949838291264,248.02791733380457,8.279543830951368,175.87071277845988,42.242879143198664C103.41431057327972,76.34704239035025,93.79494320519305,170.9812938413882,81.28167332365135,250.07896920659033C70.17666984294237,320.27484674793965,64.84698225790005,396.69656628748305,111.28512138212992,450.4950937839243C156.20124167950087,502.5303643271138,231.32542653798444,500.4755392045468,300,503.46388370962813"
                     ></path>
                   </svg>
-                  <i class="bi bi-journal-bookmark"></i>
+                  <i class="bi {{ item.icon_name }}"></i>
                 </div>
-                <a href="#" class="stretched-link">
-                  <h3>User Training Session</h3>
-                </a>
+                  <h3>{{item.title}}</h3>
                 <span class="updates_cart"
-                  >Upcoming Training on Platform Features</span
+                  >{{item.sub_title}}</span
                 >
-                <p>
-                  Join us for a comprehensive training session on how to
-                  maximize your use of the platform. <br />
-                  Date: March 20th at 2:00 PM.
+                <p style="display: -webkit-box; -webkit-line-clamp: 5; -webkit-box-orient: vertical; overflow: hidden;">
+                  {{item.description}}
                 </p>
-                <a href="#" class="stretched-link"></a>
+                <a href="announcement/{{item.id}}" class="stretched-link"></a>
               </div>
             </div>
-            <!-- End Service Item -->
-
-            <div
-              class="col-lg-4 col-md-6"
-              data-aos="fade-up"
-              data-aos-delay="200"
-            >
-              <div class="service-item item-orange position-relative">
-                <div class="icon">
-                  <svg
-                    width="100"
-                    height="100"
-                    viewBox="0 0 600 600"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      stroke="none"
-                      stroke-width="0"
-                      fill="#f5f5f5"
-                      d="M300,582.0697525312426C382.5290701553225,586.8405444964366,449.9789794690241,525.3245884688669,502.5850820975895,461.55621195738473C556.606425686781,396.0723002908107,615.8543463187945,314.28637112970534,586.6730223649479,234.56875336149918C558.9533121215079,158.8439757836574,454.9685369536778,164.00468322053177,381.49747125262974,130.76875717737553C312.15926192815925,99.40240125094834,248.97055460311594,18.661163978235184,179.8680185752513,50.54337015887873C110.5421016452524,82.52863877960104,119.82277516462835,180.83849132639028,109.12597500060166,256.43424936330496C100.08760227029461,320.3096726198365,92.17705696193138,384.0621239912766,124.79988738764834,439.7174275375508C164.83382741302287,508.01625554203684,220.96474134820875,577.5009287672846,300,582.0697525312426"
-                    ></path>
-                  </svg>
-                  <i class="bi bi-star"></i>
-                </div>
-                <a href="#" class="stretched-link">
-                  <h3>New Feature Release</h3>
-                </a>
-                <span class="updates_cart">New User Dashboard Features</span>
-                <p>
-                  We’ve introduced new features to the user dashboard to improve
-                  navigation and efficiency. Explore the updates today!
-                </p>
-              </div>
-            </div>
-            <!-- End Service Item -->
-
-            <div
-              class="col-lg-4 col-md-6"
-              data-aos="fade-up"
-              data-aos-delay="300"
-            >
-              <div class="service-item item-teal position-relative">
-                <div class="icon">
-                  <svg
-                    width="100"
-                    height="100"
-                    viewBox="0 0 600 600"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      stroke="none"
-                      stroke-width="0"
-                      fill="#f5f5f5"
-                      d="M300,541.5067337569781C382.14930387511276,545.0595476570109,479.8736841581634,548.3450877840088,526.4010558755058,480.5488172755941C571.5218469581645,414.80211281144784,517.5187510058486,332.0715597781072,496.52539010469104,255.14436215662573C477.37192572678356,184.95920475031193,473.57363656557914,105.61284051026155,413.0603344069578,65.22779650032875C343.27470386102294,18.654635553484475,251.2091493199835,5.337323636656869,175.0934190732945,40.62881213300186C97.87086631185822,76.43348514350839,51.98124368387456,156.15599469081315,36.44837278890362,239.84606092416172C21.716077023791087,319.22268207091537,43.775223500013084,401.1760424656574,96.891909868211,461.97329694683043C147.22146801428983,519.5804099606455,223.5754009179313,538.201503339737,300,541.5067337569781"
-                    ></path>
-                  </svg>
-                  <i class="bi bi-database"></i>
-                </div>
-                <a href="#" class="stretched-link">
-                  <h3>Data Backup Completed</h3>
-                </a>
-                <span class="updates_cart">Monthly Data Backup Complete</span>
-                <p>
-                  A full backup of all data has been successfully completed. No
-                  action is required on your part. Your data is secure.
-                </p>
-              </div>
-            </div>
-            <!-- End Service Item -->
-
-            <div
-              class="col-lg-4 col-md-6"
-              data-aos="fade-up"
-              data-aos-delay="100"
-            >
-              <div class="service-item item-cyan position-relative">
-                <div class="icon">
-                  <svg
-                    width="100"
-                    height="100"
-                    viewBox="0 0 600 600"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      stroke="none"
-                      stroke-width="0"
-                      fill="#f5f5f5"
-                      d="M300,521.0016835830174C376.1290562159157,517.8887921683347,466.0731472004068,529.7835943286574,510.70327084640275,468.03025145048787C554.3714126377745,407.6079735673963,508.03601936045806,328.9844924480964,491.2728898941984,256.3432110539036C474.5976632858925,184.082847569629,479.9380746630129,96.60480741107993,416.23090153303,58.64404602377083C348.86323505073057,18.502131276798302,261.93793281208167,40.57373210992963,193.5410806939664,78.93577620505333C130.42746243093433,114.334589627462,98.30271207620316,179.96522072025542,76.75703585869454,249.04625023123273C51.97151888228291,328.5150500222984,13.704378332031375,421.85034740162234,66.52175969318436,486.19268352777647C119.04800174914682,550.1803526380478,217.28368757567262,524.383925680826,300,521.0016835830174"
-                    ></path>
-                  </svg>
-                  <i class="bi bi-tools"></i>
-                </div>
-                <a href="#" class="stretched-link">
-                  <h3>System Maintenance Scheduled</h3>
-                </a>
-                <span class="updates_cart"
-                  >Scheduled System Maintenance - March 15th</span
-                >
-                <p>
-                  The platform will be temporarily unavailable from 10:00 AM to
-                  4:00 PM for essential maintenance and updates. Please plan
-                  accordingly.
-                </p>
-              </div>
-            </div>
-            <!-- End Service Item -->
-
-            <div
-              class="col-lg-4 col-md-6"
-              data-aos="fade-up"
-              data-aos-delay="500"
-            >
-              <div class="service-item item-indigo position-relative">
-                <div class="icon">
-                  <svg
-                    width="100"
-                    height="100"
-                    viewBox="0 0 600 600"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      stroke="none"
-                      stroke-width="0"
-                      fill="#f5f5f5"
-                      d="M300,532.3542879108572C369.38199826031484,532.3153073249985,429.10787420159085,491.63046689027357,474.5244479745417,439.17860296908856C522.8885846962883,383.3225815378663,569.1668002868075,314.3205725914397,550.7432151929288,242.7694973846089C532.6665558377875,172.5657663291529,456.2379748765914,142.6223662098291,390.3689995646985,112.34683881706744C326.66090330228417,83.06452184765237,258.84405631176094,53.51806209861945,193.32584062364296,78.48882559362697C121.61183558270385,105.82097193414197,62.805066853699245,167.19869350419734,48.57481801355237,242.6138429142374C34.843463184063346,315.3850353017275,76.69343916112496,383.4422959591041,125.22947124332185,439.3748458443577C170.7312796277747,491.8107796887764,230.57421082200815,532.3932930995766,300,532.3542879108572"
-                    ></path>
-                  </svg>
-                  <i class="bi bi-rocket"></i>
-                </div>
-                <a href="#" class="stretched-link">
-                  <h3>Project Milestone Achieved</h3>
-                </a>
-                <span class="updates_cart">
-                  Monitoring and Evaluation Project Milestone</span
-                >
-                <p>
-                  The Monitoring and Evaluation project has reached an important
-                  milestone and is now ready for full-scale use. More details to
-                  follow.
-                </p>
-                <a href="#" class="stretched-link"></a>
-              </div>
-            </div>
-            <!-- End Service Item -->
-
-            <div
-              class="col-lg-4 col-md-6"
-              data-aos="fade-up"
-              data-aos-delay="600"
-            >
-              <div class="service-item item-pink position-relative">
-                <div class="icon">
-                  <svg
-                    width="100"
-                    height="100"
-                    viewBox="0 0 600 600"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      stroke="none"
-                      stroke-width="0"
-                      fill="#f5f5f5"
-                      d="M300,566.797414625762C385.7384707136149,576.1784315230908,478.7894351017131,552.8928747891023,531.9192734346935,484.94944893311C584.6109503024035,417.5663521118492,582.489472248146,322.67544863468447,553.9536738515405,242.03673114598146C529.1557734026468,171.96086150256528,465.24506316201064,127.66468636344209,395.9583748389544,100.7403814666027C334.2173773831606,76.7482773500951,269.4350130405921,84.62216499799875,207.1952322260088,107.2889140133804C132.92018162631612,134.33871894543012,41.79353780512637,160.00259165414826,22.644507872594943,236.69541883565114C3.319112789854554,314.0945973066697,72.72355303640163,379.243833228382,124.04198916343866,440.3218312028393C172.9286146004772,498.5055451809895,224.45579914871206,558.5317968840102,300,566.797414625762"
-                    ></path>
-                  </svg>
-                  <i class="bi bi-bug"></i>
-                </div>
-                <a href="#" class="stretched-link">
-                  <h3>Bug Fix Update</h3>
-                </a>
-                <span class="updates_cart"
-                  >Bug Fixes and System Optimizations</span
-                >
-                <p>
-                  We’ve resolved several issues affecting performance. Please
-                  update your system to the latest version to ensure smooth
-                  operation.
-                </p>
-                <a href="#" class="stretched-link"></a>
-              </div>
-            </div>
+            {% endfor %}
             <!-- End Service Item -->
           </div>
         </div>
@@ -495,8 +229,7 @@
         <div class="container section-title" data-aos="fade-up">
           <h2 id="about-title">About Us<br /></h2>
           <p id="about-intro">
-            Empowering Ethiopia through innovation and technology for a
-            prosperous and inclusive future.
+            {{about_us.title}}
           </p>
         </div>
         <!-- End Section Title -->
@@ -509,42 +242,21 @@
               data-aos-delay="100"
             >
               <p style="text-align: justify" id="about-item-1">
-                The Ministry of Innovation and Technology is at the forefront of
-                driving Ethiopia's transformation into a digital economy. By
-                fostering innovation and building local capacity, we aim to
-                create jobs, enhance the country’s competitiveness, and inspire
-                limitless imagination.
+                {{about_us.description_1}}
               </p>
               <ul>
-                <li>
-                  <i class="bi bi-check2-circle"></i>
-                  <span id="about-item-2"
-                    >Leading Ethiopia's digital transformation for sustainable
-                    growth.</span
-                  >
-                </li>
-                <li>
-                  <i class="bi bi-check2-circle"></i>
-                  <span id="about-item-3"
-                    >Promoting research and innovation to drive impactful
-                    solutions.</span
-                  >
-                </li>
-                <li>
-                  <i class="bi bi-check2-circle"></i>
-                  <span id="about-item-4"
-                    >Building a strong foundation for future generations.</span
-                  >
-                </li>
+                {% for item in about_us_items %}
+                  <li>
+                    <i class="bi bi-check2-circle"></i>
+                    <span>{{ item }}</span>
+                  </li>
+                {% endfor %}
               </ul>
             </div>
 
             <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
               <p style="text-align: justify" id="about-paragraph">
-                We work to create plans for digital growth and support local
-                talent to ensure technology and innovation drive Ethiopia's
-                success. With a focus on hard work, creativity, and a passion
-                for learning, we aim to make a positive impact on society.
+                {{about_us.description_2}}
               </p>
               <a href="about" class="read-more" id="about-read-more"
                 ><span>Read More</span><i class="bi bi-arrow-right"></i
@@ -555,66 +267,367 @@
       </section>
       <!-- /About Section -->
 
-      <!-- Stats Section -->
-      <section id="stats" class="stats section light-background">
-        <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+      <section
+      id="services"
+      class="resources resources-slider section light-background"
+      style="margin-top: 100px"
+    >
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Resource Center</h2>
+        <p>Access important documents and forms instantly.</p>
+      </div>
+      <!-- End Section Title -->
+
+      <div class="container">
+        <div class="swiper">
+          <div class="swiper-wrapper">
+            <!-- Card Items -->
+            <div class="swiper-slide">
+              <div class="service-item position-relative">
+                <div class="icon" id="resouce-icon">
+                  <i class="bi bi-file-earmark-text"></i>
+                </div>
+                <h3>Visitor Form</h3>
+                <span class="updates_cart fw-normal fst-italic">
+                  For first-time visitors to fill out necessary details.
+                </span>
+                <div class="btn-group-resource mt-5" role="group">
+                  <button type="button" class="btn btn-primary btn-sm me-2">
+                    <i class="bi bi-cloud-arrow-down-fill"></i> Download
+                  </button>
+                  <button type="button" class="btn btn-secondary btn-sm">
+                    <i class="bi bi-eye-fill"></i> Preview
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- End of swiper -->
+            <div class="swiper-slide">
+              <div class="service-item position-relative">
+                <div class="icon" id="resouce-icon">
+                  <i class="bi bi-book"></i>
+                </div>
+                <h3>Employee Manual</h3>
+                <span class="updates_cart fw-normal fst-italic">
+                  Policies, rules, and guidelines for employees.
+                </span>
+                <div class="btn-group-resource mt-5" role="group">
+                  <button type="button" class="btn btn-primary btn-sm me-2">
+                    <i class="bi bi-cloud-arrow-down-fill"></i> Download
+                  </button>
+                  <button type="button" class="btn btn-secondary btn-sm">
+                    <i class="bi bi-eye-fill"></i> Preview
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- End of swiper -->
+            <div class="swiper-slide">
+              <div class="service-item position-relative">
+                <div class="icon" id="resouce-icon">
+                  <i class="bi bi-file-earmark-spreadsheet"></i>
+                </div>
+                <h3>Budget Template</h3>
+                <span class="updates_cart fw-normal fst-italic">
+                  Use this template to prepare budgets effectively.
+                </span>
+                <div class="btn-group-resource mt-5" role="group">
+                  <button type="button" class="btn btn-primary btn-sm me-2">
+                    <i class="bi bi-cloud-arrow-down-fill"></i> Download
+                  </button>
+                  <button type="button" class="btn btn-secondary btn-sm">
+                    <i class="bi bi-eye-fill"></i> Preview
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- End of swiper -->
+            <div class="swiper-slide">
+              <div class="service-item position-relative">
+                <div class="icon" id="resouce-icon">
+                  <i class="bi bi-calendar-check"></i>
+                </div>
+                <h3>Event Checklist</h3>
+                <span class="updates_cart fw-normal fst-italic">
+                  A step-by-step checklist for organizing events.
+                </span>
+                <div class="btn-group-resource mt-5" role="group">
+                  <button type="button" class="btn btn-primary btn-sm me-2">
+                    <i class="bi bi-cloud-arrow-down-fill"></i> Download
+                  </button>
+                  <button type="button" class="btn btn-secondary btn-sm">
+                    <i class="bi bi-eye-fill"></i> Preview
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- End of swiper -->
+            <div class="swiper-slide">
+              <div class="service-item position-relative">
+                <div class="icon" id="resouce-icon">
+                  <i class="bi bi-clipboard "></i>
+                </div>
+                <h3>Meeting Minutes</h3>
+                <span class="updates_cart fw-normal fst-italic">
+                  Template for recording meeting minutes professionally.
+                </span>
+                <div class="btn-group-resource mt-5" role="group">
+                  <button type="button" class="btn btn-primary btn-sm me-2">
+                    <i class="bi bi-cloud-arrow-down-fill"></i> Download
+                  </button>
+                  <button type="button" class="btn btn-secondary btn-sm">
+                    <i class="bi bi-eye-fill"></i> Preview
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- End of swiper -->
+            <div class="swiper-slide">
+              <div class="service-item position-relative">
+                <div class="icon" id="resouce-icon">
+                  <i class="bi bi-envelope"></i>
+                </div>
+                <h3>Official Letterhead</h3>
+                <span class="updates_cart fw-normal fst-italic">
+                  Preformatted letterhead for official communication.
+                </span>
+                <div class="btn-group-resource mt-5" role="group">
+                  <button type="button" class="btn btn-primary btn-sm me-2">
+                    <i class="bi bi-cloud-arrow-down-fill"></i> Download
+                  </button>
+                  <button type="button" class="btn btn-secondary btn-sm">
+                    <i class="bi bi-eye-fill"></i> Preview
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- End of swiper -->
+          </div>
+          <!-- Swiper Pagination -->
+          <div class="swiper-pagination"></div>
+          <!-- Swiper Navigation -->
+        </div>
+      </div>
+    </section>
+    <!-- /Downloadable Section -->
+
+    <!-- Team Section -->
+<section id="team" class="team section light-background">
+
+  <!-- Team Section -->
+<section id="team" class="team section light-background">
+
+  <!-- Section Title -->
+  <div class="container section-title" data-aos="fade-up">
+    <h2>Meet Our Team</h2>
+    <p>Meet our team members dedicated to the successful implementation of the GDOP project.</p>
+  </div><!-- End Section Title -->
+
+  <div class="container">
+
           <div class="row gy-4">
-            <div class="col-lg-3 col-md-6">
-              <div class="stats-item text-center w-100 h-100">
-                <span
-                  data-purecounter-start="0"
-                  data-purecounter-end="132"
-                  data-purecounter-duration="1"
-                  class="purecounter"
-                ></span>
-                <p id="stats-institutions">Institutions Supported</p>
-              </div>
-            </div>
-            <!-- End Stats Item -->
 
-            <div class="col-lg-3 col-md-6">
-              <div class="stats-item text-center w-100 h-100">
-                <span
-                  data-purecounter-start="0"
-                  data-purecounter-end="521"
-                  data-purecounter-duration="1"
-                  class="purecounter"
-                ></span>
-                <p id="stats-projects">Projects</p>
+      <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
+        <div class="team-member">
+          <div class="member-img">
+            <img src="{% static 'assets/img/team-11.jpg' %}" class="img-fluid" alt="">
+            <div class="social">
+              <a href=""><i class="bi bi-twitter-x"></i></a>
+              <a href=""><i class="bi bi-facebook"></i></a>
+              <a href=""><i class="bi bi-instagram"></i></a>
+              <a href=""><i class="bi bi-linkedin"></i></a>
               </div>
             </div>
-            <!-- End Stats Item -->
+          <div class="member-info">
+            <h4>Ephrem Belew</h4>
+            <p>Project Manager</p>
+            <div class="card-text-team">
+              <span><i class="bi bi-person-circle icon me-2"></i>Visitor Management Department</span>
+              <span><i class="bi bi-envelope-fill icon me-2"></i> Ephrem21@gmail.com</span>
+              <span><i class="bi bi-telephone-fill icon me-2"></i>+251-978096534</span>
+          </div>
+            </div>
+        </div>
+      </div><!-- End Team Member -->
 
-            <div class="col-lg-3 col-md-6">
-              <div class="stats-item text-center w-100 h-100">
-                <span
-                  data-purecounter-start="0"
-                  data-purecounter-end="1453"
-                  data-purecounter-duration="1"
-                  class="purecounter"
-                ></span>
-                <p id="stats-mentorship">Mentorship Hours</p>
+      <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
+        <div class="team-member">
+          <div class="member-img">
+            <img src="{% static 'assets/img/zza.jpg' %}" class="img-fluid" alt="">
+            <div class="social">
+              <a href=""><i class="bi bi-twitter-x"></i></a>
+              <a href=""><i class="bi bi-facebook"></i></a>
+              <a href=""><i class="bi bi-instagram"></i></a>
+              <a href=""><i class="bi bi-linkedin"></i></a>
               </div>
             </div>
-            <!-- End Stats Item -->
-
-            <div class="col-lg-3 col-md-6">
-              <div class="stats-item text-center w-100 h-100">
-                <span
-                  data-purecounter-start="0"
-                  data-purecounter-end="52"
-                  data-purecounter-duration="1"
-                  class="purecounter"
-                ></span>
-                <p id="stats-workers">Workers</p>
-              </div>
-            </div>
-            <!-- End Stats Item -->
+          <div class="member-info">
+            <h4>Danya Kedir</h4>
+            <p>Lead Developer</p>
+            <div class="card-text-team">
+              <span><i class="bi bi-person-circle icon me-2"></i>Contact Center Department</span>
+              <span><i class="bi bi-envelope-fill icon me-2"></i> dan123@gmail.com</span>
+              <span><i class="bi bi-telephone-fill icon me-2"></i>+251-920435612</span>
+          </div>
           </div>
         </div>
-      </section>
-      <!-- /Stats Section -->
+      </div><!-- End Team Member -->
 
+      <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="300">
+        <div class="team-member">
+          <div class="member-img">
+            <img src="{% static 'assets/img/kkj.jpg' %}" class="img-fluid" alt="">
+            <div class="social">
+              <a href=""><i class="bi bi-twitter-x"></i></a>
+              <a href=""><i class="bi bi-facebook"></i></a>
+              <a href=""><i class="bi bi-instagram"></i></a>
+              <a href=""><i class="bi bi-linkedin"></i></a>
+              </div>
+            </div>
+          <div class="member-info">
+            <h4>Solomon Teshome</h4>
+            <p>System Analyst</p>
+            <div class="card-text-team">
+              <span><i class="bi bi-person-circle icon me-2"></i>DMS Department</span>
+              <span><i class="bi bi-envelope-fill icon me-2"></i> Solomonde12@gmail.com</span>
+              <span><i class="bi bi-telephone-fill icon me-2"></i>+251-980976542</span>
+          </div>
+          </div>
+        </div>
+      </div><!-- End Team Member -->
+
+      <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="400">
+        <div class="team-member">
+          <div class="member-img">
+            <img src="{% static 'assets/img/mmmi.jpg' %}" class="img-fluid" alt="">
+            <div class="social">
+              <a href=""><i class="bi bi-twitter-x"></i></a>
+              <a href=""><i class="bi bi-facebook"></i></a>
+              <a href=""><i class="bi bi-instagram"></i></a>
+              <a href=""><i class="bi bi-linkedin"></i></a>
+              </div>
+            </div>
+          <div class="member-info">
+            <h4>Dawit Belete</h4>
+            <p>Backend Developer</p>
+            <div class="card-text-team">
+              <span><i class="bi bi-person-circle icon me-2"></i>Transport Management Department</span>
+              <span><i class="bi bi-envelope-fill icon me-2"></i> Dawitbelete12@gmail.com</span>
+              <span><i class="bi bi-telephone-fill icon me-2"></i>+251-936542134</span>
+          </div>
+        </div>
+        </div>
+      </div><!-- End Team Member -->
+
+    </div>
+    <div class="collapse mt-4" id="moreTeam">
+    <div class="row gy-4 mt-4">
+
+      <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
+        <div class="team-member">
+          <div class="member-img">
+            <img src="{% static 'assets/img/ll.jpg' %}" class="img-fluid" alt="">
+            <div class="social">
+              <a href=""><i class="bi bi-twitter-x"></i></a>
+              <a href=""><i class="bi bi-facebook"></i></a>
+              <a href=""><i class="bi bi-instagram"></i></a>
+              <a href=""><i class="bi bi-linkedin"></i></a>
+            </div>
+          </div>
+          <div class="member-info">
+            <h4>Lidya Seid</h4>
+            <p>UX/UI Designer</p>
+            <div class="card-text-team">
+              <span><i class="bi bi-person-circle icon me-2"></i>Transport Management Department</span>
+              <span><i class="bi bi-envelope-fill icon me-2"></i> Dawitbelete12@gmail.com</span>
+              <span><i class="bi bi-telephone-fill icon me-2"></i>+251-936542134</span>
+          </div>
+          </div>
+        </div>
+      </div><!-- End Team Member -->
+
+      <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
+        <div class="team-member">
+          <div class="member-img">
+            <img src="{% static 'assets/img/no-pp.jpg' %}" class="img-fluid" alt="">
+            <div class="social">
+              <a href=""><i class="bi bi-twitter-x"></i></a>
+              <a href=""><i class="bi bi-facebook"></i></a>
+              <a href=""><i class="bi bi-instagram"></i></a>
+              <a href=""><i class="bi bi-linkedin"></i></a>
+            </div>
+          </div>
+          <div class="member-info">
+            <h4>Kedir Kemal</h4>
+            <p>Frontend Developer</p>
+            <div class="card-text-team">
+              <span><i class="bi bi-person-circle icon me-2"></i>Transport Management Department</span>
+              <span><i class="bi bi-envelope-fill icon me-2"></i> Dawitbelete12@gmail.com</span>
+              <span><i class="bi bi-telephone-fill icon me-2"></i>+251-936542134</span>
+          </div>
+          </div>
+        </div>
+      </div><!-- End Team Member -->
+
+      <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="300">
+        <div class="team-member">
+          <div class="member-img">
+            <img src="{% static 'assets/img/no-pp.jpg' %}" class="img-fluid" alt="">
+            <div class="social">
+              <a href=""><i class="bi bi-twitter-x"></i></a>
+              <a href=""><i class="bi bi-facebook"></i></a>
+              <a href=""><i class="bi bi-instagram"></i></a>
+              <a href=""><i class="bi bi-linkedin"></i></a>
+            </div>
+          </div>
+          <div class="member-info">
+            <h4>Micael Abera</h4>
+            <p>Project Coordinator</p>
+            <div class="card-text-team">
+              <span><i class="bi bi-person-circle icon me-2"></i>Transport Management Department</span>
+              <span><i class="bi bi-envelope-fill icon me-2"></i> Dawitbelete12@gmail.com</span>
+              <span><i class="bi bi-telephone-fill icon me-2"></i>+251-936542134</span>
+          </div>
+          </div>
+        </div>
+      </div><!-- End Team Member -->
+
+      <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="400">
+        <div class="team-member">
+          <div class="member-img">
+            <img src="{% static 'assets/img/no-pp.jpg' %}" class="img-fluid" alt="">
+            <div class="social">
+              <a href=""><i class="bi bi-twitter-x"></i></a>
+              <a href=""><i class="bi bi-facebook"></i></a>
+              <a href=""><i class="bi bi-instagram"></i></a>
+              <a href=""><i class="bi bi-linkedin"></i></a>
+            </div>
+          </div>
+          <div class="member-info">
+            <h4>Sara Teshome</h4>
+            <p>Quality Assurance Engineer</p>
+            <div class="card-text-team">
+              <span><i class="bi bi-person-circle icon me-2"></i>Transport Management Department</span>
+              <span><i class="bi bi-envelope-fill icon me-2"></i> Dawitbelete12@gmail.com</span>
+              <span><i class="bi bi-telephone-fill icon me-2"></i>+251-936542134</span>
+          </div>
+          </div>
+        </div>
+      </div><!-- End Team Member -->
+    </div>
+    </div>
+    <div class="button-container">
+      <button id="load-more" class="btn btn-primary">
+          <span class="spinner-border spinner-border-sm mr-2"></span> Show More
+      </button>
+  </div>
+  </div>
+
+</section><!-- /Team Section -->
+
+<!-- FAQ Section -->
       <section id="faq" class="faq section light-background">
         <!-- Section Title -->
         <div class="container section-title" data-aos="fade-up">
@@ -632,117 +645,17 @@
           <div class="row justify-content-center">
             <div class="col-lg-10" data-aos="fade-up" data-aos-delay="100">
               <div class="faq-container p-3 mb-2">
+                {% for item in faqs %}
                 <div class="faq-item">
-                  <h3>How do I access the platform?</h3>
+                  <h3>{{ item.question }}</h3>
                   <div class="faq-content">
                     <p>
-                      You can access the platform through the internal intranet
-                      link provided by the IT department.
+                      {{ item.answer }}
                     </p>
                   </div>
                   <i class="faq-toggle bi bi-chevron-right"></i>
                 </div>
-                <!-- End Faq item-->
-
-                <div class="faq-item">
-                  <h3>Can I use the platform on any device?</h3>
-                  <div class="faq-content">
-                    <p>
-                      Yes, it is accessible on all devices connected to the
-                      ministry’s intranet. For the best experience, use a modern
-                      browser like Chrome or Edge.
-                    </p>
-                  </div>
-                  <i class="faq-toggle bi bi-chevron-right"></i>
-                </div>
-                <!-- End Faq item-->
-
-                <div class="faq-item">
-                  <h3>Can I access the platform remotely?</h3>
-                  <div class="faq-content">
-                    <p>
-                      No, the platform is restricted to the ministry’s internal
-                      network and can only be accessed on-premises.
-                    </p>
-                  </div>
-                  <i class="faq-toggle bi bi-chevron-right"></i>
-                </div>
-                <!-- End Faq item-->
-
-                <div class="faq-item">
-                  <h3>How do I find an older document?</h3>
-                  <div class="faq-content">
-                    <p>
-                      Use the search feature and apply filters like date,
-                      department, or document type to locate older files.
-                    </p>
-                  </div>
-                  <i class="faq-toggle bi bi-chevron-right"></i>
-                </div>
-                <!-- End Faq item-->
-
-                <div class="faq-item">
-                  <h3>What if I cannot open a document?</h3>
-                  <div class="faq-content">
-                    <p>
-                      Check your permissions for the document. If you are
-                      authorized and still face issues, report it to IT support.
-                    </p>
-                  </div>
-                  <i class="faq-toggle bi bi-chevron-right"></i>
-                </div>
-                <!-- End Faq item-->
-
-                <div class="faq-item">
-                  <h3>
-                    What should I do if a contact’s information is outdated?
-                  </h3>
-                  <div class="faq-content">
-                    <p>
-                      You can update the details if you have editing
-                      permissions. Otherwise, notify the responsible department.
-                    </p>
-                  </div>
-                  <i class="faq-toggle bi bi-chevron-right"></i>
-                </div>
-                <!-- End Faq item-->
-
-                <div class="faq-item">
-                  <h3>What should I do if the platform isn’t loading?</h3>
-                  <div class="faq-content">
-                    <p>
-                      Check your network connection and ensure you are connected
-                      to the ministry’s intranet. If the issue persists, contact
-                      IT support.
-                    </p>
-                  </div>
-                  <i class="faq-toggle bi bi-chevron-right"></i>
-                </div>
-                <!-- End Faq item-->
-
-                <div class="faq-item">
-                  <h3>How do I report a bug or error in the system?</h3>
-                  <div class="faq-content">
-                    <p>
-                      Use the "Report Issue" option in the "Contact Us" section
-                      and provide detailed information about the issue,
-                      including screenshots if possible.
-                    </p>
-                  </div>
-                  <i class="faq-toggle bi bi-chevron-right"></i>
-                </div>
-                <!-- End Faq item-->
-
-                <div class="faq-item">
-                  <h3>Is there a way to recover deleted data?</h3>
-                  <div class="faq-content">
-                    <p>
-                      Yes, contact the IT team immediately. Data recovery may be
-                      possible depending on the system's backup policies.
-                    </p>
-                  </div>
-                  <i class="faq-toggle bi bi-chevron-right"></i>
-                </div>
+                {% endfor %}
                 <!-- End Faq item-->
               </div>
             </div>
@@ -787,7 +700,7 @@
                 <div>
                   <h3 id="contact-address-title">Address</h3>
                   <p id="contact-address-content">
-                    Lisie G/Mariam, Arada Sub-City, Addis Ababa, Ethiopia
+                    {{ contact_us.address }}
                   </p>
                 </div>
               </div>
@@ -801,7 +714,7 @@
                 <i class="bi bi-telephone flex-shrink-0"></i>
                 <div>
                   <h3 id="contact-phone-title">Call Us</h3>
-                  <p id="contact-phone-content">+251 118 132 191</p>
+                  <p id="contact-phone-content">{{ contact_us.phone }}</p>
                 </div>
               </div>
               <!-- End Info Item -->
@@ -814,7 +727,7 @@
                 <i class="bi bi-envelope flex-shrink-0"></i>
                 <div>
                   <h3 id="contact-email-title">Email Us</h3>
-                  <p>contact@mint.gov.et</p>
+                  <p>{{ contact_us.email }}</p>
                 </div>
               </div>
               <!-- End Info Item -->
@@ -984,7 +897,8 @@
     <script src="{% static 'assets/vendor/aos/aos.js' %}"></script>
     <script src="{% static 'assets/vendor/purecounter/purecounter_vanilla.js' %}"></script>
     <script src="{% static 'assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
-
+    <script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script> -->
     <!-- Main JS File -->
     <script src="{% static 'assets/js/main.js' %}"></script>
   </body>

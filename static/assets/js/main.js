@@ -232,113 +232,199 @@
 
 // language translation
 
-document
-  .getElementById("language-selector")
-  .addEventListener("change", function () {
-    const selectedLanguage = this.value;
+// document
+//   .getElementById("language-selector")
+//   .addEventListener("change", function () {
+//     const selectedLanguage = this.value;
 
-    fetch(`/get_translations?lang=${selectedLanguage}`)
-      .then((response) => response.json())
-      .then((data) => {
-        document.getElementById("nav-home").innerText = data.nav_home;
-        document.getElementById("nav-news").innerText = data.nav_news;
-        document.getElementById("nav-about-us").innerText = data.nav_about_us;
-        document.getElementById("nav-contact-us").innerText =
-          data.nav_contact_us;
+//     fetch(`/get_translations?lang=${selectedLanguage}`)
+//       .then((response) => response.json())
+//       .then((data) => {
+//         document.getElementById("nav-home").innerText = data.nav_home;
+//         document.getElementById("nav-news").innerText = data.nav_news;
+//         document.getElementById("nav-about-us").innerText = data.nav_about_us;
+//         // document.getElementById("nav-contact-us").innerText =
+//         //   data.nav_contact_us;
 
-        document.getElementById("hero-title").innerText = data.hero_title;
-        document.getElementById("hero-description").innerText =
-          data.hero_description;
-        document.getElementById("hero-btn").innerText = data.hero_btn;
+//         document.getElementById("hero-title").innerText = data.hero_title;
+//         document.getElementById("hero-description").innerText =
+//           data.hero_description;
+//         document.getElementById("hero-btn").innerText = data.hero_btn;
 
-        document.getElementById("transport-title").innerText =
-          data.transport_title;
-        document.getElementById("transport-description").innerText =
-          data.transport_description;
-        document.getElementById("transport-btn").innerText = data.transport_btn;
+//         document.getElementById("transport-title").innerText =
+//           data.transport_title;
+//         document.getElementById("transport-description").innerText =
+//           data.transport_description;
+//         document.getElementById("transport-btn").innerText = data.transport_btn;
 
-        document.getElementById("visitors-title").innerText =
-          data.visitors_title;
-        document.getElementById("visitors-description").innerText =
-          data.visitors_description;
-        document.getElementById("visitors-btn").innerText = data.visitors_btn;
+//         document.getElementById("visitors-title").innerText =
+//           data.visitors_title;
+//         document.getElementById("visitors-description").innerText =
+//           data.visitors_description;
+//         document.getElementById("visitors-btn").innerText = data.visitors_btn;
 
-        document.getElementById("monitoring-title").innerText =
-          data.monitoring_title;
-        document.getElementById("monitoring-description").innerText =
-          data.monitoring_description;
-        document.getElementById("monitoring-btn").innerText =
-          data.monitoring_btn;
+//         document.getElementById("monitoring-title").innerText =
+//           data.monitoring_title;
+//         document.getElementById("monitoring-description").innerText =
+//           data.monitoring_description;
+//         document.getElementById("monitoring-btn").innerText =
+//           data.monitoring_btn;
 
-        document.getElementById("document-title").innerText =
-          data.document_title;
-        document.getElementById("document-description").innerText =
-          data.document_description;
-        document.getElementById("document-btn").innerText = data.document_btn;
+//         document.getElementById("document-title").innerText =
+//           data.document_title;
+//         document.getElementById("document-description").innerText =
+//           data.document_description;
+//         document.getElementById("document-btn").innerText = data.document_btn;
 
-        document.getElementById("about-title").innerText = data.about_title;
-        document.getElementById("about-intro").innerText = data.about_intro;
-        document.getElementById("about-item-1").innerText = data.about_item_1;
-        document.getElementById("about-item-2").innerText = data.about_item_2;
-        document.getElementById("about-item-3").innerText = data.about_item_3;
-        document.getElementById("about-item-4").innerText = data.about_item_4;
-        document.getElementById("about-paragraph").innerText =
-          data.about_paragraph;
-        document.getElementById("about-read-more").innerText =
-          data.about_read_more;
+//         document.getElementById("about-title").innerText = data.about_title;
+//         document.getElementById("about-intro").innerText = data.about_intro;
+//         document.getElementById("about-item-1").innerText = data.about_item_1;
+//         document.getElementById("about-item-2").innerText = data.about_item_2;
+//         document.getElementById("about-item-3").innerText = data.about_item_3;
+//         document.getElementById("about-item-4").innerText = data.about_item_4;
+//         document.getElementById("about-paragraph").innerText =
+//           data.about_paragraph;
+//         document.getElementById("about-read-more").innerText =
+//           data.about_read_more;
 
-        document.getElementById("stats-institutions").innerText =
-          data.stats_institutions;
-        document.getElementById("stats-projects").innerText =
-          data.stats_projects;
-        document.getElementById("stats-mentorship").innerText =
-          data.stats_mentorship;
-        document.getElementById("stats-workers").innerText = data.stats_workers;
+//         document.getElementById("stats-institutions").innerText =
+//           data.stats_institutions;
+//         document.getElementById("stats-projects").innerText =
+//           data.stats_projects;
+//         document.getElementById("stats-mentorship").innerText =
+//           data.stats_mentorship;
+//         document.getElementById("stats-workers").innerText = data.stats_workers;
 
-        document.getElementById("contact-title").innerText = data.contact_title;
-        document.getElementById("contact-intro").innerText = data.contact_intro;
-        document.getElementById("contact-address-title").innerText =
-          data.contact_address_title;
-        document.getElementById("contact-address-content").innerText =
-          data.contact_address_content;
-        document.getElementById("contact-phone-title").innerText =
-          data.contact_phone_title;
-        document.getElementById("contact-phone-content").innerText =
-          data.contact_phone_content;
-        document.getElementById("contact-email-title").innerText =
-          data.contact_email_title;
+//         document.getElementById("contact-title").innerText = data.contact_title;
+//         document.getElementById("contact-intro").innerText = data.contact_intro;
+//         document.getElementById("contact-address-title").innerText =
+//           data.contact_address_title;
+//         document.getElementById("contact-address-content").innerText =
+//           data.contact_address_content;
+//         document.getElementById("contact-phone-title").innerText =
+//           data.contact_phone_title;
+//         document.getElementById("contact-phone-content").innerText =
+//           data.contact_phone_content;
+//         document.getElementById("contact-email-title").innerText =
+//           data.contact_email_title;
 
-        document.getElementById("form-name-label").placeholder =
-          data.form_name_label.placeholder;
-        document.getElementById("form-email-label").placeholder =
-          data.form_email_label.placeholder;
-        document.getElementById("form-subject-label").placeholder =
-          data.form_subject_label.placeholder;
-        document.getElementById("form-message-label").placeholder =
-          data.form_message_label.placeholder;
-        document.getElementById("form-submit-btn").innerText =
-          data.form_submit_btn;
+//         document.getElementById("form-name-label").placeholder =
+//           data.form_name_label.placeholder;
+//         document.getElementById("form-email-label").placeholder =
+//           data.form_email_label.placeholder;
+//         document.getElementById("form-subject-label").placeholder =
+//           data.form_subject_label.placeholder;
+//         document.getElementById("form-message-label").placeholder =
+//           data.form_message_label.placeholder;
+//         document.getElementById("form-submit-btn").innerText =
+//           data.form_submit_btn;
 
-        document.getElementById("footer-about").innerText = data.footer_about;
-        document.getElementById("useful-links").innerText = data.useful_links;
-        document.getElementById("footer-link-home").innerText =
-          data.footer_link_home;
-        document.getElementById("footer-link-news").innerText =
-          data.footer_link_news;
-        document.getElementById("footer-link-about-us").innerText =
-          data.footer_link_about_us;
-        document.getElementById("footer-link-contact-us").innerText =
-          data.footer_link_contact_us;
-        document.getElementById("footer-contact").innerText =
-          data.footer_contact;
-        document.getElementById("footer-contact-address").innerText =
-          data.footer_contact_address;
-        document.getElementById("footer-contact-address-1").innerText =
-          data.footer_contact_address_1;
-        document.getElementById("footer-contact-address-2").innerText =
-          data.footer_contact_address_2;
-        document.getElementById("footer-phone").innerText = data.footer_phone;
-        document.getElementById("footer-email").innerText = data.footer_email;
-        document.getElementById("copyright").innerText = data.copyright;
-      });
-  });
+//         document.getElementById("footer-about").innerText = data.footer_about;
+//         document.getElementById("useful-links").innerText = data.useful_links;
+//         document.getElementById("footer-link-home").innerText =
+//           data.footer_link_home;
+//         document.getElementById("footer-link-news").innerText =
+//           data.footer_link_news;
+//         document.getElementById("footer-link-about-us").innerText =
+//           data.footer_link_about_us;
+//         document.getElementById("footer-link-contact-us").innerText =
+//           data.footer_link_contact_us;
+//         document.getElementById("footer-contact").innerText =
+//           data.footer_contact;
+//         document.getElementById("footer-contact-address").innerText =
+//           data.footer_contact_address;
+//         document.getElementById("footer-contact-address-1").innerText =
+//           data.footer_contact_address_1;
+//         document.getElementById("footer-contact-address-2").innerText =
+//           data.footer_contact_address_2;
+//         document.getElementById("footer-phone").innerText = data.footer_phone;
+//         document.getElementById("footer-email").innerText = data.footer_email;
+//         document.getElementById("copyright").innerText = data.copyright;
+//       });
+//   });
+
+// Initialize Swiper
+const swiper = new Swiper(".swiper", {
+  slidesPerView: 4, // Show 4 cards at a time
+  spaceBetween: 20, // Spacing between slides
+  loop: true, // Enable infinite scrolling
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
+  pagination: {
+    el: ".swiper-pagination",
+    clickable: true,
+  },
+  breakpoints: {
+    320: {
+      slidesPerView: 1, // For small screens
+      spaceBetween: 10,
+    },
+    768: {
+      slidesPerView: 2, // For tablets
+      spaceBetween: 15,
+    },
+    1200: {
+      slidesPerView: 4, // For larger screens
+      spaceBetween: 20,
+    },
+  },
+});
+
+// For collapsable cards to change the button text
+// const toggleButton = document.getElementById("toggle-button");
+// const collapseElement = document.getElementById("moreTeam");
+
+// // Listen for the collapse event to change the button text
+// collapseElement.addEventListener("show.bs.collapse", () => {
+//   toggleButton.innerText = "Show Less";
+// });
+
+// collapseElement.addEventListener("hide.bs.collapse", () => {
+//   toggleButton.innerText = "Show More";
+// });
+const loadMoreButton = document.getElementById("load-more");
+const additionalContent = document.getElementById("moreTeam");
+const spinner = loadMoreButton.querySelector(".spinner-border");
+
+// Ensure the content is initially hidden
+additionalContent.style.display = "none";
+
+// Add click event listener to the "Load More" button
+loadMoreButton.addEventListener("click", function () {
+  // If the content is hidden, show it
+  if (additionalContent.style.display === "none") {
+    // Show the loading spinner and update the button text
+    loadMoreButton.classList.add("loading");
+    loadMoreButton.textContent = "Loading...";
+
+    // Simulate a delay for loading the content
+    setTimeout(function () {
+      // Show the additional content
+      additionalContent.style.display = "block";
+
+      // Change the button text to "Show Less"
+      loadMoreButton.textContent = "Show Less";
+
+      // Remove the loading spinner
+      loadMoreButton.classList.remove("loading");
+    }, 600); // Simulate a delay for loading
+  } else {
+    // Simulate a delay before collapsing the content
+    loadMoreButton.classList.add("loading");
+    loadMoreButton.textContent = "Loading...";
+
+    // Simulate the delay for "Show Less"
+    setTimeout(function () {
+      // Hide the content
+      additionalContent.style.display = "none";
+
+      // Change the button text to "Show More"
+      loadMoreButton.textContent = "Show More";
+
+      // Remove the loading spinner
+      loadMoreButton.classList.remove("loading");
+    }, 600); // Simulate a delay for hiding
+  }
+});
