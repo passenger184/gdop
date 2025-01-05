@@ -1,0 +1,1197 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>GDOP</title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+
+    <!-- Favicons -->
+    <link href="{% static 'assets/img/miii_logo.jpg' %}" rel="icon" />
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Vendor CSS Files -->
+
+    <link
+      href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}"
+      rel="stylesheet"
+    />
+    <link
+      href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}"
+      rel="stylesheet"
+    />
+    <link href="{% static 'assets/vendor/aos/aos.css' %}" rel="stylesheet" />
+    <link
+      href="{% static 'assets/vendor/glightbox/css/glightbox.min.css' %}"
+      rel="stylesheet"
+    />
+    <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
+    <!-- Main CSS File -->
+    <link href="{% static 'assets/css/main.css' %}" rel="stylesheet" />
+  </head>
+
+  <body class="index-page">
+    <header id="header" class="header d-flex align-items-center sticky-top">
+      <div
+        class="container-fluid container-xl position-relative d-flex align-items-center"
+      >
+        <a href="/" class="logo d-flex align-items-center me-auto">
+          <img src="{% static 'assets/img/mint_logo.png' %}" alt="" />
+        </a>
+
+        <nav id="navmenu" class="navmenu">
+          <ul>
+            <li>
+              <a href="/" class="active" id="nav-home">Home<br /></a>
+            </li>
+            <li><a href="news" id="nav-news">News</a></li>
+            <li class="dropdown">
+              <a
+                ><span id="nav-about-us">About Us</span>
+                <i class="bi bi-chevron-down toggle-dropdown"></i
+              ></a>
+              <ul>
+                <li><a href="about">GDOP</a></li>
+                <li>
+                  <a href="vision-mission-values">Vision, Mission & Values</a>
+                </li>
+                <li>
+                  <a href="organizational-structure"
+                    >Organizational Structure</a
+                  >
+                </li>
+                <li><a href="power-duties">Power & Duties</a></li>
+              </ul>
+            </li>
+            <li><a href="#faq" id="nav-contact-us">FAQ</a></li>
+            <!-- <li><select
+              id="language-selector"
+              class="ms-4"
+            >
+              <option value="en">English</option>
+              <option value="am">አማርኛ</option>
+            </select></li> -->
+              
+            <li><a href="request-support" id="nav-contact-uss" class="">Request Support</a></li>
+            
+            
+          </ul>
+          <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+        </nav>
+
+        <!-- <div style="margin-left: 20px; text-decoration: none; right: 35px;">
+          <select
+            id="language-selector"
+            class=""
+          >
+            <option value="en">English</option>
+            <option value="am">አማርኛ</option>
+          </select>
+        </div> -->
+      </div>
+    </header>
+
+    <main class="main">
+      <!-- Hero Section -->
+      <section id="hero" class="hero section">
+        <img
+          src="{% static 'assets/img/b.jpg' %}"
+          alt=""
+          data-aos="fade-in"
+          class=""
+        />
+
+        <div class="container">
+          <div class="row justify-content-center" data-aos="zoom-out">
+            <div class="col-xl-8 col-lg-9 text-center">
+              <h1 class="pt-4" id="hero-title">
+                Government Digital Office Platforms Portal (GDOP)
+              </h1>
+              <p class="pt-2" id="hero-description">
+                A paperless back office system automation.
+                <p>
+                Modern Office | Automated Process | Digital Services</p>
+              </p>
+            </div>
+          </div>
+          <div
+            class="text-center pt-4 pb-5"
+            data-aos="zoom-out"
+            data-aos-delay="100"
+          >
+            <a href="#about" class="btn-get-started" id="hero-btn"
+              >Learn More</a
+            >
+          </div>
+
+          <div class="row gy-4 mt-5 pt-5">
+            <div
+              class="col-md-6 col-lg-4"
+              data-aos="zoom-out"
+              data-aos-delay="100"
+            >
+              <div class="icon-box text-center h-100 d-flex flex-column" style="margin-left: 200px; ">
+                <div class="flex-grow-1">
+                <div class="icon"><i class="bi bi-people"></i></div>
+                <h4 class="title">
+                  <a href="" id="visitors-title">Visitors Management System</a>
+                </h4>
+                <p class="description" id="visitors-description">
+                  Simplify and secure the process of managing visitor
+                  interactions and records.
+                </p >
+                <p class="description">
+                  The system ensures a smooth and efficient experience for both visitors and administrators by automating check-ins, maintaining accurate records, and enhancing on-site security.
+                </p>
+              </div>
+              <div class="text-center mt-auto">
+                <button class="btn btn-primary mt-5" id="visitors-btn">
+                  View Details
+                </button>
+              </div>
+            </div>
+            </div>
+            <!--End Icon Box -->
+
+            <div
+              class="col-md-6 col-lg-4"
+              data-aos="zoom-out"
+              data-aos-delay="200"
+            >
+              <div class="icon-box text-center h-100 d-flex flex-column" style="margin-left: 250px;">
+                <div class="flex-grow-1">
+                <div class="icon"><i class="bi bi-file-earmark-text"></i></div>
+                <h4 class="title">
+                  <a href="" id="document-title">Document Management System (DMS)</a>
+                </h4>
+                <p class="description" id="document-description">
+                  A cloud-based document storage and management system with secure access and sharing capabilities. 
+                </p>
+                <p class="description">
+                  Rollout of the DMS across multiple government offices using an inhouse developed SaaS model to standardize document handling processes. 
+                </p>
+              </div>
+                <div class="text-center mt-auto">
+                <button class="btn btn-primary mt-5" id="document-btn">
+                  View Details
+                </button>
+              </div>
+              </div>
+            </div>
+            <!--End Icon Box -->
+<div class="row gy-4 mt-5 pt-5">
+            <div
+              class="col-md-6 col-lg-4"
+              data-aos="zoom-out"
+              data-aos-delay="300"
+            >
+              <div class="icon-box text-center h-100 d-flex flex-column">
+                <div class="flex-grow-1">
+                <div class="icon"><i class="bi bi-bar-chart"></i></div>
+                <h4 class="title">
+                  <a id="monitoring-title">Planning, Monitoring and Reporting  System</a>
+                </h4>
+                <p class="description " id="monitoring-description">
+                  Development of a comprehensive system for strategic planning, resource allocation, performance tracking, and reporting. 
+                </p>
+                <p class="description">
+                  Enhance the effectiveness, efficiency, and accuracy of data collection, analysis, and reporting processes.
+                </p>
+            </div>
+                <div class="text-center mt-auto">
+                <button
+                  class="btn btn btn-secondary disabled mt-5"
+                  id="document-btn"
+                >
+                  Coming Soon
+                </button>
+              </div>
+              </div>
+            </div>
+            <!--End Icon Box -->
+
+            <div
+              class="col-md-6 col-lg-4"
+              data-aos="zoom-out"
+              data-aos-delay="400"
+            >
+              <div
+                class="icon-box text-center h-100 d-flex flex-column"
+               
+              >
+              <div class="flex-grow-1">
+                <div class="icon"><i class="bi bi-truck"></i></div>
+                <h4 class="title">
+                  <a id="transport-title"> Transport Management System</a>
+                </h4>
+                <p class="description" id="transport-description">
+                  An In-house developed system for managing transport logistics, vehicle scheduling, fleet tracking, and maintenance. 
+                </p>
+                <p  class="description">Automation of transport-related processes to improve cost-efficiency and reduce downtime. </p>
+              </div>
+                <div class="text-center mt-auto">
+                <button
+                  class="btn btn btn-secondary disabled mt-5"
+                  id="document-btn"
+                >
+                  Coming Soon
+                </button>
+              </div>
+              </div>
+            </div>
+            <!--End Icon Box -->
+
+            <div
+              class="col-md-6 col-lg-4"
+              data-aos="zoom-out"
+              data-aos-delay="500"
+            >
+              <div
+                class="icon-box text-center h-100 d-flex flex-column"
+                
+              >
+              <div class="flex-grow-1">
+                <div class="icon"><i class="bi bi-telephone"></i></div>
+                <h4 class="title">
+                  <a id="document-title">Call Center System</a>
+                </h4>
+                <p class="description" id="document-description">
+                  Streamline a centralized customer service center by utilizing a state of the art customer success digital tools.
+                </p>
+                <p class="description">
+                  Implementation of a centralized Call Center to manage communications, service requests, and feedback from both internal staff and external stakeholders. 
+                </p>
+              </div>
+                <div class="text-center mt-auto">
+                <button
+                  class="btn btn btn-secondary disabled mt-5"
+                  id="document-btn"
+                >
+                  Coming Soon
+                </button>
+              </div>
+              </div>
+              </div>
+            </div>
+            <!-- End Icon Box -->
+          </div>
+        </div>
+      </section>
+      <!-- /Hero Section -->
+
+      <!-- Services Section -->
+      <section
+        id="services"
+        class="services section light-background"
+        style="margin-top: 100px"
+      >
+        <!-- Section Title -->
+        <div class="container section-title" data-aos="fade-up">
+          <h2>Latest Announcements</h2>
+          <p>
+            Stay informed with the latest project updates, system maintenance
+            schedules, and other important announcements.
+          </p>
+        </div>
+        <!-- End Section Title -->
+
+        <div class="container">
+          <div class="row gy-4">
+            <div
+              class="col-lg-4 col-md-6"
+              data-aos="fade-up"
+              data-aos-delay="100"
+            >
+              <div class="service-item item-red position-relative">
+                <div class="icon">
+                  <svg
+                    width="100"
+                    height="100"
+                    viewBox="0 0 600 600"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      stroke="none"
+                      stroke-width="0"
+                      fill="#f5f5f5"
+                      d="M300,503.46388370962813C374.79870501325706,506.71871716319447,464.8034551963731,527.1746412648533,510.4981551193396,467.86667711651364C555.9287308511215,408.9015244558933,512.6030010748507,327.5744911775523,490.211057578863,256.5855673507754C471.097692560561,195.9906835881958,447.69079081568157,138.11976852964426,395.19560036434837,102.3242989838813C329.3053358748298,57.3949838291264,248.02791733380457,8.279543830951368,175.87071277845988,42.242879143198664C103.41431057327972,76.34704239035025,93.79494320519305,170.9812938413882,81.28167332365135,250.07896920659033C70.17666984294237,320.27484674793965,64.84698225790005,396.69656628748305,111.28512138212992,450.4950937839243C156.20124167950087,502.5303643271138,231.32542653798444,500.4755392045468,300,503.46388370962813"
+                    ></path>
+                  </svg>
+                  <i class="bi bi-journal-bookmark"></i>
+                </div>
+                <a href="#" class="stretched-link">
+                  <h3>User Training Session</h3>
+                </a>
+                <span class="updates_cart"
+                  >Upcoming Training on Platform Features</span
+                >
+                <p>
+                  Join us for a comprehensive training session on how to
+                  maximize your use of the platform. <br />
+                  Date: March 20th at 2:00 PM.
+                </p>
+                <a href="#" class="stretched-link"></a>
+              </div>
+            </div>
+            <!-- End Service Item -->
+
+            <div
+              class="col-lg-4 col-md-6"
+              data-aos="fade-up"
+              data-aos-delay="200"
+            >
+              <div class="service-item item-orange position-relative">
+                <div class="icon">
+                  <svg
+                    width="100"
+                    height="100"
+                    viewBox="0 0 600 600"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      stroke="none"
+                      stroke-width="0"
+                      fill="#f5f5f5"
+                      d="M300,582.0697525312426C382.5290701553225,586.8405444964366,449.9789794690241,525.3245884688669,502.5850820975895,461.55621195738473C556.606425686781,396.0723002908107,615.8543463187945,314.28637112970534,586.6730223649479,234.56875336149918C558.9533121215079,158.8439757836574,454.9685369536778,164.00468322053177,381.49747125262974,130.76875717737553C312.15926192815925,99.40240125094834,248.97055460311594,18.661163978235184,179.8680185752513,50.54337015887873C110.5421016452524,82.52863877960104,119.82277516462835,180.83849132639028,109.12597500060166,256.43424936330496C100.08760227029461,320.3096726198365,92.17705696193138,384.0621239912766,124.79988738764834,439.7174275375508C164.83382741302287,508.01625554203684,220.96474134820875,577.5009287672846,300,582.0697525312426"
+                    ></path>
+                  </svg>
+                  <i class="bi bi-star"></i>
+                </div>
+                <a href="#" class="stretched-link">
+                  <h3>New Feature Release</h3>
+                </a>
+                <span class="updates_cart">New User Dashboard Features</span>
+                <p>
+                  We’ve introduced new features to the user dashboard to improve
+                  navigation and efficiency. Explore the updates today!
+                </p>
+              </div>
+            </div>
+            <!-- End Service Item -->
+
+            <div
+              class="col-lg-4 col-md-6"
+              data-aos="fade-up"
+              data-aos-delay="300"
+            >
+              <div class="service-item item-teal position-relative">
+                <div class="icon">
+                  <svg
+                    width="100"
+                    height="100"
+                    viewBox="0 0 600 600"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      stroke="none"
+                      stroke-width="0"
+                      fill="#f5f5f5"
+                      d="M300,541.5067337569781C382.14930387511276,545.0595476570109,479.8736841581634,548.3450877840088,526.4010558755058,480.5488172755941C571.5218469581645,414.80211281144784,517.5187510058486,332.0715597781072,496.52539010469104,255.14436215662573C477.37192572678356,184.95920475031193,473.57363656557914,105.61284051026155,413.0603344069578,65.22779650032875C343.27470386102294,18.654635553484475,251.2091493199835,5.337323636656869,175.0934190732945,40.62881213300186C97.87086631185822,76.43348514350839,51.98124368387456,156.15599469081315,36.44837278890362,239.84606092416172C21.716077023791087,319.22268207091537,43.775223500013084,401.1760424656574,96.891909868211,461.97329694683043C147.22146801428983,519.5804099606455,223.5754009179313,538.201503339737,300,541.5067337569781"
+                    ></path>
+                  </svg>
+                  <i class="bi bi-database"></i>
+                </div>
+                <a href="#" class="stretched-link">
+                  <h3>Data Backup Completed</h3>
+                </a>
+                <span class="updates_cart">Monthly Data Backup Complete</span>
+                <p>
+                  A full backup of all data has been successfully completed. No
+                  action is required on your part. Your data is secure.
+                </p>
+              </div>
+            </div>
+            <!-- End Service Item -->
+
+            <div
+              class="col-lg-4 col-md-6"
+              data-aos="fade-up"
+              data-aos-delay="400"
+            >
+              <div class="service-item item-cyan position-relative">
+                <div class="icon">
+                  <svg
+                    width="100"
+                    height="100"
+                    viewBox="0 0 600 600"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      stroke="none"
+                      stroke-width="0"
+                      fill="#f5f5f5"
+                      d="M300,521.0016835830174C376.1290562159157,517.8887921683347,466.0731472004068,529.7835943286574,510.70327084640275,468.03025145048787C554.3714126377745,407.6079735673963,508.03601936045806,328.9844924480964,491.2728898941984,256.3432110539036C474.5976632858925,184.082847569629,479.9380746630129,96.60480741107993,416.23090153303,58.64404602377083C348.86323505073057,18.502131276798302,261.93793281208167,40.57373210992963,193.5410806939664,78.93577620505333C130.42746243093433,114.334589627462,98.30271207620316,179.96522072025542,76.75703585869454,249.04625023123273C51.97151888228291,328.5150500222984,13.704378332031375,421.85034740162234,66.52175969318436,486.19268352777647C119.04800174914682,550.1803526380478,217.28368757567262,524.383925680826,300,521.0016835830174"
+                    ></path>
+                  </svg>
+                  <i class="bi bi-tools"></i>
+                </div>
+                <a href="#" class="stretched-link">
+                  <h3>System Maintenance Scheduled</h3>
+                </a>
+                <span class="updates_cart"
+                  >Scheduled System Maintenance - March 15th</span
+                >
+                <p>
+                  The platform will be temporarily unavailable from 10:00 AM to
+                  4:00 PM for essential maintenance and updates. Please plan
+                  accordingly.
+                </p>
+              </div>
+            </div>
+            <!-- End Service Item -->
+
+            <div
+              class="col-lg-4 col-md-6"
+              data-aos="fade-up"
+              data-aos-delay="500"
+            >
+              <div class="service-item item-indigo position-relative">
+                <div class="icon">
+                  <svg
+                    width="100"
+                    height="100"
+                    viewBox="0 0 600 600"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      stroke="none"
+                      stroke-width="0"
+                      fill="#f5f5f5"
+                      d="M300,532.3542879108572C369.38199826031484,532.3153073249985,429.10787420159085,491.63046689027357,474.5244479745417,439.17860296908856C522.8885846962883,383.3225815378663,569.1668002868075,314.3205725914397,550.7432151929288,242.7694973846089C532.6665558377875,172.5657663291529,456.2379748765914,142.6223662098291,390.3689995646985,112.34683881706744C326.66090330228417,83.06452184765237,258.84405631176094,53.51806209861945,193.32584062364296,78.48882559362697C121.61183558270385,105.82097193414197,62.805066853699245,167.19869350419734,48.57481801355237,242.6138429142374C34.843463184063346,315.3850353017275,76.69343916112496,383.4422959591041,125.22947124332185,439.3748458443577C170.7312796277747,491.8107796887764,230.57421082200815,532.3932930995766,300,532.3542879108572"
+                    ></path>
+                  </svg>
+                  <i class="bi bi-rocket"></i>
+                </div>
+                <a href="#" class="stretched-link">
+                  <h3>Project Milestone Achieved</h3>
+                </a>
+                <span class="updates_cart">
+                  Monitoring and Evaluation Project Milestone</span
+                >
+                <p>
+                  The Monitoring and Evaluation project has reached an important
+                  milestone and is now ready for full-scale use. More details to
+                  follow.
+                </p>
+                <a href="#" class="stretched-link"></a>
+              </div>
+            </div>
+            <!-- End Service Item -->
+
+            <div
+              class="col-lg-4 col-md-6"
+              data-aos="fade-up"
+              data-aos-delay="600"
+            >
+              <div class="service-item item-pink position-relative">
+                <div class="icon">
+                  <svg
+                    width="100"
+                    height="100"
+                    viewBox="0 0 600 600"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      stroke="none"
+                      stroke-width="0"
+                      fill="#f5f5f5"
+                      d="M300,566.797414625762C385.7384707136149,576.1784315230908,478.7894351017131,552.8928747891023,531.9192734346935,484.94944893311C584.6109503024035,417.5663521118492,582.489472248146,322.67544863468447,553.9536738515405,242.03673114598146C529.1557734026468,171.96086150256528,465.24506316201064,127.66468636344209,395.9583748389544,100.7403814666027C334.2173773831606,76.7482773500951,269.4350130405921,84.62216499799875,207.1952322260088,107.2889140133804C132.92018162631612,134.33871894543012,41.79353780512637,160.00259165414826,22.644507872594943,236.69541883565114C3.319112789854554,314.0945973066697,72.72355303640163,379.243833228382,124.04198916343866,440.3218312028393C172.9286146004772,498.5055451809895,224.45579914871206,558.5317968840102,300,566.797414625762"
+                    ></path>
+                  </svg>
+                  <i class="bi bi-bug"></i>
+                </div>
+                <a href="#" class="stretched-link">
+                  <h3>Bug Fix Update</h3>
+                </a>
+                <span class="updates_cart"
+                  >Bug Fixes and System Optimizations</span
+                >
+                <p>
+                  We’ve resolved several issues affecting performance. Please
+                  update your system to the latest version to ensure smooth
+                  operation.
+                </p>
+                <a href="#" class="stretched-link"></a>
+              </div>
+            </div>
+            <!-- End Service Item -->
+          </div>
+        </div>
+      </section>
+      <!-- /Services Section -->
+
+      <!-- About Section -->
+      <section id="about" class="about section">
+        <!-- Section Title -->
+        <div class="container section-title" data-aos="fade-up">
+          <h2 id="about-title">About Us<br /></h2>
+          <p id="about-intro">
+            Empowering Ethiopia through innovation and technology for a
+            prosperous and inclusive future.
+          </p>
+        </div>
+        <!-- End Section Title -->
+
+        <div class="container">
+          <div class="row gy-4">
+            <div
+              class="col-lg-6 content"
+              data-aos="fade-up"
+              data-aos-delay="100"
+            >
+              <p style="text-align: justify" id="about-item-1">
+                The Ministry of Innovation and Technology is at the forefront of
+                driving Ethiopia's transformation into a digital economy. By
+                fostering innovation and building local capacity, we aim to
+                create jobs, enhance the country’s competitiveness, and inspire
+                limitless imagination.
+              </p>
+              <ul>
+                <li>
+                  <i class="bi bi-check2-circle"></i>
+                  <span id="about-item-2"
+                    >Leading Ethiopia's digital transformation for sustainable
+                    growth.</span
+                  >
+                </li>
+                <li>
+                  <i class="bi bi-check2-circle"></i>
+                  <span id="about-item-3"
+                    >Promoting research and innovation to drive impactful
+                    solutions.</span
+                  >
+                </li>
+                <li>
+                  <i class="bi bi-check2-circle"></i>
+                  <span id="about-item-4"
+                    >Building a strong foundation for future generations.</span
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+              <p style="text-align: justify" id="about-paragraph">
+                We work to create plans for digital growth and support local
+                talent to ensure technology and innovation drive Ethiopia's
+                success. With a focus on hard work, creativity, and a passion
+                for learning, we aim to make a positive impact on society.
+              </p>
+              <a href="about" class="read-more" id="about-read-more"
+                ><span>Read More</span><i class="bi bi-arrow-right"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- /About Section -->
+
+      
+      <section
+      id="services"
+      class="resources resources-slider section light-background"
+      style="margin-top: 100px"
+    >
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Resource Center</h2>
+        <p>Access important documents and forms instantly.</p>
+      </div>
+      <!-- End Section Title -->
+    
+      <div class="container">
+        <div class="swiper">
+          <div class="swiper-wrapper">
+            <!-- Card Items -->
+            <div class="swiper-slide">
+              <div class="service-item position-relative">
+                <div class="icon" id="resouce-icon">
+                  <i class="bi bi-file-earmark-text"></i>
+                </div>
+                <h3>Visitor Form</h3>
+                <span class="updates_cart fw-normal fst-italic">
+                  For first-time visitors to fill out necessary details.
+                </span>
+                <div class="btn-group-resource mt-5" role="group">
+                  <button type="button" class="btn btn-primary btn-sm me-2">
+                    <i class="bi bi-cloud-arrow-down-fill"></i> Download
+                  </button>
+                  <button type="button" class="btn btn-secondary btn-sm">
+                    <i class="bi bi-eye-fill"></i> Preview
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- End of swiper -->
+            <div class="swiper-slide">
+              <div class="service-item position-relative">
+                <div class="icon" id="resouce-icon">
+                  <i class="bi bi-book"></i>
+                </div>
+                <h3>Employee Manual</h3>
+                <span class="updates_cart fw-normal fst-italic">
+                  Policies, rules, and guidelines for employees.
+                </span>
+                <div class="btn-group-resource mt-5" role="group">
+                  <button type="button" class="btn btn-primary btn-sm me-2">
+                    <i class="bi bi-cloud-arrow-down-fill"></i> Download
+                  </button>
+                  <button type="button" class="btn btn-secondary btn-sm">
+                    <i class="bi bi-eye-fill"></i> Preview
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- End of swiper -->
+            <div class="swiper-slide">
+              <div class="service-item position-relative">
+                <div class="icon" id="resouce-icon">
+                  <i class="bi bi-file-earmark-spreadsheet"></i>
+                </div>
+                <h3>Budget Template</h3>
+                <span class="updates_cart fw-normal fst-italic">
+                  Use this template to prepare budgets effectively.
+                </span>
+                <div class="btn-group-resource mt-5" role="group">
+                  <button type="button" class="btn btn-primary btn-sm me-2">
+                    <i class="bi bi-cloud-arrow-down-fill"></i> Download
+                  </button>
+                  <button type="button" class="btn btn-secondary btn-sm">
+                    <i class="bi bi-eye-fill"></i> Preview
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- End of swiper -->
+            <div class="swiper-slide">
+              <div class="service-item position-relative">
+                <div class="icon" id="resouce-icon">
+                  <i class="bi bi-calendar-check"></i>
+                </div>
+                <h3>Event Checklist</h3>
+                <span class="updates_cart fw-normal fst-italic">
+                  A step-by-step checklist for organizing events.
+                </span>
+                <div class="btn-group-resource mt-5" role="group">
+                  <button type="button" class="btn btn-primary btn-sm me-2">
+                    <i class="bi bi-cloud-arrow-down-fill"></i> Download
+                  </button>
+                  <button type="button" class="btn btn-secondary btn-sm">
+                    <i class="bi bi-eye-fill"></i> Preview
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- End of swiper -->
+            <div class="swiper-slide">
+              <div class="service-item position-relative">
+                <div class="icon" id="resouce-icon">
+                  <i class="bi bi-clipboard "></i>
+                </div>
+                <h3>Meeting Minutes</h3>
+                <span class="updates_cart fw-normal fst-italic">
+                  Template for recording meeting minutes professionally.
+                </span>
+                <div class="btn-group-resource mt-5" role="group">
+                  <button type="button" class="btn btn-primary btn-sm me-2">
+                    <i class="bi bi-cloud-arrow-down-fill"></i> Download
+                  </button>
+                  <button type="button" class="btn btn-secondary btn-sm">
+                    <i class="bi bi-eye-fill"></i> Preview
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- End of swiper -->
+            <div class="swiper-slide">
+              <div class="service-item position-relative">
+                <div class="icon" id="resouce-icon">
+                  <i class="bi bi-envelope"></i>
+                </div>
+                <h3>Official Letterhead</h3>
+                <span class="updates_cart fw-normal fst-italic">
+                  Preformatted letterhead for official communication.
+                </span>
+                <div class="btn-group-resource mt-5" role="group">
+                  <button type="button" class="btn btn-primary btn-sm me-2">
+                    <i class="bi bi-cloud-arrow-down-fill"></i> Download
+                  </button>
+                  <button type="button" class="btn btn-secondary btn-sm">
+                    <i class="bi bi-eye-fill"></i> Preview
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- End of swiper -->
+          </div>
+          <!-- Swiper Pagination -->
+          <div class="swiper-pagination"></div>
+          <!-- Swiper Navigation -->
+        </div>
+      </div>
+    </section>
+    <!-- /Downloadable Section -->
+
+    <!-- Team Section -->
+<section id="team" class="team section light-background">
+
+  <!-- Section Title -->
+  <div class="container section-title" data-aos="fade-up">
+    <h2>Meet Our Team</h2>
+    <p>Meet our team members dedicated to the successful implementation of the GDOP project.</p>
+  </div><!-- End Section Title -->
+
+  <div class="container">
+
+          <div class="row gy-4">
+
+      <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
+        <div class="team-member">
+          <div class="member-img">
+            <img src="{% static 'assets/img/team-11.jpg' %}" class="img-fluid" alt="">
+            <div class="social">
+              <a href=""><i class="bi bi-twitter-x"></i></a>
+              <a href=""><i class="bi bi-facebook"></i></a>
+              <a href=""><i class="bi bi-instagram"></i></a>
+              <a href=""><i class="bi bi-linkedin"></i></a>
+              </div>
+            </div>
+          <div class="member-info">
+            <h4>Ephrem Belew</h4>
+            <p>Project Manager</p>
+            <div class="card-text-team">
+              <span><i class="bi bi-person-circle icon me-2"></i>Visitor Management Department</span>
+              <span><i class="bi bi-envelope-fill icon me-2"></i> Ephrem21@gmail.com</span>
+              <span><i class="bi bi-telephone-fill icon me-2"></i>+251-978096534</span>
+          </div>
+            </div>
+        </div>
+      </div><!-- End Team Member -->
+
+      <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
+        <div class="team-member">
+          <div class="member-img">
+            <img src="{% static 'assets/img/zza.jpg' %}" class="img-fluid" alt="">
+            <div class="social">
+              <a href=""><i class="bi bi-twitter-x"></i></a>
+              <a href=""><i class="bi bi-facebook"></i></a>
+              <a href=""><i class="bi bi-instagram"></i></a>
+              <a href=""><i class="bi bi-linkedin"></i></a>
+              </div>
+            </div>
+          <div class="member-info">
+            <h4>Danya Kedir</h4>
+            <p>Lead Developer</p>
+            <div class="card-text-team">
+              <span><i class="bi bi-person-circle icon me-2"></i>Contact Center Department</span>
+              <span><i class="bi bi-envelope-fill icon me-2"></i> dan123@gmail.com</span>
+              <span><i class="bi bi-telephone-fill icon me-2"></i>+251-920435612</span>
+          </div>
+          </div>
+        </div>
+      </div><!-- End Team Member -->
+
+      <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="300">
+        <div class="team-member">
+          <div class="member-img">
+            <img src="{% static 'assets/img/kkj.jpg' %}" class="img-fluid" alt="">
+            <div class="social">
+              <a href=""><i class="bi bi-twitter-x"></i></a>
+              <a href=""><i class="bi bi-facebook"></i></a>
+              <a href=""><i class="bi bi-instagram"></i></a>
+              <a href=""><i class="bi bi-linkedin"></i></a>
+              </div>
+            </div>
+          <div class="member-info">
+            <h4>Solomon Teshome</h4>
+            <p>System Analyst</p>
+            <div class="card-text-team">
+              <span><i class="bi bi-person-circle icon me-2"></i>DMS Department</span>
+              <span><i class="bi bi-envelope-fill icon me-2"></i> Solomonde12@gmail.com</span>
+              <span><i class="bi bi-telephone-fill icon me-2"></i>+251-980976542</span>
+          </div>
+          </div>
+        </div>
+      </div><!-- End Team Member -->
+
+      <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="400">
+        <div class="team-member">
+          <div class="member-img">
+            <img src="{% static 'assets/img/mmmi.jpg' %}" class="img-fluid" alt="">
+            <div class="social">
+              <a href=""><i class="bi bi-twitter-x"></i></a>
+              <a href=""><i class="bi bi-facebook"></i></a>
+              <a href=""><i class="bi bi-instagram"></i></a>
+              <a href=""><i class="bi bi-linkedin"></i></a>
+              </div>
+            </div>
+          <div class="member-info">
+            <h4>Dawit Belete</h4>
+            <p>Backend Developer</p>
+            <div class="card-text-team">
+              <span><i class="bi bi-person-circle icon me-2"></i>Transport Management Department</span>
+              <span><i class="bi bi-envelope-fill icon me-2"></i> Dawitbelete12@gmail.com</span>
+              <span><i class="bi bi-telephone-fill icon me-2"></i>+251-936542134</span>
+          </div>
+        </div>
+        </div>
+      </div><!-- End Team Member -->
+
+    </div>
+    <div class="collapse mt-4" id="moreTeam">
+    <div class="row gy-4 mt-4">
+
+      <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
+        <div class="team-member">
+          <div class="member-img">
+            <img src="{% static 'assets/img/ll.jpg' %}" class="img-fluid" alt="">
+            <div class="social">
+              <a href=""><i class="bi bi-twitter-x"></i></a>
+              <a href=""><i class="bi bi-facebook"></i></a>
+              <a href=""><i class="bi bi-instagram"></i></a>
+              <a href=""><i class="bi bi-linkedin"></i></a>
+            </div>
+          </div>
+          <div class="member-info">
+            <h4>Lidya Seid</h4>
+            <p>UX/UI Designer</p>
+            <div class="card-text-team">
+              <span><i class="bi bi-person-circle icon me-2"></i>Transport Management Department</span>
+              <span><i class="bi bi-envelope-fill icon me-2"></i> Dawitbelete12@gmail.com</span>
+              <span><i class="bi bi-telephone-fill icon me-2"></i>+251-936542134</span>
+          </div>
+          </div>
+        </div>
+      </div><!-- End Team Member -->
+
+      <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
+        <div class="team-member">
+          <div class="member-img">
+            <img src="{% static 'assets/img/no-pp.jpg' %}" class="img-fluid" alt="">
+            <div class="social">
+              <a href=""><i class="bi bi-twitter-x"></i></a>
+              <a href=""><i class="bi bi-facebook"></i></a>
+              <a href=""><i class="bi bi-instagram"></i></a>
+              <a href=""><i class="bi bi-linkedin"></i></a>
+            </div>
+          </div>
+          <div class="member-info">
+            <h4>Kedir Kemal</h4>
+            <p>Frontend Developer</p>
+            <div class="card-text-team">
+              <span><i class="bi bi-person-circle icon me-2"></i>Transport Management Department</span>
+              <span><i class="bi bi-envelope-fill icon me-2"></i> Dawitbelete12@gmail.com</span>
+              <span><i class="bi bi-telephone-fill icon me-2"></i>+251-936542134</span>
+          </div>
+          </div>
+        </div>
+      </div><!-- End Team Member -->
+
+      <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="300">
+        <div class="team-member">
+          <div class="member-img">
+            <img src="{% static 'assets/img/no-pp.jpg' %}" class="img-fluid" alt="">
+            <div class="social">
+              <a href=""><i class="bi bi-twitter-x"></i></a>
+              <a href=""><i class="bi bi-facebook"></i></a>
+              <a href=""><i class="bi bi-instagram"></i></a>
+              <a href=""><i class="bi bi-linkedin"></i></a>
+            </div>
+          </div>
+          <div class="member-info">
+            <h4>Micael Abera</h4>
+            <p>Project Coordinator</p>
+            <div class="card-text-team">
+              <span><i class="bi bi-person-circle icon me-2"></i>Transport Management Department</span>
+              <span><i class="bi bi-envelope-fill icon me-2"></i> Dawitbelete12@gmail.com</span>
+              <span><i class="bi bi-telephone-fill icon me-2"></i>+251-936542134</span>
+          </div>
+          </div>
+        </div>
+      </div><!-- End Team Member -->
+
+      <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="400">
+        <div class="team-member">
+          <div class="member-img">
+            <img src="{% static 'assets/img/no-pp.jpg' %}" class="img-fluid" alt="">
+            <div class="social">
+              <a href=""><i class="bi bi-twitter-x"></i></a>
+              <a href=""><i class="bi bi-facebook"></i></a>
+              <a href=""><i class="bi bi-instagram"></i></a>
+              <a href=""><i class="bi bi-linkedin"></i></a>
+            </div>
+          </div>
+          <div class="member-info">
+            <h4>Sara Teshome</h4>
+            <p>Quality Assurance Engineer</p>
+            <div class="card-text-team">
+              <span><i class="bi bi-person-circle icon me-2"></i>Transport Management Department</span>
+              <span><i class="bi bi-envelope-fill icon me-2"></i> Dawitbelete12@gmail.com</span>
+              <span><i class="bi bi-telephone-fill icon me-2"></i>+251-936542134</span>
+          </div>
+          </div>
+        </div>
+      </div><!-- End Team Member -->
+    </div>
+    </div>
+    <div class="button-container">
+      <button id="load-more" class="btn btn-primary">
+          <span class="spinner-border spinner-border-sm mr-2"></span> Show More
+      </button>
+  </div>
+  </div>
+
+</section><!-- /Team Section -->
+    
+<!-- FAQ Section -->
+      <section id="faq" class="faq section light-background">
+        <!-- Section Title -->
+        <div class="container section-title" data-aos="fade-up">
+          <h2>Frequently Asked Questions</h2>
+          <p>
+            This FAQ section addresses common questions to assist you in using
+            the platform smoothly and effectively. Contact
+            <b><a href="contact">IT support</a> </b> for additional help if
+            needed.
+          </p>
+        </div>
+        <!-- End Section Title -->
+
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-lg-10" data-aos="fade-up" data-aos-delay="100">
+              <div class="faq-container p-3 mb-2">
+                <div class="faq-item">
+                  <h3>How do I access the platform?</h3>
+                  <div class="faq-content">
+                    <p>
+                      You can access the platform through the internal intranet
+                      link provided by the IT department.
+                    </p>
+                  </div>
+                  <i class="faq-toggle bi bi-chevron-right"></i>
+                </div>
+                <!-- End Faq item-->
+
+                <div class="faq-item">
+                  <h3>Can I use the platform on any device?</h3>
+                  <div class="faq-content">
+                    <p>
+                      Yes, it is accessible on all devices connected to the
+                      ministry’s intranet. For the best experience, use a modern
+                      browser like Chrome or Edge.
+                    </p>
+                  </div>
+                  <i class="faq-toggle bi bi-chevron-right"></i>
+                </div>
+                <!-- End Faq item-->
+
+                <div class="faq-item">
+                  <h3>Can I access the platform remotely?</h3>
+                  <div class="faq-content">
+                    <p>
+                      No, the platform is restricted to the ministry’s internal
+                      network and can only be accessed on-premises.
+                    </p>
+                  </div>
+                  <i class="faq-toggle bi bi-chevron-right"></i>
+                </div>
+                <!-- End Faq item-->
+
+                <div class="faq-item">
+                  <h3>How do I find an older document?</h3>
+                  <div class="faq-content">
+                    <p>
+                      Use the search feature and apply filters like date,
+                      department, or document type to locate older files.
+                    </p>
+                  </div>
+                  <i class="faq-toggle bi bi-chevron-right"></i>
+                </div>
+                <!-- End Faq item-->
+
+                <div class="faq-item">
+                  <h3>What if I cannot open a document?</h3>
+                  <div class="faq-content">
+                    <p>
+                      Check your permissions for the document. If you are
+                      authorized and still face issues, report it to IT support.
+                    </p>
+                  </div>
+                  <i class="faq-toggle bi bi-chevron-right"></i>
+                </div>
+                <!-- End Faq item-->
+
+                <div class="faq-item">
+                  <h3>
+                    What should I do if a contact’s information is outdated?
+                  </h3>
+                  <div class="faq-content">
+                    <p>
+                      You can update the details if you have editing
+                      permissions. Otherwise, notify the responsible department.
+                    </p>
+                  </div>
+                  <i class="faq-toggle bi bi-chevron-right"></i>
+                </div>
+                <!-- End Faq item-->
+
+                <div class="faq-item">
+                  <h3>What should I do if the platform isn’t loading?</h3>
+                  <div class="faq-content">
+                    <p>
+                      Check your network connection and ensure you are connected
+                      to the ministry’s intranet. If the issue persists, contact
+                      IT support.
+                    </p>
+                  </div>
+                  <i class="faq-toggle bi bi-chevron-right"></i>
+                </div>
+                <!-- End Faq item-->
+
+                <div class="faq-item">
+                  <h3>How do I report a bug or error in the system?</h3>
+                  <div class="faq-content">
+                    <p>
+                      Use the "Report Issue" option in the "Contact Us" section
+                      and provide detailed information about the issue,
+                      including screenshots if possible.
+                    </p>
+                  </div>
+                  <i class="faq-toggle bi bi-chevron-right"></i>
+                </div>
+                <!-- End Faq item-->
+
+                <div class="faq-item">
+                  <h3>Is there a way to recover deleted data?</h3>
+                  <div class="faq-content">
+                    <p>
+                      Yes, contact the IT team immediately. Data recovery may be
+                      possible depending on the system's backup policies.
+                    </p>
+                  </div>
+                  <i class="faq-toggle bi bi-chevron-right"></i>
+                </div>
+                <!-- End Faq item-->
+              </div>
+            </div>
+            <!-- End Faq Column-->
+          </div>
+        </div>
+      </section>
+      <!-- /Faq Section -->
+
+    </main>
+
+    <footer id="footer" class="footer light-background">
+      <div class="container footer-top">
+        <div class="row gy-4">
+          <div class="col-lg-6 col-md-12 footer-about">
+            <a href="#" class="logo d-flex align-items-center me-auto">
+              <img src="{% static 'assets/img/mint_logo.png' %}" alt="" />
+            </a>
+            <p style="text-align: justify" id="footer-about">
+              The government merged the former Ministry of Science and
+              Technology and the Ministry of Communication and Information
+              Technology to form the Ministry of Innovation and Technology in
+              2019.
+            </p>
+            <div class="social-links d-flex mt-4">
+              <a
+                href="https://x.com/MinistryofInno2?t=dp1BQ2X1kt9Ec0CcRe8jWg&s=09"
+                ><i class="bi bi-twitter-x"></i
+              ></a>
+              <a href="https://web.facebook.com/MInT.Ethiopia?_rdc=1&_rdr#"
+                ><i class="bi bi-facebook"></i
+              ></a>
+              <a
+                href="https://www.linkedin.com/company/ministry-of-innovation-and-technology-ethiopia/"
+                ><i class="bi bi-linkedin"></i
+              ></a>
+              <a href="https://www.youtube.com/@MinistryofInnovationandTechnol"
+                ><i class="bi bi-youtube"></i
+              ></a>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-5 footer-links">
+            <h4 id="useful-links">Useful Links</h4>
+            <ul>
+              <li><a href="/" id="footer-link-home">Home</a></li>
+              <li><a href="news" id="footer-link-news">News</a></li>
+              <li><a href="about" id="footer-link-about-us">About Us</a></li>
+              <li>
+                <a href="contact" id="footer-link-contact-us">Contact Us</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="col-lg-2 col-5 footer-links">
+            <h4 id="useful-links">Focus Areas</h4>
+            <ul>
+              <li><a href="#" id="footer-link-home">Research</a></li>
+              <li><a href="#" id="footer-link-news">Innovation</a></li>
+              <li>
+                <a href="#" id="footer-link-about-us">Technology Transfer</a>
+              </li>
+              <li>
+                <a href="#" id="footer-link-contact-us">Digitalization</a>
+              </li>
+            </ul>
+          </div>
+
+          <div
+            class="col-lg-2 col-md-12 footer-contact text-center text-md-start"
+          >
+            <h4 id="footer-contact">Contact Us</h4>
+            <p id="footer-contact-address">Lisie G/Mariam Street</p>
+            <p id="footer-contact-address-1">Arada Sub-City, Addis Ababa</p>
+            <p id="footer-contact-address-2">Ethiopia</p>
+            <p class="mt-4" id="footer-phone">
+              <strong>Phone:</strong> <span>+251 118 132 191</span>
+            </p>
+            <p id="footer-email">
+              <strong>Email:</strong> <span>info@example.com</span>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <p class="text-center mt-5" id="copyright">
+        Copyright ©2024 Ministry of Innovation and Technology. All Rights
+        Reserved.
+      </p>
+    </footer>
+
+    <!-- Scroll Top -->
+    <a
+      href="#"
+      id="scroll-top"
+      class="scroll-top d-flex align-items-center justify-content-center"
+      ><i class="bi bi-arrow-up-short"></i
+    ></a>
+
+    <!-- Preloader -->
+    <div id="preloader"></div>
+
+    <!-- Vendor JS Files -->
+    <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/aos/aos.js' %}"></script>
+    <script src="{% static 'assets/vendor/purecounter/purecounter_vanilla.js' %}"></script>
+    <script src="{% static 'assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script> -->
+    <!-- Main JS File -->
+    <script src="{% static 'assets/js/main.js' %}"></script>
+  </body>
+</html>

@@ -1,0 +1,76 @@
+{
+  "nav_home": "Home",
+  "nav_news": "News",
+  "nav_about_us": "About Us",
+  "nav_contact_us": "Contact Us",
+
+  "hero_title": "Government Digital Office Platforms Portal",
+  "hero_description": "A paperless back office system automation. Modern Office | Automated Process | Digital Services",
+  "hero_btn": "Discover More",
+
+  "transport_title": "Transport Management",
+  "transport_description": "Efficiently manage and optimize transportation operations with smart tools.",
+  "transport_btn": "View Details",
+
+  "visitors_title": "Visitors Management",
+  "visitors_description": "Simplify and secure the process of managing visitor interactions and records.",
+  "visitors_btn": "View Details",
+
+  "monitoring_title": "Monitoring and Evaluation",
+  "monitoring_description": "Track and assess performance metrics to improve decision-making and outcomes.",
+  "monitoring_btn": "View Details",
+
+  "document_title": "Document Management",
+  "document_description": "Ensure efficient and secure letter flow and document storage with digital tools.",
+  "document_btn": "View Details",
+
+  "about_title": "About Us",
+  "about_intro": "Empowering Ethiopia through innovation and technology for a prosperous and inclusive future.",
+  "about_item_1": "Leading Ethiopia's digital transformation for sustainable growth.",
+  "about_item_2": "Promoting research and innovation to drive impactful solutions.",
+  "about_item_3": "Building a strong foundation for future generations.",
+  "about_item_4": "Fostering collaboration across sectors for greater impact.",
+  "about_paragraph": "The Ministry of Innovation and Technology is at the forefront of driving Ethiopia's transformation into a digital economy. By fostering innovation and building local capacity, we aim to create jobs, enhance the country’s competitiveness, and inspire limitless imagination.",
+  "about_read_more": "Read More",
+
+  "stats_institutions": "Institutions Supported",
+  "stats_projects": "Projects",
+  "stats_mentorship": "Mentorship Hours",
+  "stats_workers": "Workers",
+
+  "contact_title": "Contact Us",
+  "contact_intro": "Have questions or need more information? Reach out to us, and we’ll be happy to assist you.",
+  "contact_address_title": "Address",
+  "contact_address_content": "Lisie G/Mariam, Arada Sub-City, Addis Ababa, Ethiopia",
+  "contact_phone_title": "Call Us",
+  "contact_phone_content": "+251 118 132 191",
+  "contact_email_title": "Email Us",
+
+  "form_name_label": {
+    "placeholder": "Your Name"
+  },
+  "form_email_label": {
+    "placeholder": "Your Email"
+  },
+  "form_subject_label": {
+    "placeholder": "Subject"
+  },
+  "form_message_label": {
+    "placeholder": "Message"
+  },
+  "form_submit_btn": "Send Message",
+
+  "footer_about": "The government merged the former Ministry of Science and Technology and the Ministry of Communication and Information Technology to form the Ministry of Innovation and Technology in 2019.",
+  "useful_links": "Useful Links",
+  "footer_link_home": "Home",
+  "footer_link_news": "News",
+  "footer_link_about_us": "About Us",
+  "footer_link_contact_us": "Contact Us",
+  "footer_contact": "Contact Us",
+  "footer_contact_address": "Lisie G/Mariam Street",
+  "footer_contact_address_1": "Arada Sub-City, Addis Ababa",
+  "footer_contact_address_2": "Ethiopia",
+  "footer_phone": "Phone",
+  "footer_email": "Email",
+  "copyright": "Copyright \u00a9 2024 Ministry of Innovation and Technology. All Rights Reserved."
+}

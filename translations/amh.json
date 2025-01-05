@@ -1,0 +1,76 @@
+{
+  "nav_home": "መነሻ ገጽ",
+  "nav_news": "ዜና",
+  "nav_about_us": "ስለ እኛ",
+  "nav_contact_us": "አግኙን",
+
+  "hero_title": "የመንግስት ዲጂታል ቢሮ መድረክ",
+  "hero_description": "የወረቀት ሥርዓትን በተቃማጥር በሚሰራ መንግስት ዲጂታል ፖርታል፤ ዘመናዊ ቢሮ | አዋቂ ሂደት | ዲጂታል አገልግሎቶች",
+  "hero_btn": "ተጨማሪ ያንብቡ",
+
+  "transport_title": "የትራንስፖርት አስተዳደር",
+  "transport_description": "የትራንስፖርትን ሥርዓት በብልህነት በማስተዳደር እና በማሻሻል አፈጻጸምዎን ያሳታሉ።",
+  "transport_btn": "ዝርዝር ይመልከቱ",
+
+  "visitors_title": "የጎብኝነት አስተዳደር",
+  "visitors_description": "የጎብኝነትን ሥርዓት በቀላሉ እና በታመነ መንገድ ማስተዳደር።",
+  "visitors_btn": "ዝርዝር ይመልከቱ",
+
+  "monitoring_title": "እንቅስቃሴ እና ግምገማ",
+  "monitoring_description": "እንቅስቃሴና የተፈጥሮ መለኪያዎችን አንቀሳቃሽ በማድረግ ውሳኔን ማሻሻል።",
+  "monitoring_btn": "ዝርዝር ይመልከቱ",
+
+  "document_title": "የሰነዶች አስተዳደር",
+  "document_description": "የፊደል አስተዳደርን እና ሰነዶችን በታመን ቅርጽ ማከማቻ።",
+  "document_btn": "ዝርዝር ይመልከቱ",
+
+  "about_title": "ስለ እኛ",
+  "about_intro": "ለተስፋ እና በህብረተሰብ መብትና ህዝብ ጥበብ የተሰማራ ኢትዮጵያን በቴክኖሎጂ ማደሻ።",
+  "about_item_1": "ኢትዮጵያን ወደ ዘመናዊ ዲጂታል ኢኮኖሚ ማምጣት።",
+  "about_item_2": "ምርምርና መረጃን በማክበር ተግባራዊ መፍትሄዎችን ማምጣት።",
+  "about_item_3": "ትውልድ የሚያቀድማል ትኩረትና ትኩረት።",
+  "about_item_4": "ማህበረሰብን በቀላልነትና በመረጃ ማስተዳደር።",
+  "about_paragraph": "የኢትዮጵያን ትስፋ በቴክኖሎጂ እና በህብረተሰብ መረጃ በማንቀሳቀስ በተዘጋጀ መንግሥት ቅርንጫፍ።",
+  "about_read_more": "ተጨማሪ ያንብቡ",
+
+  "stats_institutions": "የተደገፉ ተቋማት",
+  "stats_projects": "ፕሮጀክቶች",
+  "stats_mentorship": "የምክር ሰዓቶች",
+  "stats_workers": "ሰራተኞች",
+
+  "contact_title": "አግኙን",
+  "contact_intro": "ጥያቄዎች አሉዎት? ወይም መረጃ እንደሚፈልጉ አግኝተን እናስተናግድልዎታለን።",
+  "contact_address_title": "አድራሻ",
+  "contact_address_content": "ሊዚ ግ/ማርያም መንገድ፣ አራዳ ክፍለ-ከተማ፣ አዲስ አበባ፣ ኢትዮጵያ",
+  "contact_phone_title": "ደውለን",
+  "contact_phone_content": "+251 118 132 191",
+  "contact_email_title": "ኢሜል ላኩ",
+
+  "form_name_label": {
+    "placeholder": "እባኮትን ስምዎን ያስገቡ"
+  },
+  "form_email_label": {
+    "placeholder": "ኢሜልዎን ያስገቡ"
+  },
+  "form_subject_label": {
+    "placeholder": "ርእስ"
+  },
+  "form_message_label": {
+    "placeholder": "መልእክት"
+  },
+  "form_submit_btn": "መልእክትን ላክ",
+
+  "footer_about": "የመንግሥት የሳይንስና ቴክኖሎጂ ሚኒስቴርን እና የመረጃ እና ኮሙኒኬሽን ቴክኖሎጂን በአንድነት በመዳበር አዲስ መንግሥት ተቋም የተፈጠረ።",
+  "useful_links": "መነሻ ገጽ",
+  "footer_link_home": "መነሻ ገጽ",
+  "footer_link_news": "ዜና",
+  "footer_link_about_us": "ስለ እኛ",
+  "footer_link_contact_us": "አግኙን",
+  "footer_contact": "አግኙን",
+  "footer_contact_address": "ሊሴ ገ/ማርያም መንገድ",
+  "footer_contact_address_1": "አራዳ ክፍለ-ከተማ፣ አዲስ አበባ",
+  "footer_contact_address_2": "ኢትዮጵያ",
+  "footer_phone": "ስልክ",
+  "footer_email": "ኢሜል",
+  "copyright": "የቅጂ መብት ©2024 የኢንኖቬሽንና ቴክኖሎጂ ሚኒስቴር። ሁሉም መብቶች የተጠበቁ ናቸው።"
+}
