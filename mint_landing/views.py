@@ -4,7 +4,7 @@ from django.conf import settings
 from django.http import HttpRequest, JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
 
-from mint_landing.models import FAQ, AboutUs, Announcement, Resource, HeroSection, Figure, GDOPComponent, SupportRequest
+from mint_landing.models import FAQ, AboutUs, Announcement, PDFResource, Resource, HeroSection, Figure, GDOPComponent, SupportRequest
 
 # Render the homepage
 
@@ -18,6 +18,7 @@ def home(request):
     numbers = Figure.objects.all()
     faqs = FAQ.objects.all()
     contact_us = Resource.objects.last()
+    resources = PDFResource.objects.all()
     return render(
         request, 'index.html',
         {'hero_section': hero_section,
@@ -28,6 +29,7 @@ def home(request):
          'numbers': numbers,
          'faqs': faqs,
          'contact_us': contact_us,
+         'resources': resources
          }
     )
 

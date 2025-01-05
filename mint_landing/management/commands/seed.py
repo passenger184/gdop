@@ -1,5 +1,8 @@
+import os
 from django.core.management.base import BaseCommand
-from mint_landing.models import FAQ, AboutUs, Announcement, Figure, GDOPComponent, HeroSection, Resource
+from landing_page_mint import settings
+from mint_landing.models import FAQ, AboutUs, Announcement, Figure, GDOPComponent, HeroSection, PDFResource, Resource
+from django.core.files import File
 
 
 class Command(BaseCommand):
@@ -14,6 +17,7 @@ class Command(BaseCommand):
         self.create_figures()
         self.create_faqs()
         self.create_resources()
+        self.create_pdf_resources()
         self.stdout.write('Seeding complete.')
 
     def create_hero_section(self):
@@ -190,3 +194,42 @@ class Command(BaseCommand):
             phone="0118132192"
         )
         self.stdout.write('Resources created.')
+
+    def create_pdf_resources(self):
+        resources = [
+            {
+                'icon_name': 'file-earmark-text',
+                'title': 'Visitor Form',
+                'description': 'For first-time visitors to fill out necessary details.',
+            },
+            {
+                'icon_name': 'book',
+                'title': 'Employee Manual',
+                'description': 'Policies, rules, and guidelines for employees.',
+            },
+            {
+                'icon_name': 'file-earmark-spreadsheet',
+                'title': 'Budget Template',
+                'description': 'Use this template to prepare budgets effectively.',
+            },
+            {
+                'icon_name': 'calendar-check',
+                'title': 'Event Checklist',
+                'description': 'A step-by-step checklist for organizing events.',
+            },
+            {
+                'icon_name': 'clipboard',
+                'title': 'Meeting Minutes',
+                'description': 'Template for recording meeting minutes professionally.',
+            },
+            {
+                'icon_name': 'envelope',
+                'title': 'Official Letterhead',
+                'description': 'Preformatted letterhead for official communication.',
+            }
+        ]
+
+        for resource in resources:
+            PDFResource.objects.create(**resource)
+
+        print("Successfully seeded PDF resources")

@@ -191,3 +191,24 @@ class SupportRequest(models.Model):
 
     def __str__(self):
         return f"{self.name} - {self.support_type}"
+
+
+class PDFResource(models.Model):
+    icon_name = models.CharField(max_length=100, blank=True, null=True)
+    title = models.CharField(max_length=255)
+    description = models.TextField()
+    file = models.FileField(
+        upload_to='uploads/pdf_resources/', blank=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    created_by = models.ForeignKey(
+        User, on_delete=models.SET_NULL, null=True, related_name='pdf_created_by')
+    updated_by = models.ForeignKey(
+        User, on_delete=models.SET_NULL, null=True, related_name='pdf_updated_by')
+
+    class Meta:
+        verbose_name = "PDF Resource"
+        verbose_name_plural = "PDF Resources"
+
+    def __str__(self):
+        return self.title

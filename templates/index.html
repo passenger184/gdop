@@ -283,14 +283,15 @@
         <div class="swiper">
           <div class="swiper-wrapper">
             <!-- Card Items -->
+            {% for resource in resources %}
             <div class="swiper-slide">
               <div class="service-item position-relative">
                 <div class="icon" id="resouce-icon">
                   <i class="bi bi-file-earmark-text"></i>
                 </div>
-                <h3>Visitor Form</h3>
+                <h3>{{resource.title}}</h3>
                 <span class="updates_cart fw-normal fst-italic">
-                  For first-time visitors to fill out necessary details.
+                  {{resource.description}}
                 </span>
                 <div class="btn-group-resource mt-5" role="group">
                   <button type="button" class="btn btn-primary btn-sm me-2">
@@ -302,106 +303,7 @@
                 </div>
               </div>
             </div>
-            <!-- End of swiper -->
-            <div class="swiper-slide">
-              <div class="service-item position-relative">
-                <div class="icon" id="resouce-icon">
-                  <i class="bi bi-book"></i>
-                </div>
-                <h3>Employee Manual</h3>
-                <span class="updates_cart fw-normal fst-italic">
-                  Policies, rules, and guidelines for employees.
-                </span>
-                <div class="btn-group-resource mt-5" role="group">
-                  <button type="button" class="btn btn-primary btn-sm me-2">
-                    <i class="bi bi-cloud-arrow-down-fill"></i> Download
-                  </button>
-                  <button type="button" class="btn btn-secondary btn-sm">
-                    <i class="bi bi-eye-fill"></i> Preview
-                  </button>
-                </div>
-              </div>
-            </div>
-            <!-- End of swiper -->
-            <div class="swiper-slide">
-              <div class="service-item position-relative">
-                <div class="icon" id="resouce-icon">
-                  <i class="bi bi-file-earmark-spreadsheet"></i>
-                </div>
-                <h3>Budget Template</h3>
-                <span class="updates_cart fw-normal fst-italic">
-                  Use this template to prepare budgets effectively.
-                </span>
-                <div class="btn-group-resource mt-5" role="group">
-                  <button type="button" class="btn btn-primary btn-sm me-2">
-                    <i class="bi bi-cloud-arrow-down-fill"></i> Download
-                  </button>
-                  <button type="button" class="btn btn-secondary btn-sm">
-                    <i class="bi bi-eye-fill"></i> Preview
-                  </button>
-                </div>
-              </div>
-            </div>
-            <!-- End of swiper -->
-            <div class="swiper-slide">
-              <div class="service-item position-relative">
-                <div class="icon" id="resouce-icon">
-                  <i class="bi bi-calendar-check"></i>
-                </div>
-                <h3>Event Checklist</h3>
-                <span class="updates_cart fw-normal fst-italic">
-                  A step-by-step checklist for organizing events.
-                </span>
-                <div class="btn-group-resource mt-5" role="group">
-                  <button type="button" class="btn btn-primary btn-sm me-2">
-                    <i class="bi bi-cloud-arrow-down-fill"></i> Download
-                  </button>
-                  <button type="button" class="btn btn-secondary btn-sm">
-                    <i class="bi bi-eye-fill"></i> Preview
-                  </button>
-                </div>
-              </div>
-            </div>
-            <!-- End of swiper -->
-            <div class="swiper-slide">
-              <div class="service-item position-relative">
-                <div class="icon" id="resouce-icon">
-                  <i class="bi bi-clipboard "></i>
-                </div>
-                <h3>Meeting Minutes</h3>
-                <span class="updates_cart fw-normal fst-italic">
-                  Template for recording meeting minutes professionally.
-                </span>
-                <div class="btn-group-resource mt-5" role="group">
-                  <button type="button" class="btn btn-primary btn-sm me-2">
-                    <i class="bi bi-cloud-arrow-down-fill"></i> Download
-                  </button>
-                  <button type="button" class="btn btn-secondary btn-sm">
-                    <i class="bi bi-eye-fill"></i> Preview
-                  </button>
-                </div>
-              </div>
-            </div>
-            <!-- End of swiper -->
-            <div class="swiper-slide">
-              <div class="service-item position-relative">
-                <div class="icon" id="resouce-icon">
-                  <i class="bi bi-envelope"></i>
-                </div>
-                <h3>Official Letterhead</h3>
-                <span class="updates_cart fw-normal fst-italic">
-                  Preformatted letterhead for official communication.
-                </span>
-                <div class="btn-group-resource mt-5" role="group">
-                  <button type="button" class="btn btn-primary btn-sm me-2">
-                    <i class="bi bi-cloud-arrow-down-fill"></i> Download
-                  </button>
-                  <button type="button" class="btn btn-secondary btn-sm">
-                    <i class="bi bi-eye-fill"></i> Preview
-                  </button>
-                </div>
-              </div>
-            </div>
+            {% endfor %}
             <!-- End of swiper -->
           </div>
           <!-- Swiper Pagination -->

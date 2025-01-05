@@ -5,7 +5,7 @@ from django.contrib.auth.models import User, Group
 
 from unfold.admin import ModelAdmin
 
-from .models import FAQ, AboutUs, Announcement, Resource, HeroSection, Figure, GDOPComponent, SupportRequest
+from .models import FAQ, AboutUs, Announcement, PDFResource, Resource, HeroSection, Figure, GDOPComponent, SupportRequest
 
 
 class BaseAdmin(ModelAdmin):
@@ -108,3 +108,11 @@ class SupportRequestAdmin(BaseAdmin):
         if obj:
             return [field.name for field in obj._meta.fields if field.name != 'status']
         return ['name', 'email', 'support_type', 'description', 'attachment', 'urgency', 'submitted_at', 'created_at', 'updated_at', 'status']
+
+
+@admin.register(PDFResource)
+class PDFResourceAdmin(BaseAdmin):
+    list_display = ['title', 'description',
+                    'file', 'created_at', 'updated_at', 'created_by', 'updated_by']
+    search_fields = ['title', 'description']
+    list_filter = ['created_at', 'updated_at']
