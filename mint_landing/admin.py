@@ -5,7 +5,7 @@ from django.contrib.auth.models import User, Group
 
 from unfold.admin import ModelAdmin
 
-from .models import FAQ, AboutUs, Announcement, Resource, HeroSection, Figure, GDOPComponent
+from .models import FAQ, AboutUs, Announcement, PDFResource, Resource, HeroSection, Figure, GDOPComponent, SupportRequest, TeamMember
 
 
 class BaseAdmin(ModelAdmin):
@@ -94,3 +94,32 @@ class FAQAdmin(BaseAdmin):
 class ResourceAdmin(BaseAdmin):
     list_display = ['title', 'address', 'email', 'phone',
                     'updated_at', 'created_by', 'updated_by']
+
+
+@admin.register(SupportRequest)
+class SupportRequestAdmin(BaseAdmin):
+    list_display = ['name', 'email', 'support_type', 'urgency', 'status']
+    search_fields = ['name', 'email', 'support_type', 'description']
+    list_filter = ['support_type', 'status', 'urgency']
+    ordering = ['status']
+
+    # Make all fields readonly except 'status' for admins
+    def get_readonly_fields(self, request, obj=None):
+        if obj:
+            return [field.name for field in obj._meta.fields if field.name != 'status']
+        return ['name', 'email', 'support_type', 'description', 'attachment', 'urgency', 'submitted_at', 'created_at', 'updated_at', 'status']
+
+
+@admin.register(PDFResource)
+class PDFResourceAdmin(BaseAdmin):
+    list_display = ['title', 'description',
+                    'file', 'created_at', 'updated_at', 'created_by', 'updated_by']
+    search_fields = ['title', 'description']
+    list_filter = ['created_at', 'updated_at']
+
+
+@admin.register(TeamMember)
+class TeamMemberAdmin(BaseAdmin):
+    list_display = ['name', 'role', 'project', 'email', 'phone']
+    search_fields = ['name', 'email', 'role']
+    list_filter = ['project']

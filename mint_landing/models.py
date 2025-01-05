@@ -149,3 +149,83 @@ class Resource(models.Model):
 
     def __str__(self):
         return f"{self.email} - {self.phone}"
+
+
+class SupportType(models.TextChoices):
+    TECHNICAL = 'technical', 'Technical Issue'
+    SYSTEM_ACCESS = 'system_access', 'System Access'
+    GENERAL = 'general', 'General Inquiry'
+    FEEDBACK = 'feedback', 'Feedback'
+    OTHER = 'other', 'Other'
+
+
+class UrgencyLevel(models.TextChoices):
+    LOW = 'low', 'Low'
+    MEDIUM = 'medium', 'Medium'
+    HIGH = 'high', 'High'
+    CRITICAL = 'critical', 'Critical'
+
+
+class SupportRequest(models.Model):
+    PENDING = 'pending'
+    RESOLVED = 'resolved'
+    STATUS_CHOICES = [
+        (PENDING, 'Pending'),
+        (RESOLVED, 'Resolved'),
+    ]
+
+    name = models.CharField(max_length=255)
+    email = models.EmailField()
+    support_type = models.CharField(max_length=50, choices=SupportType.choices)
+    description = models.TextField()
+    attachment = models.FileField(
+        upload_to='uploads/support_requests/', blank=True, null=True)
+    urgency = models.CharField(max_length=10, choices=UrgencyLevel.choices)
+    submitted_at = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    updated_by = models.ForeignKey(
+        User, on_delete=models.SET_NULL, null=True, related_name='support_request_updated_by')
+    status = models.CharField(
+        max_length=10, choices=STATUS_CHOICES, default=PENDING)
+
+    def __str__(self):
+        return f"{self.name} - {self.support_type}"
+
+
+class PDFResource(models.Model):
+    icon_name = models.CharField(max_length=100, blank=True, null=True)
+    title = models.CharField(max_length=255)
+    description = models.TextField()
+    file = models.FileField(
+        upload_to='uploads/pdf_resources/', blank=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    created_by = models.ForeignKey(
+        User, on_delete=models.SET_NULL, null=True, related_name='pdf_created_by')
+    updated_by = models.ForeignKey(
+        User, on_delete=models.SET_NULL, null=True, related_name='pdf_updated_by')
+
+    class Meta:
+        verbose_name = "PDF Resource"
+        verbose_name_plural = "PDF Resources"
+
+    def __str__(self):
+        return self.title
+
+
+class TeamMember(models.Model):
+    name = models.CharField(max_length=255)
+    role = models.CharField(max_length=255)
+    project = models.ForeignKey(GDOPComponent, on_delete=models.CASCADE)
+    email = models.EmailField(blank=True, null=True)
+    phone = models.CharField(max_length=20, blank=True, null=True)
+    twitter_link = models.URLField(blank=True, null=True)
+    facebook_link = models.URLField(blank=True, null=True)
+    instagram_link = models.URLField(blank=True, null=True)
+    linkedin_link = models.URLField(blank=True, null=True)
+    image = models.ImageField(
+        upload_to='uploads/team_members/', blank=True, null=True)
+
+    def __str__(self):
+        return self.name

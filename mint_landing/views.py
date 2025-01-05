@@ -1,10 +1,10 @@
 import json
 import os
 from django.conf import settings
-from django.http import JsonResponse
-from django.shortcuts import get_object_or_404, render
+from django.http import HttpRequest, JsonResponse
+from django.shortcuts import get_object_or_404, redirect, render
 
-from mint_landing.models import FAQ, AboutUs, Announcement, Resource, HeroSection, Figure, GDOPComponent
+from mint_landing.models import FAQ, AboutUs, Announcement, PDFResource, Resource, HeroSection, Figure, GDOPComponent, SupportRequest, TeamMember
 
 # Render the homepage
 
@@ -18,6 +18,8 @@ def home(request):
     numbers = Figure.objects.all()
     faqs = FAQ.objects.all()
     contact_us = Resource.objects.last()
+    resources = PDFResource.objects.all()
+    members = TeamMember.objects.all()
     return render(
         request, 'index.html',
         {'hero_section': hero_section,
@@ -28,6 +30,8 @@ def home(request):
          'numbers': numbers,
          'faqs': faqs,
          'contact_us': contact_us,
+         'resources': resources,
+         'team_members': members,
          }
     )
 
@@ -47,6 +51,32 @@ def about(request):
 
 def contact(request):
     return render(request, 'contact.html')
+
+
+def submit_support_request(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        support_type = request.POST.get('supportType')
+        description = request.POST.get('description')
+        attachment = request.FILES.get('attachment')
+        urgency = request.POST.get('urgency')
+
+        SupportRequest.objects.create(
+            name=name,
+            email=email,
+            support_type=support_type,
+            description=description,
+            attachment=attachment,
+            urgency=urgency,
+        )
+
+        return redirect('success_view')
+    return render(request, 'contact.html')
+
+
+def success_view(request):
+    return render(request, 'support_request_success.html')
 
 
 def v_m_s(request):
