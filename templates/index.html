@@ -330,193 +330,43 @@
 
           <div class="row gy-4">
 
+      {% for member in team_members %}
       <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
         <div class="team-member">
           <div class="member-img">
-            <img src="{% static 'assets/img/team-11.jpg' %}" class="img-fluid" alt="">
+            {% if member.image %}
+              <img src="{{member.image.url}}" class="img-fluid" alt="">
+            {% else %}
+              <img src="{% static 'assets/img/no-pp.jpg' %}" class="img-fluid" alt="">
+            {% endif %}
             <div class="social">
-              <a href=""><i class="bi bi-twitter-x"></i></a>
-              <a href=""><i class="bi bi-facebook"></i></a>
-              <a href=""><i class="bi bi-instagram"></i></a>
-              <a href=""><i class="bi bi-linkedin"></i></a>
+              {% if member.twitter_link %}
+                <a href="{{member.twitter_link}}"><i class="bi bi-twitter-x"></i></a>
+              {% endif %}
+              {% if member.facebook_link %}
+              <a href="{{member.facebook_link}}"><i class="bi bi-facebook"></i></a>
+              {% endif %}
+              {% if member.instagram_link %}
+              <a href="{{member.instagram_link}}"><i class="bi bi-instagram"></i></a>
+              {% endif %}
+              {% if member.linkedin_link %}
+              <a href="{{member.linkedin_link}}"><i class="bi bi-linkedin"></i></a>
+              {% endif %}
               </div>
             </div>
           <div class="member-info">
-            <h4>Ephrem Belew</h4>
-            <p>Project Manager</p>
+            <h4>{{member.name}}</h4>
+            <p>{{member.role}}</p>
             <div class="card-text-team">
-              <span><i class="bi bi-person-circle icon me-2"></i>Visitor Management Department</span>
-              <span><i class="bi bi-envelope-fill icon me-2"></i> Ephrem21@gmail.com</span>
-              <span><i class="bi bi-telephone-fill icon me-2"></i>+251-978096534</span>
+              <span><i class="bi bi-person-circle icon me-2"></i>{{member.project}}</span>
+              <span><i class="bi bi-envelope-fill icon me-2"></i>{{member.email}}</span>
+              <span><i class="bi bi-telephone-fill icon me-2"></i>{{member.phone}}</span>
           </div>
             </div>
         </div>
-      </div><!-- End Team Member -->
-
-      <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
-        <div class="team-member">
-          <div class="member-img">
-            <img src="{% static 'assets/img/zza.jpg' %}" class="img-fluid" alt="">
-            <div class="social">
-              <a href=""><i class="bi bi-twitter-x"></i></a>
-              <a href=""><i class="bi bi-facebook"></i></a>
-              <a href=""><i class="bi bi-instagram"></i></a>
-              <a href=""><i class="bi bi-linkedin"></i></a>
-              </div>
-            </div>
-          <div class="member-info">
-            <h4>Danya Kedir</h4>
-            <p>Lead Developer</p>
-            <div class="card-text-team">
-              <span><i class="bi bi-person-circle icon me-2"></i>Contact Center Department</span>
-              <span><i class="bi bi-envelope-fill icon me-2"></i> dan123@gmail.com</span>
-              <span><i class="bi bi-telephone-fill icon me-2"></i>+251-920435612</span>
-          </div>
-          </div>
-        </div>
-      </div><!-- End Team Member -->
-
-      <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="300">
-        <div class="team-member">
-          <div class="member-img">
-            <img src="{% static 'assets/img/kkj.jpg' %}" class="img-fluid" alt="">
-            <div class="social">
-              <a href=""><i class="bi bi-twitter-x"></i></a>
-              <a href=""><i class="bi bi-facebook"></i></a>
-              <a href=""><i class="bi bi-instagram"></i></a>
-              <a href=""><i class="bi bi-linkedin"></i></a>
-              </div>
-            </div>
-          <div class="member-info">
-            <h4>Solomon Teshome</h4>
-            <p>System Analyst</p>
-            <div class="card-text-team">
-              <span><i class="bi bi-person-circle icon me-2"></i>DMS Department</span>
-              <span><i class="bi bi-envelope-fill icon me-2"></i> Solomonde12@gmail.com</span>
-              <span><i class="bi bi-telephone-fill icon me-2"></i>+251-980976542</span>
-          </div>
-          </div>
-        </div>
-      </div><!-- End Team Member -->
-
-      <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="400">
-        <div class="team-member">
-          <div class="member-img">
-            <img src="{% static 'assets/img/mmmi.jpg' %}" class="img-fluid" alt="">
-            <div class="social">
-              <a href=""><i class="bi bi-twitter-x"></i></a>
-              <a href=""><i class="bi bi-facebook"></i></a>
-              <a href=""><i class="bi bi-instagram"></i></a>
-              <a href=""><i class="bi bi-linkedin"></i></a>
-              </div>
-            </div>
-          <div class="member-info">
-            <h4>Dawit Belete</h4>
-            <p>Backend Developer</p>
-            <div class="card-text-team">
-              <span><i class="bi bi-person-circle icon me-2"></i>Transport Management Department</span>
-              <span><i class="bi bi-envelope-fill icon me-2"></i> Dawitbelete12@gmail.com</span>
-              <span><i class="bi bi-telephone-fill icon me-2"></i>+251-936542134</span>
-          </div>
-        </div>
-        </div>
-      </div><!-- End Team Member -->
-
-    </div>
-    <div class="collapse mt-4" id="moreTeam">
-    <div class="row gy-4 mt-4">
-
-      <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
-        <div class="team-member">
-          <div class="member-img">
-            <img src="{% static 'assets/img/ll.jpg' %}" class="img-fluid" alt="">
-            <div class="social">
-              <a href=""><i class="bi bi-twitter-x"></i></a>
-              <a href=""><i class="bi bi-facebook"></i></a>
-              <a href=""><i class="bi bi-instagram"></i></a>
-              <a href=""><i class="bi bi-linkedin"></i></a>
-            </div>
-          </div>
-          <div class="member-info">
-            <h4>Lidya Seid</h4>
-            <p>UX/UI Designer</p>
-            <div class="card-text-team">
-              <span><i class="bi bi-person-circle icon me-2"></i>Transport Management Department</span>
-              <span><i class="bi bi-envelope-fill icon me-2"></i> Dawitbelete12@gmail.com</span>
-              <span><i class="bi bi-telephone-fill icon me-2"></i>+251-936542134</span>
-          </div>
-          </div>
-        </div>
-      </div><!-- End Team Member -->
-
-      <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
-        <div class="team-member">
-          <div class="member-img">
-            <img src="{% static 'assets/img/no-pp.jpg' %}" class="img-fluid" alt="">
-            <div class="social">
-              <a href=""><i class="bi bi-twitter-x"></i></a>
-              <a href=""><i class="bi bi-facebook"></i></a>
-              <a href=""><i class="bi bi-instagram"></i></a>
-              <a href=""><i class="bi bi-linkedin"></i></a>
-            </div>
-          </div>
-          <div class="member-info">
-            <h4>Kedir Kemal</h4>
-            <p>Frontend Developer</p>
-            <div class="card-text-team">
-              <span><i class="bi bi-person-circle icon me-2"></i>Transport Management Department</span>
-              <span><i class="bi bi-envelope-fill icon me-2"></i> Dawitbelete12@gmail.com</span>
-              <span><i class="bi bi-telephone-fill icon me-2"></i>+251-936542134</span>
-          </div>
-          </div>
-        </div>
-      </div><!-- End Team Member -->
-
-      <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="300">
-        <div class="team-member">
-          <div class="member-img">
-            <img src="{% static 'assets/img/no-pp.jpg' %}" class="img-fluid" alt="">
-            <div class="social">
-              <a href=""><i class="bi bi-twitter-x"></i></a>
-              <a href=""><i class="bi bi-facebook"></i></a>
-              <a href=""><i class="bi bi-instagram"></i></a>
-              <a href=""><i class="bi bi-linkedin"></i></a>
-            </div>
-          </div>
-          <div class="member-info">
-            <h4>Micael Abera</h4>
-            <p>Project Coordinator</p>
-            <div class="card-text-team">
-              <span><i class="bi bi-person-circle icon me-2"></i>Transport Management Department</span>
-              <span><i class="bi bi-envelope-fill icon me-2"></i> Dawitbelete12@gmail.com</span>
-              <span><i class="bi bi-telephone-fill icon me-2"></i>+251-936542134</span>
-          </div>
-          </div>
-        </div>
-      </div><!-- End Team Member -->
-
-      <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="400">
-        <div class="team-member">
-          <div class="member-img">
-            <img src="{% static 'assets/img/no-pp.jpg' %}" class="img-fluid" alt="">
-            <div class="social">
-              <a href=""><i class="bi bi-twitter-x"></i></a>
-              <a href=""><i class="bi bi-facebook"></i></a>
-              <a href=""><i class="bi bi-instagram"></i></a>
-              <a href=""><i class="bi bi-linkedin"></i></a>
-            </div>
-          </div>
-          <div class="member-info">
-            <h4>Sara Teshome</h4>
-            <p>Quality Assurance Engineer</p>
-            <div class="card-text-team">
-              <span><i class="bi bi-person-circle icon me-2"></i>Transport Management Department</span>
-              <span><i class="bi bi-envelope-fill icon me-2"></i> Dawitbelete12@gmail.com</span>
-              <span><i class="bi bi-telephone-fill icon me-2"></i>+251-936542134</span>
-          </div>
-          </div>
-        </div>
-      </div><!-- End Team Member -->
+      </div>
+      {% endfor %}
+      <!-- End Team Member -->
     </div>
     </div>
     <div class="button-container">

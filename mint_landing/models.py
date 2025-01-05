@@ -212,3 +212,20 @@ class PDFResource(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class TeamMember(models.Model):
+    name = models.CharField(max_length=255)
+    role = models.CharField(max_length=255)
+    project = models.ForeignKey(GDOPComponent, on_delete=models.CASCADE)
+    email = models.EmailField(blank=True, null=True)
+    phone = models.CharField(max_length=20, blank=True, null=True)
+    twitter_link = models.URLField(blank=True, null=True)
+    facebook_link = models.URLField(blank=True, null=True)
+    instagram_link = models.URLField(blank=True, null=True)
+    linkedin_link = models.URLField(blank=True, null=True)
+    image = models.ImageField(
+        upload_to='uploads/team_members/', blank=True, null=True)
+
+    def __str__(self):
+        return self.name

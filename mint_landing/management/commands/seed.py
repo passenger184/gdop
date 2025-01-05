@@ -1,7 +1,6 @@
-import os
 from django.core.management.base import BaseCommand
 from landing_page_mint import settings
-from mint_landing.models import FAQ, AboutUs, Announcement, Figure, GDOPComponent, HeroSection, PDFResource, Resource
+from mint_landing.models import FAQ, AboutUs, Announcement, Figure, GDOPComponent, HeroSection, PDFResource, Resource, TeamMember
 from django.core.files import File
 
 
@@ -18,6 +17,7 @@ class Command(BaseCommand):
         self.create_faqs()
         self.create_resources()
         self.create_pdf_resources()
+        self.create_team_members()
         self.stdout.write('Seeding complete.')
 
     def create_hero_section(self):
@@ -233,3 +233,15 @@ class Command(BaseCommand):
             PDFResource.objects.create(**resource)
 
         print("Successfully seeded PDF resources")
+
+    def create_team_members(self):
+        TeamMember.objects.get_or_create(
+            name="John Doe",
+            role="Project Manager",
+            project=GDOPComponent.objects.get_or_create(
+                 title="Test",
+                subtitle="Test",
+                icon_name="bi-people",
+                is_active=False,
+            )[0]
+        )

@@ -5,7 +5,7 @@ from django.contrib.auth.models import User, Group
 
 from unfold.admin import ModelAdmin
 
-from .models import FAQ, AboutUs, Announcement, PDFResource, Resource, HeroSection, Figure, GDOPComponent, SupportRequest
+from .models import FAQ, AboutUs, Announcement, PDFResource, Resource, HeroSection, Figure, GDOPComponent, SupportRequest, TeamMember
 
 
 class BaseAdmin(ModelAdmin):
@@ -116,3 +116,10 @@ class PDFResourceAdmin(BaseAdmin):
                     'file', 'created_at', 'updated_at', 'created_by', 'updated_by']
     search_fields = ['title', 'description']
     list_filter = ['created_at', 'updated_at']
+
+
+@admin.register(TeamMember)
+class TeamMemberAdmin(BaseAdmin):
+    list_display = ['name', 'role', 'project', 'email', 'phone']
+    search_fields = ['name', 'email', 'role']
+    list_filter = ['project']
