@@ -416,6 +416,9 @@
     <!-- Team Section -->
 <section id="team" class="team section light-background">
 
+  <!-- Team Section -->
+<section id="team" class="team section light-background">
+
   <!-- Section Title -->
   <div class="container section-title" data-aos="fade-up">
     <h2>Meet Our Team</h2>
@@ -423,21 +426,51 @@
   </div><!-- End Section Title -->
 
   <div class="container">
+
           <div class="row gy-4">
-            {% for item in numbers %}
-            <div class="col-lg-3 col-md-6">
-              <div class="stats-item text-center w-100 h-100">
-                <span
-                  data-purecounter-start="0"
-                  data-purecounter-end="{{item.value}}"
-                  data-purecounter-duration="1"
-                  class="purecounter"
-                ></span>
-                <p id="stats-institutions">{{item.title}}</p>
+
+      <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
+        <div class="team-member">
+          <div class="member-img">
+            <img src="{% static 'assets/img/team-11.jpg' %}" class="img-fluid" alt="">
+            <div class="social">
+              <a href=""><i class="bi bi-twitter-x"></i></a>
+              <a href=""><i class="bi bi-facebook"></i></a>
+              <a href=""><i class="bi bi-instagram"></i></a>
+              <a href=""><i class="bi bi-linkedin"></i></a>
               </div>
             </div>
-            {% endfor %}
-            <!-- End Stats Item -->
+          <div class="member-info">
+            <h4>Ephrem Belew</h4>
+            <p>Project Manager</p>
+            <div class="card-text-team">
+              <span><i class="bi bi-person-circle icon me-2"></i>Visitor Management Department</span>
+              <span><i class="bi bi-envelope-fill icon me-2"></i> Ephrem21@gmail.com</span>
+              <span><i class="bi bi-telephone-fill icon me-2"></i>+251-978096534</span>
+          </div>
+            </div>
+        </div>
+      </div><!-- End Team Member -->
+
+      <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
+        <div class="team-member">
+          <div class="member-img">
+            <img src="{% static 'assets/img/zza.jpg' %}" class="img-fluid" alt="">
+            <div class="social">
+              <a href=""><i class="bi bi-twitter-x"></i></a>
+              <a href=""><i class="bi bi-facebook"></i></a>
+              <a href=""><i class="bi bi-instagram"></i></a>
+              <a href=""><i class="bi bi-linkedin"></i></a>
+              </div>
+            </div>
+          <div class="member-info">
+            <h4>Danya Kedir</h4>
+            <p>Lead Developer</p>
+            <div class="card-text-team">
+              <span><i class="bi bi-person-circle icon me-2"></i>Contact Center Department</span>
+              <span><i class="bi bi-envelope-fill icon me-2"></i> dan123@gmail.com</span>
+              <span><i class="bi bi-telephone-fill icon me-2"></i>+251-920435612</span>
+          </div>
           </div>
         </div>
       </div><!-- End Team Member -->
