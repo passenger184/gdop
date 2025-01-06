@@ -1,10 +1,10 @@
 import json
 import os
 from django.conf import settings
-from django.http import HttpRequest, JsonResponse
+from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
 
-from mint_landing.models import FAQ, AboutUs, Announcement, PDFResource, Resource, HeroSection, Figure, GDOPComponent, SupportRequest, TeamMember
+from mint_landing.models import FAQ, AboutUs, Announcement, PDFResource, HeroSection, Figure, GDOPComponent, SupportRequest, TeamMember
 
 # Render the homepage
 
@@ -17,7 +17,6 @@ def home(request):
     about_us_items = AboutUs.objects.last().bullet_points.split(',')
     numbers = Figure.objects.all()
     faqs = FAQ.objects.all()
-    contact_us = Resource.objects.last()
     resources = PDFResource.objects.all()
     members = TeamMember.objects.all()
     return render(
@@ -29,7 +28,6 @@ def home(request):
          'about_us_items': about_us_items,
          'numbers': numbers,
          'faqs': faqs,
-         'contact_us': contact_us,
          'resources': resources,
          'team_members': members,
          }
