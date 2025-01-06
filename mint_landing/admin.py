@@ -5,7 +5,7 @@ from django.contrib.auth.models import User, Group
 
 from unfold.admin import ModelAdmin
 
-from .models import FAQ, AboutUs, Announcement, PDFResource, Resource, HeroSection, Figure, GDOPComponent, SupportRequest, TeamMember
+from .models import FAQ, AboutUs, Announcement, PDFResource, HeroSection, Figure, GDOPComponent, SupportRequest, TeamMember
 
 
 class BaseAdmin(ModelAdmin):
@@ -88,12 +88,6 @@ class FiguresAdmin(BaseAdmin):
 class FAQAdmin(BaseAdmin):
     list_display = ['question', 'answer', 'order', 'created_by', 'updated_by']
     search_fields = ['question', 'answer']
-
-
-@admin.register(Resource)
-class ResourceAdmin(BaseAdmin):
-    list_display = ['title', 'address', 'email', 'phone',
-                    'updated_at', 'created_by', 'updated_by']
 
 
 @admin.register(SupportRequest)

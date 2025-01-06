@@ -134,23 +134,6 @@ class FAQ(models.Model):
         return self.question
 
 
-class Resource(models.Model):
-    title = models.CharField(
-        max_length=100, help_text="Title of the contact us section")
-    address = models.CharField(max_length=200, help_text="Address")
-    email = models.EmailField(help_text="Email address")
-    phone = models.CharField(max_length=10, help_text="Phone number")
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-    created_by = models.ForeignKey(
-        User, on_delete=models.SET_NULL, null=True, related_name='contact_created_by')
-    updated_by = models.ForeignKey(
-        User, on_delete=models.SET_NULL, null=True, related_name='contact_updated_by')
-
-    def __str__(self):
-        return f"{self.email} - {self.phone}"
-
-
 class SupportType(models.TextChoices):
     TECHNICAL = 'technical', 'Technical Issue'
     SYSTEM_ACCESS = 'system_access', 'System Access'
