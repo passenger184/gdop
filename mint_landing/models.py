@@ -212,3 +212,62 @@ class TeamMember(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class SocialLink(models.Model):
+    name = models.CharField(max_length=50)
+    icon_class = models.CharField(
+        max_length=50, help_text="CSS class for the social media icon (e.g., 'bi bi-twitter-x')")
+    url = models.URLField()
+    created_by = models.ForeignKey(
+        User, on_delete=models.SET_NULL, null=True, related_name='link_created_by')
+    updated_by = models.ForeignKey(
+        User, on_delete=models.SET_NULL, null=True, related_name='link_updated_by')
+
+    def __str__(self):
+        return self.name
+
+
+class UsefulLink(models.Model):
+    name = models.CharField(max_length=50)
+    url = models.URLField()
+    created_by = models.ForeignKey(
+        User, on_delete=models.SET_NULL, null=True, related_name='useful_link_created_by')
+    updated_by = models.ForeignKey(
+        User, on_delete=models.SET_NULL, null=True, related_name='useful_link_updated_by')
+
+    def __str__(self):
+        return self.name
+
+
+class FocusArea(models.Model):
+    name = models.CharField(max_length=50)
+    url = models.URLField()
+    created_by = models.ForeignKey(
+        User, on_delete=models.SET_NULL, null=True, related_name='focus_area_created_by')
+    updated_by = models.ForeignKey(
+        User, on_delete=models.SET_NULL, null=True, related_name='focus_area_updated_by')
+
+    def __str__(self):
+        return self.name
+
+
+class FooterContent(models.Model):
+    about_text = models.TextField()
+    logo_image = models.ImageField(
+        upload_to='uploads/footer/', blank=True, null=True)
+    contact_address_line1 = models.CharField(max_length=255)
+    contact_address_line2 = models.CharField(
+        max_length=255, blank=True, null=True)
+    contact_address_line3 = models.CharField(
+        max_length=255, blank=True, null=True)
+    phone = models.CharField(max_length=20)
+    email = models.EmailField()
+    copyright_text = models.CharField(max_length=255)
+    created_by = models.ForeignKey(
+        User, on_delete=models.SET_NULL, null=True, related_name='footer_content_created_by')
+    updated_by = models.ForeignKey(
+        User, on_delete=models.SET_NULL, null=True, related_name='footer_content_updated_by')
+
+    def __str__(self):
+        return "Footer Content"

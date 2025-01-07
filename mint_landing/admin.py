@@ -5,7 +5,7 @@ from django.contrib.auth.models import User, Group
 
 from unfold.admin import ModelAdmin
 
-from .models import FAQ, AboutUs, Announcement, PDFResource, HeroSection, Figure, GDOPComponent, SupportRequest, TeamMember
+from .models import FAQ, AboutUs, Announcement, FocusArea, FooterContent, PDFResource, HeroSection, Figure, GDOPComponent, SocialLink, SupportRequest, TeamMember, UsefulLink
 
 
 class BaseAdmin(ModelAdmin):
@@ -117,3 +117,38 @@ class TeamMemberAdmin(BaseAdmin):
     list_display = ['name', 'role', 'project', 'email', 'phone']
     search_fields = ['name', 'email', 'role']
     list_filter = ['project']
+
+
+@admin.register(SocialLink)
+class SocialLinkAdmin(BaseAdmin):
+    list_display = ['name', 'url', 'created_by', 'updated_by']
+    search_fields = ['name']
+
+
+@admin.register(UsefulLink)
+class UsefulLinkAdmin(BaseAdmin):
+    list_display = ['name', 'url', 'created_by', 'updated_by']
+    search_fields = ['name']
+
+
+@admin.register(FocusArea)
+class FocusAreaAdmin(BaseAdmin):
+    list_display = ['name', 'url', 'created_by', 'updated_by']
+    search_fields = ['name']
+
+
+@admin.register(FooterContent)
+class FooterContentAdmin(BaseAdmin):
+    list_display = ['about_text', 'phone', 'email',
+                    'copyright_text', 'created_by', 'updated_by']
+    fieldsets = (
+        (None, {
+            'fields': ('about_text', 'logo_image')
+        }),
+        ('Contact Information', {
+            'fields': ('contact_address_line1', 'contact_address_line2', 'contact_address_line3', 'phone', 'email')
+        }),
+        ('Other', {
+            'fields': ('copyright_text',)
+        }),
+    )
