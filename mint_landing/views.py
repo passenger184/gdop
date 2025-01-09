@@ -11,7 +11,7 @@ from mint_landing.models import FAQ, AboutUs, Announcement, AboutUsFooter, Foote
 
 def home(request):
     hero_section = HeroSection.objects.last()
-    projects = GDOPComponent.objects.all()
+    projects = GDOPComponent.objects.all().order_by("-is_active")
     announcements = Announcement.objects.all()
     about_us = AboutUs.objects.last()
     about_us_items = AboutUs.objects.last().bullet_points.split(',')
