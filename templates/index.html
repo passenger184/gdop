@@ -169,50 +169,6 @@
       </section>
       <!-- /Services Section -->
 
-      <!-- About Section -->
-      <section id="about" class="about section">
-        <!-- Section Title -->
-        <div class="container section-title" data-aos="fade-up">
-          <h2 id="about-title">About Us<br /></h2>
-          <p id="about-intro">
-            {{about_us.title}}
-          </p>
-        </div>
-        <!-- End Section Title -->
-
-        <div class="container">
-          <div class="row gy-4">
-            <div
-              class="col-lg-6 content"
-              data-aos="fade-up"
-              data-aos-delay="100"
-            >
-              <p style="text-align: justify" id="about-item-1">
-                {{about_us.description_1}}
-              </p>
-              <ul>
-                {% for item in about_us_items %}
-                  <li>
-                    <i class="bi bi-check2-circle"></i>
-                    <span>{{ item }}</span>
-                  </li>
-                {% endfor %}
-              </ul>
-            </div>
-
-            <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-              <p style="text-align: justify" id="about-paragraph">
-                {{about_us.description_2}}
-              </p>
-              <a href="about" class="read-more" id="about-read-more"
-                ><span>Read More</span><i class="bi bi-arrow-right"></i
-              ></a>
-            </div>
-          </div>
-        </div>
-      </section>
-      <!-- /About Section -->
-
 
       <section
       id="resources"
@@ -261,70 +217,6 @@
       </div>
     </section>
     <!-- /Downloadable Section -->
-
-    <!-- Team Section -->
-<section id="team" class="team section light-background">
-
-  <!-- Team Section -->
-<section id="team" class="team section light-background">
-
-  <!-- Section Title -->
-  <div class="container section-title" data-aos="fade-up">
-    <h2>Meet Our Team</h2>
-    <p>Meet our team members dedicated to the successful implementation of the GDOP project.</p>
-  </div><!-- End Section Title -->
-
-  <div class="container">
-
-          <div class="row gy-4">
-
-      {% for member in team_members %}
-      <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
-        <div class="team-member">
-          <div class="member-img">
-            {% if member.image %}
-              <img src="{{member.image.url}}" class="img-fluid" alt="">
-            {% else %}
-              <img src="{% static 'assets/img/no-pp.jpg' %}" class="img-fluid" alt="">
-            {% endif %}
-            <div class="social">
-              {% if member.twitter_link %}
-                <a href="{{member.twitter_link}}"><i class="bi bi-twitter-x"></i></a>
-              {% endif %}
-              {% if member.facebook_link %}
-              <a href="{{member.facebook_link}}"><i class="bi bi-facebook"></i></a>
-              {% endif %}
-              {% if member.instagram_link %}
-              <a href="{{member.instagram_link}}"><i class="bi bi-instagram"></i></a>
-              {% endif %}
-              {% if member.linkedin_link %}
-              <a href="{{member.linkedin_link}}"><i class="bi bi-linkedin"></i></a>
-              {% endif %}
-              </div>
-            </div>
-          <div class="member-info">
-            <h4>{{member.name}}</h4>
-            <p>{{member.role}}</p>
-            <div class="card-text-team">
-              <span><i class="bi bi-person-circle icon me-2"></i>{{member.project}}</span>
-              <span><i class="bi bi-envelope-fill icon me-2"></i>{{member.email}}</span>
-              <span><i class="bi bi-telephone-fill icon me-2"></i>{{member.phone}}</span>
-          </div>
-            </div>
-        </div>
-      </div>
-      {% endfor %}
-      <!-- End Team Member -->
-    </div>
-    </div>
-    <div class="button-container">
-      <button id="load-more" class="btn btn-primary">
-          <span class="spinner-border spinner-border-sm mr-2"></span> Show More
-      </button>
-  </div>
-  </div>
-
-</section><!-- /Team Section -->
 
 <!-- FAQ Section -->
       <section id="faq" class="faq section light-background">
