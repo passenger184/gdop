@@ -1223,7 +1223,6 @@ herobtn-getstarted
 .resources .service-item {
   background-color: var(--surface-color);
   height: 100%;
-  padding: 60px 30px;
   text-align: center;
   transition: 0.3s;
   border-radius: 5px;
