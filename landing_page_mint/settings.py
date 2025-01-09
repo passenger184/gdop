@@ -29,7 +29,8 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'secret key')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG', False)
 
-ALLOWED_HOSTS = ['.vercel.app', '.now.sh', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['.vercel.app', '.now.sh',
+                 'localhost', '127.0.0.1', 'gdop.onrender.com']
 
 CSRF_COOKIE_SECURE = True
 SESSION_COOKIE_SECURE = True
