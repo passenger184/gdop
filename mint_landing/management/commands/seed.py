@@ -121,7 +121,7 @@ class Command(BaseCommand):
                 title=figure["title"],
                 value=figure['value']
             )
-            self.stdout.write(f'Figure {figure['title']} created.')
+            # self.stdout.write(f'Figure {figure['title']} created.')
 
     def create_faqs(self):
         faqs = [
