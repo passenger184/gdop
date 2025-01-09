@@ -101,9 +101,9 @@
                   {{ project.subtitle }}
                 </p>
                 {% if project.is_active %}
-                <a href="{{project.redirect_url}}" target="_blank"><button type="button" class="btn btn-link" style="text-decoration: none; mt: 2">Learn More</button></a>
+                <a href="{{project.redirect_url}}" target="_blank"><button type="button" class="btn btn-link" style="text-decoration: none; margin-top: 12px">Learn More</button></a>
                 {% else %}
-                <p>Coming Soon</p>
+                <button type="button" class="btn btn-link" style="text-decoration: none; margin-top: 12px" disabled>Coming Soon</button>
                 {% endif %}
               </div>
             </div>
