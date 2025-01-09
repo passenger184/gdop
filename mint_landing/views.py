@@ -1,10 +1,10 @@
 import json
 import os
 from django.conf import settings
-from django.http import JsonResponse
+from django.http import FileResponse, JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
 
-from mint_landing.models import FAQ, AboutUs, Announcement, FocusArea, FooterContent, PDFResource, HeroSection, Figure, GDOPComponent, SocialLink, SupportRequest, TeamMember, UsefulLink
+from mint_landing.models import FAQ, AboutUs, Announcement, AboutUsFooter, FooterContent, PDFResource, HeroSection, Figure, GDOPComponent, SocialLink, SupportRequest, TeamMember, UsefulLink
 
 # Render the homepage
 
@@ -23,7 +23,7 @@ def home(request):
     footer_content = FooterContent.objects.first()
     social_links = SocialLink.objects.all()
     useful_links = UsefulLink.objects.all()
-    focus_areas = FocusArea.objects.all()
+    focus_areas = AboutUsFooter.objects.all()
     return render(
         request, 'index.html',
         {'hero_section': hero_section,
@@ -47,7 +47,7 @@ def news(request):
     footer_content = FooterContent.objects.first()
     social_links = SocialLink.objects.all()
     useful_links = UsefulLink.objects.all()
-    focus_areas = FocusArea.objects.all()
+    focus_areas = AboutUsFooter.objects.all()
     return render(request, 'news.html', {'footer_content': footer_content,
                                          'social_links': social_links,
                                          'useful_links': useful_links,
@@ -59,7 +59,7 @@ def announcement_detail(request, id):
     footer_content = FooterContent.objects.first()
     social_links = SocialLink.objects.all()
     useful_links = UsefulLink.objects.all()
-    focus_areas = FocusArea.objects.all()
+    focus_areas = AboutUsFooter.objects.all()
     return render(request, 'announcement.html', {'announcement': announcement, 'footer_content': footer_content,
                                                  'social_links': social_links,
                                                  'useful_links': useful_links,
@@ -70,7 +70,7 @@ def about(request):
     footer_content = FooterContent.objects.first()
     social_links = SocialLink.objects.all()
     useful_links = UsefulLink.objects.all()
-    focus_areas = FocusArea.objects.all()
+    focus_areas = AboutUsFooter.objects.all()
     return render(request, 'about.html', {'footer_content': footer_content,
                                           'social_links': social_links,
                                           'useful_links': useful_links,
@@ -81,7 +81,7 @@ def contact(request):
     footer_content = FooterContent.objects.first()
     social_links = SocialLink.objects.all()
     useful_links = UsefulLink.objects.all()
-    focus_areas = FocusArea.objects.all()
+    focus_areas = AboutUsFooter.objects.all()
     return render(request, 'contact.html', {'footer_content': footer_content,
                                             'social_links': social_links,
                                             'useful_links': useful_links,
@@ -114,7 +114,7 @@ def success_view(request):
     footer_content = FooterContent.objects.first()
     social_links = SocialLink.objects.all()
     useful_links = UsefulLink.objects.all()
-    focus_areas = FocusArea.objects.all()
+    focus_areas = AboutUsFooter.objects.all()
     return render(request, 'support_request_success.html', {'footer_content': footer_content,
                   'social_links': social_links,
                                                             'useful_links': useful_links,
@@ -125,7 +125,7 @@ def v_m_s(request):
     footer_content = FooterContent.objects.first()
     social_links = SocialLink.objects.all()
     useful_links = UsefulLink.objects.all()
-    focus_areas = FocusArea.objects.all()
+    focus_areas = AboutUsFooter.objects.all()
     return render(request, 'vission.html', {'footer_content': footer_content,
                                             'social_links': social_links,
                                             'useful_links': useful_links,
@@ -136,7 +136,7 @@ def o_s(request):
     footer_content = FooterContent.objects.first()
     social_links = SocialLink.objects.all()
     useful_links = UsefulLink.objects.all()
-    focus_areas = FocusArea.objects.all()
+    focus_areas = AboutUsFooter.objects.all()
     return render(request, 'structure.html', {'footer_content': footer_content,
                                               'social_links': social_links,
                                               'useful_links': useful_links,
@@ -147,7 +147,7 @@ def p_d(request):
     footer_content = FooterContent.objects.first()
     social_links = SocialLink.objects.all()
     useful_links = UsefulLink.objects.all()
-    focus_areas = FocusArea.objects.all()
+    focus_areas = AboutUsFooter.objects.all()
     return render(request, 'power.html', {'footer_content': footer_content,
                                           'social_links': social_links,
                                           'useful_links': useful_links,
@@ -189,3 +189,26 @@ def get_translations(request):
         return JsonResponse(error_response, status=status_code)
 
     return JsonResponse(translations)
+
+
+def component_detail(request, id):
+    component = get_object_or_404(GDOPComponent, id=id)
+    advantages = component.key_advantages.split(',')
+    return render(request, 'component.html', {'component': component, 'advantages': advantages})
+
+
+def resource_preview(request, id):
+    resource = get_object_or_404(PDFResource, pk=id)
+    return render(request, 'resource_preview.html', {'resource': resource})
+
+
+def resource_download(request, id):
+    resource = get_object_or_404(PDFResource, pk=id)
+    response = FileResponse(resource.file.open(
+        'rb'), as_attachment=True, filename=resource.file.name)
+    return response
+
+
+def team_members(request):
+    team_members = TeamMember.objects.all()
+    return render(request, 'team.html', {'team_members': team_members})

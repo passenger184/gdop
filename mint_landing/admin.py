@@ -5,7 +5,7 @@ from django.contrib.auth.models import User, Group
 
 from unfold.admin import ModelAdmin
 
-from .models import FAQ, AboutUs, Announcement, FocusArea, FooterContent, PDFResource, HeroSection, Figure, GDOPComponent, SocialLink, SupportRequest, TeamMember, UsefulLink
+from .models import FAQ, AboutUs, Announcement, AboutUsFooter, FooterContent, PDFResource, HeroSection, Figure, GDOPComponent, SocialLink, SupportRequest, TeamMember, UsefulLink
 
 
 class BaseAdmin(ModelAdmin):
@@ -56,7 +56,7 @@ class HeroSectionAdmin(BaseAdmin):
 
 @admin.register(GDOPComponent)
 class GDOPComponentsAdmin(BaseAdmin):
-    list_display = ['title', 'button_url', 'updated_at',
+    list_display = ['title', 'updated_at',
                     'is_active', 'updated_at', 'created_by', 'updated_by']
     list_filter = ('updated_at',)
     search_fields = ('title', 'description', 'button_text')
@@ -131,7 +131,7 @@ class UsefulLinkAdmin(BaseAdmin):
     search_fields = ['name']
 
 
-@admin.register(FocusArea)
+@admin.register(AboutUsFooter)
 class FocusAreaAdmin(BaseAdmin):
     list_display = ['name', 'url', 'created_by', 'updated_by']
     search_fields = ['name']

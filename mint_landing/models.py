@@ -28,12 +28,16 @@ class HeroSection(models.Model):
 class GDOPComponent(models.Model):
     title = models.CharField(
         max_length=100, help_text="Title of the component")
-    subtitle = models.TextField(help_text="Description of the component")
+    subtitle = models.CharField(
+        max_length=100, help_text="A very short description")
+    description = models.TextField(help_text="Description of the component")
+    key_advantages = models.CharField(
+        max_length=500, help_text="Comma separated list of advantages")
+    image = models.ImageField(
+        upload_to='uploads/components/', blank=True, null=True, help_text="Image for the component")
     is_active = models.BooleanField(default=False)
     icon_name = models.CharField(
         max_length=100, help_text="Bootstrap icon class name (e.g., bi-people")
-    button_url = models.URLField(
-        help_text="URL the button points to", blank=True, null=True)
     created_by = models.ForeignKey(
         User, on_delete=models.SET_NULL, null=True, related_name='component_created_by')
     updated_by = models.ForeignKey(
@@ -240,13 +244,17 @@ class UsefulLink(models.Model):
         return self.name
 
 
-class FocusArea(models.Model):
+class AboutUsFooter(models.Model):
     name = models.CharField(max_length=50)
     url = models.URLField()
     created_by = models.ForeignKey(
         User, on_delete=models.SET_NULL, null=True, related_name='focus_area_created_by')
     updated_by = models.ForeignKey(
         User, on_delete=models.SET_NULL, null=True, related_name='focus_area_updated_by')
+
+    class Meta:
+        verbose_name = "About Us (Footer)"
+        verbose_name_plural = "About Us (Footer)"
 
     def __str__(self):
         return self.name

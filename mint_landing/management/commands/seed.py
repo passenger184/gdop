@@ -1,7 +1,5 @@
 from django.core.management.base import BaseCommand
-from landing_page_mint import settings
-from mint_landing.models import FAQ, AboutUs, Announcement, Figure, GDOPComponent, HeroSection, PDFResource, Resource, TeamMember
-from django.core.files import File
+from mint_landing.models import FAQ, AboutUs, Announcement, Figure, GDOPComponent, HeroSection, PDFResource, TeamMember
 
 
 class Command(BaseCommand):
@@ -15,7 +13,6 @@ class Command(BaseCommand):
         self.create_about_us()
         self.create_figures()
         self.create_faqs()
-        self.create_resources()
         self.create_pdf_resources()
         self.create_team_members()
         self.stdout.write('Seeding complete.')
@@ -32,46 +29,41 @@ class Command(BaseCommand):
         components = [
             {
                 "title": "Visitors Management System",
-                "subtitle": (
-                    "Simplify and secure the process of managing visitor interactions and records."
-                    "The system ensures a smooth and efficient experience for both visitors and administrators by automating check-ins, maintaining accurate records, and enhancing on-site security."
-                ),
+                "subtitle": "Simplify managing visitors.",
+                "description": "Simplify and secure the process of managing visitor interactions and records.The system ensures a smooth and efficient experience for both visitors and administrators by automating check-ins, maintaining accurate records, and enhancing on-site security.",
+                "key_advantages": "Improved Security,Time Saving,Efficient Tracking,Enhanced Organization,Real-Time Updates",
                 "icon_name": "bi-people",
                 "is_active": True,
             },
             {
                 "title": "Document Management System (DMS)",
-                "subtitle": (
-                    "A cloud-based document storage and management system with secure access and sharing capabilities."
-                    "Rollout of the DMS across multiple government offices using an in-house developed SaaS model to standardize document handling processes."
-                ),
+                "subtitle": "A cloud-based document management",
+                "description": "A cloud-based document storage and management system with secure access and sharing capabilities.Rollout of the DMS across multiple government offices using an in-house developed SaaS model to standardize document handling processes.",
+                "key_advantages": "Improved Security,Time Saving,Efficient Tracking,Enhanced Organization,Real-Time Updates",
                 "icon_name": "bi-file-earmark-text",
                 "is_active": True,
             },
             {
                 "title": "Planning, Monitoring and Reporting System",
-                "subtitle": (
-                    "Development of a comprehensive system for strategic planning, resource allocation, performance tracking, and reporting."
-                    "Enhance the effectiveness, efficiency, and accuracy of data collection, analysis, and reporting processes."
-                ),
+                "subtitle": "System for strategic planning and reporting.",
+                "description": "A system for strategic planning, monitoring, and reporting that integrates various government departments and agencies. Automate and streamline processes for managing, analyzing, and communicating strategic plans and performance metrics.",
+                "key_advantages": "Improved Security,Time Saving,Efficient Tracking,Enhanced Organization,Real-Time Updates",
                 "icon_name": "bi-bar-chart",
                 "is_active": False,
             },
             {
                 "title": "Transport Management System",
-                "subtitle": (
-                    "An in-house developed system for managing transport logistics, vehicle scheduling, fleet tracking, and maintenance."
-                    "Automation of transport-related processes to improve cost-efficiency and reduce downtime."
-                ),
+                "subtitle": "System for managing transport logistics",
+                "description": "A system for managing transport logistics that includes sourcing, procurement, delivery, and inventory management. Implement a centralized transport management system to streamline transport operations, optimize resources, and enhance efficiency.",
+                "key_advantages": "Improved Security,Time Saving,Efficient Tracking,Enhanced Organization,Real-Time Updates",
                 "icon_name": "bi-truck",
                 "is_active": False,
             },
             {
                 "title": "Call Center System",
-                "subtitle": (
-                    "Streamline a centralized customer service center by utilizing state-of-the-art customer success digital tools."
-                    "Implementation of a centralized Call Center to manage communications, service requests, and feedback from both internal staff and external stakeholders."
-                ),
+                "subtitle": "Centralized customer service",
+                "description": "A centralized customer service system that enables easy communication, tracking, and resolution of customer inquiries. Implement a robust call center system to streamline customer service operations, optimize resources, and enhance efficiency.",
+                "key_advantages": "Improved Security,Time Saving,Efficient Tracking,Enhanced Organization,Real-Time Updates",
                 "icon_name": "bi-telephone",
                 "is_active": False,
             },
@@ -80,6 +72,8 @@ class Command(BaseCommand):
             GDOPComponent.objects.get_or_create(
                 title=component["title"],
                 subtitle=component["subtitle"],
+                description=component["description"],
+                key_advantages=component["key_advantages"],
                 icon_name=component["icon_name"],
                 is_active=component["is_active"],
             )
@@ -185,15 +179,6 @@ class Command(BaseCommand):
                 order=faq['order']
             )
             self.stdout.write(f'FAQ "{faq["question"]}" created.')
-
-    def create_resources(self):
-        Resource.objects.get_or_create(
-            title="The government merged the former...",
-            address="Lisie G/Mariam Street",
-            email="contact@mint.gov.et",
-            phone="0118132192"
-        )
-        self.stdout.write('Resources created.')
 
     def create_pdf_resources(self):
         resources = [

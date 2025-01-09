@@ -41,7 +41,7 @@
   </head>
 
   <body class="index-page">
-    <header id="header" class="header d-flex align-items-center sticky-top">
+    <header id="header" class="header d-flex align-items-center sticky-top" style="background-color: #eaf2f1;">
       <div
         class="container-fluid container-xl position-relative d-flex align-items-center"
       >
@@ -65,7 +65,7 @@
         <div class="container">
           <div class="row justify-content-center" data-aos="zoom-out">
             <div class="col-xl-8 col-lg-9 text-center">
-              <h1 class="pt-4" id="hero-title">
+              <h1 style="font-weight: bold;" id="hero-title">
                 Government Digital Office Platforms Portal (GDOP)
               </h1>
               <p class="pt-2" id="hero-description">
@@ -85,30 +85,22 @@
             >
           </div>
 
-          <div class="row gy-4 mt-5 pt-5">
+          <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px">
             {% for project in projects %}
             <div
-              class="col-md-6 col-lg-4"
+              class="card"
               data-aos="zoom-out"
               data-aos-delay="100"
             >
-              <div class="icon-box text-center">
-                <div class="icon"><i class="bi {{ project.icon_name }}"></i></div>
-                <h4 class="title">
-                  <a href="" id="visitors-title">{{ project.title }}</a>
-                </h4>
-                <p class="description mb-4" id="visitors-description">
+              <div class="card-body text-center">
+                <div class="icon text-primary"><i class="bi {{ project.icon_name }}" style="font-size: 1.5rem"></i></div>
+                <p style="font-size: 1rem; font-weight: bold">
+                  {{ project.title }}
+                </p>
+                <p style="font-size: .8rem; color: grey" id="visitors-description">
                   {{ project.subtitle }}
                 </p>
-                {% if project.is_active %}
-                <button class="btn btn-primary mt-5" id="visitors-btn">
-                  View Details
-                </button>
-                {% else %}
-                <button class="btn mt-5" id="visitors-btn" disabled>
-                  Coming Soon
-                </button>
-                {% endif %}
+                <a href="components/{{project.id}}"><button type="button" class="btn btn-link" style="text-decoration: none; mt: 2">Learn More</button></a>
               </div>
             </div>
             {% endfor %}
@@ -244,21 +236,22 @@
                 <div class="icon" id="resouce-icon">
                   <i class="bi bi-file-earmark-text"></i>
                 </div>
-                <h3>{{resource.title}}</h3>
+                <h3>{{ resource.title }}</h3>
                 <span class="updates_cart fw-normal fst-italic">
-                  {{resource.description}}
+                  {{ resource.description }}
                 </span>
                 <div class="btn-group-resource mt-5" role="group">
-                  <button type="button" class="btn btn-primary btn-sm me-2">
+                  <a href="{% url 'resource_download' resource.id %}" class="btn btn-primary btn-sm me-2">
                     <i class="bi bi-cloud-arrow-down-fill"></i> Download
-                  </button>
-                  <button type="button" class="btn btn-secondary btn-sm">
+                  </a>
+                  <a href="{% url 'resource_download' resource.id %}" class="btn btn-secondary btn-sm">
                     <i class="bi bi-eye-fill"></i> Preview
-                  </button>
+                  </a>
                 </div>
               </div>
             </div>
             {% endfor %}
+
             <!-- End of swiper -->
           </div>
           <!-- Swiper Pagination -->

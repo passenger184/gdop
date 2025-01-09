@@ -1,5 +1,9 @@
 {% load static %}
-<footer id="footer" class="footer light-background">
+<footer
+  id="footer"
+  class="footer light-background"
+  style="background-color: #eaf2f1"
+>
   <div class="container footer-top">
     <div class="row gy-4">
       <div class="col-lg-6 col-md-12 footer-about">
@@ -11,7 +15,7 @@
         </p>
         <div class="social-links d-flex mt-4">
           {% for link in social_links %}
-            <a href="{{ link.url }}"><i class="{{ link.icon_class }}"></i></a>
+          <a href="{{ link.url }}"><i class="{{ link.icon_class }}"></i></a>
           {% endfor %}
         </div>
       </div>
@@ -19,26 +23,50 @@
       <div class="col-lg-2 col-5 footer-links">
         <h4 id="useful-links">Useful Links</h4>
         <ul>
+          <li>
+            <a href="/team" id="footer-link-team">Meet the Team</a>
+          </li>
           {% for link in useful_links %}
-            <li><a href="{{ link.url }}" id="footer-link-{{ link.name|lower|slugify }}">{{ link.name }}</a></li>
+          <li>
+            <a
+              href="{{ link.url }}"
+              id="footer-link-{{ link.name|lower|slugify }}"
+              >{{ link.name }}</a
+            >
+          </li>
           {% endfor %}
         </ul>
       </div>
 
       <div class="col-lg-2 col-5 footer-links">
-        <h4 id="focus-areas">Focus Areas</h4>
+        <h4 id="focus-areas">About Us</h4>
         <ul>
           {% for area in focus_areas %}
-            <li><a href="{{ area.url }}" id="footer-link-{{ area.name|lower|slugify }}">{{ area.name }}</a></li>
+          <li>
+            <a
+              href="{{ area.url }}"
+              id="footer-link-{{ area.name|lower|slugify }}"
+              >{{ area.name }}</a
+            >
+          </li>
           {% endfor %}
         </ul>
       </div>
 
       <div class="col-lg-2 col-md-12 footer-contact text-center text-md-start">
         <h4 id="footer-contact">Contact Us</h4>
-        <p id="footer-contact-address">{{ footer_content.contact_address_line1 }}</p>
-        <p id="footer-contact-address-1">{{ footer_content.contact_address_line2 }}</p>
-        <p id="footer-contact-address-2">{{ footer_content.contact_address_line3 }}</p>
+        <p id="footer-contact-address">
+          {{ footer_content.contact_address_line1 }}
+        </p>
+        {% if footer_content.contact_address_line2 %}
+        <p id="footer-contact-address-1">
+          {{ footer_content.contact_address_line2 }}
+        </p>
+        {% endif %} {% if footer_content.contact_address_line3 %}
+        <p id="footer-contact-address-2">
+          {{ footer_content.contact_address_line3 }}
+        </p>
+        {% endif %}
         <p class="mt-4" id="footer-phone">
           <strong>Phone:</strong> <span>{{ footer_content.phone }}</span>
         </p>

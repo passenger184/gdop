@@ -52,56 +52,52 @@
       </div>
     </header>
 
-    <section>
+    <section id="about-alt" class="about-alt section">
       <div class="container">
-        <div class="row">
-          <div class="col-lg-3">
-            <h3 style="text-align: center"><b>Vision </b></h3>
-            <p style="text-align: justify; font-size: 15px">
-              Build a country that is conducive for job and wealth creation
-              through technology and innovation.
+        <div class="row gy-4 justify-content-center">
+          <div class="col-lg-11">
+            <h2 style="font-weight: 700">
+              <u>{{component.title}}</u>
+            </h2>
+            <p style="margin-top: 20px; font-size: 15px; white-space: pre-wrap">
+              {{component.description}}
             </p>
           </div>
-          <div class="col-lg-3 core_space">
-            <h3 style="text-align: center"><b>Mission</b></h3>
-            <ul>
-              <li>
-                The Miss ion also to ensure the sustainability of the country’s
-                development by creating an environment in which innovation
-                systems are implemented.
-              </li>
-              <li>
-                Creating an environment for the digital economy of the country.
-              </li>
-              <li>
-                Building the capacity to increase the competitiveness of the
-                country's technology industry development.
-              </li>
-            </ul>
-          </div>
-          <div class="col-lg-3 core_space">
-            <h3 style="text-align: center"><b>Our values</b></h3>
-            <ul>
-              <li>Decent conscience and good heart</li>
-              <li>An limitless thirst for learning</li>
-              <li>Love of work and dedication</li>
-              <li>Unlimited thought and imagination</li>
-              <li>A foundation for generations</li>
-            </ul>
-          </div>
-          <div class="col-lg-3 core_space">
-            <h3 style="text-align: center"><b>Organizational Philosophy</b></h3>
-            <ul>
-              <li>Knowledge is wealth</li>
-              <li>We acknowledge new ideas</li>
-              <li>Diligence is the power of positive change</li>
-              <li>
-                Technology and innovation is the language of the new generation
-              </li>
-              <li>Encouraging innovation for the next generation</li>
-              <li>Modern digital economy is the basis of our development</li>
-            </ul>
-          </div>
+          <section id="pricing" class="pricing section">
+            <div class="container">
+              <div class="row justify-content-center">
+                <div class="col-lg-6">
+                  <div class="pricing-item">
+                    <h3>Key Advantages</h3>
+                    <ul>
+                      {% for advantage in advantages %}
+                      <li>
+                        <i class="bi bi-check"></i>
+                        <span>{{advantage}}</span>
+                      </li>
+                      {% endfor %}
+                    </ul>
+                  </div>
+                </div>
+                <div class="col-lg-5">
+                  <div>
+                    {% if component.image %}
+                    <img
+                      src="{{component.image.url}}"
+                      class="img-fluid"
+                      alt=""
+                      style="
+                        height: 450px;
+                        object-fit: cover;
+                        margin-left: 90px;
+                      "
+                    />
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
         </div>
       </div>
     </section>
