@@ -16,8 +16,8 @@
 }
 
 :root {
-  --nav-color: #124265;
-  --nav-hover-color: #2487ce;
+  --nav-color: white;
+  --nav-hover-color: #94cdf7;
   --nav-mobile-background-color: #ffffff;
   --nav-dropdown-background-color: #ffffff;
   --nav-dropdown-color: #124265;
@@ -708,7 +708,7 @@ herobtn-getstarted
 --------------------------------------------------------------*/
 .hero {
   width: 100%;
-  min-height: calc(100vh - 100px);
+  min-height: calc(100vh - 200px);
   position: relative;
   display: flex;
   align-items: center;

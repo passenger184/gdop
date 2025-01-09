@@ -35,6 +35,7 @@ class GDOPComponent(models.Model):
         max_length=500, help_text="Comma separated list of advantages")
     image = models.ImageField(
         upload_to='uploads/components/', blank=True, null=True, help_text="Image for the component")
+    redirect_url = models.URLField()
     is_active = models.BooleanField(default=False)
     icon_name = models.CharField(
         max_length=100, help_text="Bootstrap icon class name (e.g., bi-people")
@@ -47,8 +48,8 @@ class GDOPComponent(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
-        verbose_name = "GDOP Component"
-        verbose_name_plural = "GDOP Components"
+        verbose_name = "GDOP Module"
+        verbose_name_plural = "GDOP Modules"
 
     def __str__(self):
         return self.title

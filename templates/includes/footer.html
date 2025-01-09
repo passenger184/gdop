@@ -2,7 +2,7 @@
 <footer
   id="footer"
   class="footer light-background"
-  style="background-color: #eaf2f1"
+  style="background-color: #e0a355"
 >
   <div class="container footer-top">
     <div class="row gy-4">
@@ -10,7 +10,7 @@
         <a href="#" class="logo d-flex align-items-center me-auto">
           <img src="{% static 'assets/img/mint_logo.png' %}" alt="" />
         </a>
-        <p style="text-align: justify" id="footer-about">
+        <p style="text-align: justify; color: white" id="footer-about">
           {{ footer_content.about_text }}
         </p>
         <div class="social-links d-flex mt-4">
@@ -24,13 +24,16 @@
         <h4 id="useful-links">Useful Links</h4>
         <ul>
           <li>
-            <a href="/team" id="footer-link-team">Meet the Team</a>
+            <a href="/team" style="color: white" id="footer-link-team"
+              >Meet the Team</a
+            >
           </li>
           {% for link in useful_links %}
           <li>
             <a
               href="{{ link.url }}"
               id="footer-link-{{ link.name|lower|slugify }}"
+              style="color: white"
               >{{ link.name }}</a
             >
           </li>
@@ -46,6 +49,7 @@
             <a
               href="{{ area.url }}"
               id="footer-link-{{ area.name|lower|slugify }}"
+              style="color: white"
               >{{ area.name }}</a
             >
           </li>
@@ -55,22 +59,22 @@
 
       <div class="col-lg-2 col-md-12 footer-contact text-center text-md-start">
         <h4 id="footer-contact">Contact Us</h4>
-        <p id="footer-contact-address">
+        <p id="footer-contact-address" style="color: white">
           {{ footer_content.contact_address_line1 }}
         </p>
         {% if footer_content.contact_address_line2 %}
-        <p id="footer-contact-address-1">
+        <p id="footer-contact-address-1" style="color: white">
           {{ footer_content.contact_address_line2 }}
         </p>
         {% endif %} {% if footer_content.contact_address_line3 %}
-        <p id="footer-contact-address-2">
+        <p id="footer-contact-address-2" style="color: white">
           {{ footer_content.contact_address_line3 }}
         </p>
         {% endif %}
-        <p class="mt-4" id="footer-phone">
+        <p class="mt-4" id="footer-phone" style="color: white">
           <strong>Phone:</strong> <span>{{ footer_content.phone }}</span>
         </p>
-        <p id="footer-email">
+        <p id="footer-email" style="color: white">
           <strong>Email:</strong> <span>{{ footer_content.email }}</span>
         </p>
       </div>

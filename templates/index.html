@@ -41,7 +41,7 @@
   </head>
 
   <body class="index-page">
-    <header id="header" class="header d-flex align-items-center sticky-top" style="background-color: #eaf2f1;">
+    <header id="header" class="header d-flex align-items-center sticky-top" style="background-color: #e0a355;">
       <div
         class="container-fluid container-xl position-relative d-flex align-items-center"
       >
@@ -65,9 +65,9 @@
         <div class="container">
           <div class="row justify-content-center" data-aos="zoom-out">
             <div class="col-xl-8 col-lg-9 text-center">
-              <h1 style="font-weight: bold;" id="hero-title">
+              <h2 style="font-weight: bold;" id="hero-title">
                 Government Digital Office Platforms Portal (GDOP)
-              </h1>
+              </h2>
               <p class="pt-2" id="hero-description">
                 A paperless back office system automation.
                 <p>
@@ -100,7 +100,7 @@
                 <p style="font-size: .8rem; color: grey" id="visitors-description">
                   {{ project.subtitle }}
                 </p>
-                <a href="components/{{project.id}}"><button type="button" class="btn btn-link" style="text-decoration: none; mt: 2">Learn More</button></a>
+                <a href="{{project.redirect_url}}" target="_blank"><button type="button" class="btn btn-link" style="text-decoration: none; mt: 2">Learn More</button></a>
               </div>
             </div>
             {% endfor %}
