@@ -1,18 +1,18 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-# Used for deployment on Vercel
+# Used for deployment on Render
+
+# Exit on error
+set -o errexit
 
 # Install dependencies
-python3 -m pip install -r requirements.txt
+pip install -r requirements.txt
 
-# Collect static files
-python3 manage.py collectstatic --noinput
+# Convert static asset files
+python manage.py collectstatic --no-input
 
-# Create Vercel-compatible output vercel directory
-mkdir -p .vercel/output/static
-cp -r staticfiles/ .vercel/output/static/
-
-python3 manage.py migrate
+# Apply any outstanding database migrations
+python manage.py migrate
 
 # Seed the database
 python3 manage.py seed
