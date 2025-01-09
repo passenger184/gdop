@@ -100,7 +100,11 @@
                 <p style="font-size: .8rem; color: grey" id="visitors-description">
                   {{ project.subtitle }}
                 </p>
+                {% if project.is_active %}
                 <a href="{{project.redirect_url}}" target="_blank"><button type="button" class="btn btn-link" style="text-decoration: none; mt: 2">Learn More</button></a>
+                {% else %}
+                <p>Coming Soon</p>
+                {% endif %}
               </div>
             </div>
             {% endfor %}
