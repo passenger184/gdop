@@ -30,10 +30,10 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'secret key')
 DEBUG = os.environ.get('DEBUG', False)
 
 ALLOWED_HOSTS = ['.vercel.app', '.now.sh',
-                 'localhost', '127.0.0.1', 'gdop.onrender.com']
+                 'localhost', '127.0.0.1', 'gdop.onrender.com', '172.30.61.41']
 
-CSRF_COOKIE_SECURE = True
-SESSION_COOKIE_SECURE = True
+# CSRF_COOKIE_SECURE = True
+# SESSION_COOKIE_SECURE = True
 
 # Application definition
 
