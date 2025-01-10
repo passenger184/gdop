@@ -90,8 +90,7 @@ h6 {
   padding: 20px 0;
   transition: all 0.5s;
   z-index: 997;
-  border-bottom: 1px solid
-    color-mix(in srgb, var(--accent-color), transparent 85%);
+  border-bottom: 1px solid color-mix(in srgb, var(--accent-color), transparent 85%);
 }
 
 .header .logo {
@@ -122,16 +121,19 @@ h6 {
 }
 
 #nav-contact-uss {
-  background-color: #2487ce;
-  color: white;
+  background-color: white;
+  color: #2487ce;
   font-size: 14px;
-  padding: 6px 15px;
+  padding: 8px 15px;
   border-radius: 4px;
   transition: 0.3s;
+  border: 1px solid #2487ce
 }
 
 #nav-contact-uss:hover {
-  background: color-mix(in srgb, var(--accent-color), transparent 15%);
+  background-color: #2487ce;
+  color: white;
+  border: 1px solid white;
 }
 
 .header .btn-getstarted:hover,
@@ -676,6 +678,7 @@ section,
 }
 
 @media (max-width: 1199px) {
+
   section,
   .section {
     scroll-margin-top: 76px;
@@ -701,7 +704,9 @@ section,
 .section-title p {
   margin-bottom: 0;
 }
+
 herobtn-getstarted
+
 /*--------------------------------------------------------------
 # Hero Section
 --------------------------------------------------------------*/
@@ -1234,6 +1239,7 @@ herobtn-getstarted
     transform: scale(1.08);
   }
 }
+
 .resources .service-item .icon {
   margin: 0 auto;
   width: 100px;
@@ -1268,6 +1274,7 @@ herobtn-getstarted
 #resouce-icon {
   color: #fd7e14;
 }
+
 /* test */
 /* Swiper-specific styles */
 .swiper {
@@ -1344,6 +1351,7 @@ herobtn-getstarted
   color: #124265;
   font-weight: 600;
 }
+
 /* Input fields custom styling */
 .input-custom {
   border: 2px solid #ced4da;
@@ -1477,22 +1485,29 @@ herobtn-getstarted
   padding: 10px 20px;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
+
 #load-more:hover {
-  background-color: #0056b3; /* Darker blue for hover effect */
+  background-color: #0056b3;
+  /* Darker blue for hover effect */
   color: white;
   border: 1px solid #0056b3;
 }
+
 #load-more:focus {
   outline: none;
 }
+
 .spinner-border {
   width: 20px;
   height: 20px;
   border-width: 3px;
-  display: none; /* Initially hidden */
+  display: none;
+  /* Initially hidden */
 }
+
 #load-more.loading .spinner-border {
-  display: inline-block; /* Show spinner when loading */
+  display: inline-block;
+  /* Show spinner when loading */
 }
 
 .button-container {
@@ -1543,25 +1558,25 @@ herobtn-getstarted
 }
 
 .grid-container {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
 }
 
 @media (max-width: 1200px) {
-    .grid-container {
-        grid-template-columns: repeat(3, 1fr);
-    }
+  .grid-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 @media (max-width: 900px) {
-    .grid-container {
-        grid-template-columns: repeat(2, 1fr);
-    }
+  .grid-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (max-width: 600px) {
-    .grid-container {
-        grid-template-columns: 1fr;
-    }
+  .grid-container {
+    grid-template-columns: 1fr;
+  }
 }

@@ -36,21 +36,7 @@
   </head>
 
   <body class="index-page">
-    <header
-      id="header"
-      class="header d-flex align-items-center sticky-top"
-      style="background-color: #e0a355"
-    >
-      <div
-        class="container-fluid container-xl position-relative d-flex align-items-center"
-      >
-        <a href="#" class="logo d-flex align-items-center me-auto">
-          <img src="{% static 'assets/img/mint_logo.png' %}" alt="" />
-        </a>
-
-        {% include 'includes/nav.html' %}
-      </div>
-    </header>
+    {% include 'includes/header.html' %}
 
     <section id="about-alt" class="about-alt section">
       <div class="container">
