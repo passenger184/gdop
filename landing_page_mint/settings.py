@@ -93,7 +93,7 @@ DATABASES = {
         'NAME': os.environ.get('DB_NAME', 'gdop'),
         'USER': os.environ.get('DB_USER', 'root'),
         'PASSWORD': os.environ.get('DB_PASSWORD', 'root'),
-        'HOST': os.environ.get('HOST', 'localhost'),
+        'HOST': 'db',
         'PORT': os.environ.get('PORT', '5432'),
     }
 }
