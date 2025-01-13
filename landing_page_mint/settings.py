@@ -12,11 +12,14 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 import os
 from pathlib import Path
 from django.templatetags.static import static
+from dotenv import load_dotenv
 # from django_auth_ldap.config import LDAPSearch
 # import ldap
 # from django_auth_ldap.backend import populate_user
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+load_dotenv()
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
@@ -27,7 +30,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = bool(os.getenv('DEBUG'))
+DEBUG = bool(os.getenv('DEBUG', default=False))
 
 # ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS").split(',')
 ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split(',')
@@ -93,7 +96,7 @@ DATABASES = {
         'NAME': os.getenv('DB_NAME'),
         'USER': os.getenv('DB_USER'),
         'PASSWORD': os.getenv('DB_PASSWORD'),
-        'HOST': 'db',
+        'HOST': os.getenv('HOST'),
         'PORT': os.getenv('PORT'),
     }
 }
@@ -147,13 +150,13 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 UNFOLD = {
     "SITE_TITLE": "GDOP Admin",
     "SITE_HEADER": "GDOP Admin",
-    "SITE_ICON": lambda request: static('assets/img/miii_logo.jpg'),
+    "SITE_ICON": lambda request: static('assets/img/miii_logo.png'),
     "SITE_FAVICONS": [
         {
             "rel": "icon",
             "sizes": "32x32",
             "type": "image/jpg",
-            "href": lambda request: static("assets/img/miii_logo.jpg"),
+            "href": lambda request: static("assets/img/miii_logo.png"),
         },
     ],
     "COLORS": {
