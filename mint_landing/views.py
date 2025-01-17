@@ -99,18 +99,18 @@ def home(request):
     # Add the last static slides
     slides.extend([
         {
+            'image_url': '/static/assets/img/last_slide.jpg',
+            'title': 'Feedback and Support',
+            'subtitle': 'We value your feedback. Get in touch!',
+            'cta_text': 'Contact Us',
+            'cta_link': '/request-support',
+        },
+        {
             'image_url': '/static/assets/img/first_slide.jpg',
             'title': 'Government Digital Office Platforms Portal (GDOP)',
             'subtitle': 'Modern Office | Automated Process | Online Services',
             'cta_text': 'Learn More',
             'cta_link': '/about',
-        },
-        {
-            'image_url': '/static/assets/img/last_slide.jpg',
-            'title': 'Feedback and Support',
-            'subtitle': 'We value your feedback. Get in touch!',
-            'cta_text': 'Contact Us',
-            'cta_link': '/contact',
         }
     ])
 
