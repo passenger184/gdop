@@ -280,3 +280,23 @@ class FooterContent(models.Model):
 
     def __str__(self):
         return "Footer Content"
+
+
+class FTPConfiguration(models.Model):
+    host = models.CharField(max_length=255, help_text="FTP Server Host")
+    port = models.IntegerField(help_text="FTP Server Port")
+    user = models.CharField(
+        max_length=255, help_text="FTP User", blank=True, null=True)
+    password = models.CharField(
+        max_length=255, help_text="FTP Password", blank=True, null=True)
+    network_folder_path = models.CharField(
+        max_length=255, help_text="Network Folder Path")
+    metadata_file = models.CharField(
+        max_length=255, help_text="Metadata File Name", default="metadata.json")
+
+    class Meta:
+        verbose_name = "FTP Configuration"
+        verbose_name_plural = "FTP Configurations"
+
+    def __str__(self):
+        return f"FTP Configuration: {self.host}:{self.port}"

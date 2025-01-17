@@ -1,5 +1,5 @@
 (function () {
-  "use strict";
+  ("use strict");
 
   function toggleScrolled() {
     const selectBody = document.querySelector("body");
@@ -105,13 +105,6 @@
   new PureCounter();
 
   /**
-   * Initiate glightbox
-   */
-  const glightbox = GLightbox({
-    selector: ".glightbox",
-  });
-
-  /**
    * Init swiper sliders
    */
   function initSwiper() {
@@ -187,7 +180,7 @@
   /**
    * Correct scrolling position upon page load for URLs containing hash links.
    */
-  window.addEventListener("load", function (e) {
+  window.addEventListener("load", function () {
     if (window.location.hash) {
       if (document.querySelector(window.location.hash)) {
         setTimeout(() => {
@@ -372,6 +365,24 @@ const swiper = new Swiper(".swiper", {
   },
 });
 
+const heroSwiper = new Swiper(".hero-swiper", {
+  slidesPerView: 1, // Show 4 cards at a time
+  spaceBetween: 0, // Spacing between slides
+  loop: true, // Enable infinite scrolling
+  autoplay: {
+    delay: 5000,
+    pauseOnMouseEnter: true,
+  },
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
+  pagination: {
+    el: ".swiper-pagination",
+    clickable: true,
+  },
+});
+
 // For collapsable cards to change the button text
 // const toggleButton = document.getElementById("toggle-button");
 // const collapseElement = document.getElementById("moreTeam");
@@ -384,7 +395,7 @@ const swiper = new Swiper(".swiper", {
 // collapseElement.addEventListener("hide.bs.collapse", () => {
 //   toggleButton.innerText = "Show More";
 // });
-const loadMoreButton = document.getElementById("load-more");
+// const loadMoreButton = document.getElementById("load-more");
 const additionalContent = document.getElementById("moreTeam");
 const spinner = loadMoreButton.querySelector(".spinner-border");
 

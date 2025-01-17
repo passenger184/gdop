@@ -1,16 +1,119 @@
+from ftplib import FTP
+from io import BytesIO
 import json
 import os
 from django.conf import settings
 from django.http import FileResponse, JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
+from django.core.files.storage import default_storage
 
-from mint_landing.models import FAQ, AboutUs, Announcement, AboutUsFooter, FooterContent, PDFResource, HeroSection, Figure, GDOPComponent, SocialLink, SupportRequest, TeamMember, UsefulLink
+from mint_landing.models import FAQ, AboutUs, Announcement, AboutUsFooter, FTPConfiguration, FooterContent, PDFResource, HeroSection, Figure, GDOPComponent, SocialLink, SupportRequest, TeamMember, UsefulLink
 
 # Render the homepage
 
 
 def home(request):
-    hero_section = HeroSection.objects.last()
+    # Function to create a default slide entry from an image filename
+    def create_slide_from_image(image_name, image_content):
+        title = os.path.splitext(image_name)[0].replace('_', ' ').title()
+
+        # Save the image content to the media folder
+        file_path = os.path.join(media_folder, image_name)
+        with default_storage.open(file_path, 'wb') as file:
+            file.write(image_content)
+
+        # Generate media URL for the image
+        image_url = os.path.join(settings.MEDIA_URL, image_name)
+        return {
+            'image_url': image_url,
+            'title': '',
+            'subtitle': '',
+            'cta_text': '',
+            'cta_link': ''
+        }
+
+    # Initialize slides
+    slides = [
+        {
+            'image_url': '/static/assets/img/first_slide.jpg',
+            'title': 'Government Digital Office Platforms Portal (GDOP)',
+            'subtitle': 'Modern Office | Automated Process | Online Services',
+            'cta_text': 'Learn More',
+            'cta_link': '/about',
+        }
+    ]
+
+    # Check if metadata file exists on the FTP server
+    try:
+        # Retrieve FTP configuration from the database
+        ftp_config = FTPConfiguration.objects.first()
+
+        ftp_host = ftp_config.host
+        ftp_port = ftp_config.port
+        ftp_user = ftp_config.user
+        ftp_pass = ftp_config.password
+        network_folder_path = ftp_config.network_folder_path
+        metadata_file = ftp_config.metadata_file
+        media_folder = settings.MEDIA_ROOT
+
+        # Connect to the FTP server
+        ftp = FTP()
+        ftp.connect(ftp_host, ftp_port)
+        ftp.login(user=ftp_user, passwd=ftp_pass)
+
+        ftp.cwd(network_folder_path)
+        ftp.nlst()
+        if metadata_file in ftp.nlst():
+            # Read metadata.json from FTP
+            with BytesIO() as bio:
+                ftp.retrbinary(f"RETR {metadata_file}", bio.write)
+                bio.seek(0)
+                dynamic_slides = json.load(bio)
+
+            for slide in dynamic_slides:
+                image_name = slide['image_name']
+                with BytesIO() as image_bio:
+                    ftp.retrbinary(f"RETR {image_name}", image_bio.write)
+                    image_bio.seek(0)
+                    image_content = image_bio.read()
+
+                slide['image_url'] = create_slide_from_image(
+                    image_name, image_content)['image_url']
+                slides.append(slide)
+        else:
+            # Fallback: List image files in the folder
+            image_files = ftp.nlst()
+            for image_name in image_files:
+                if image_name.lower().endswith(('.png', '.jpg', '.jpeg')):
+                    with BytesIO() as image_bio:
+                        ftp.retrbinary(f"RETR {image_name}", image_bio.write)
+                        image_bio.seek(0)
+                        image_content = image_bio.read()
+
+                    slides.append(create_slide_from_image(
+                        image_name, image_content))
+        ftp.quit()
+    except Exception as e:
+        print(f"Error accessing FTP: {e}")
+
+    # Add the last static slides
+    slides.extend([
+        {
+            'image_url': '/static/assets/img/first_slide.jpg',
+            'title': 'Government Digital Office Platforms Portal (GDOP)',
+            'subtitle': 'Modern Office | Automated Process | Online Services',
+            'cta_text': 'Learn More',
+            'cta_link': '/about',
+        },
+        {
+            'image_url': '/static/assets/img/last_slide.jpg',
+            'title': 'Feedback and Support',
+            'subtitle': 'We value your feedback. Get in touch!',
+            'cta_text': 'Contact Us',
+            'cta_link': '/contact',
+        }
+    ])
+
     projects = GDOPComponent.objects.all().order_by("-is_active")
     announcements = Announcement.objects.all()
     about_us = AboutUs.objects.last()
@@ -24,22 +127,24 @@ def home(request):
     social_links = SocialLink.objects.all()
     useful_links = UsefulLink.objects.all()
     focus_areas = AboutUsFooter.objects.all()
+
     return render(
         request, 'index.html',
-        {'hero_section': hero_section,
-         'projects': projects,
-         'announcements': announcements,
-         'about_us': about_us,
-         'about_us_items': about_us_items,
-         'numbers': numbers,
-         'faqs': faqs,
-         'resources': resources,
-         'team_members': members,
-         'footer_content': footer_content,
-         'social_links': social_links,
-         'useful_links': useful_links,
-         'focus_areas': focus_areas,
-         }
+        {
+            'slides': slides,
+            'projects': projects,
+            'announcements': announcements,
+            'about_us': about_us,
+            'about_us_items': about_us_items,
+            'numbers': numbers,
+            'faqs': faqs,
+            'resources': resources,
+            'team_members': members,
+            'footer_content': footer_content,
+            'social_links': social_links,
+            'useful_links': useful_links,
+            'focus_areas': focus_areas,
+        }
     )
 
 

@@ -5,7 +5,7 @@ from django.contrib.auth.models import User, Group
 
 from unfold.admin import ModelAdmin
 
-from .models import FAQ, AboutUs, Announcement, AboutUsFooter, FooterContent, PDFResource, HeroSection, Figure, GDOPComponent, SocialLink, SupportRequest, TeamMember, UsefulLink
+from .models import FAQ, AboutUs, Announcement, AboutUsFooter, FTPConfiguration, FooterContent, PDFResource, HeroSection, Figure, GDOPComponent, SocialLink, SupportRequest, TeamMember, UsefulLink
 
 
 class BaseAdmin(ModelAdmin):
@@ -152,3 +152,8 @@ class FooterContentAdmin(BaseAdmin):
             'fields': ('copyright_text',)
         }),
     )
+
+
+@admin.register(FTPConfiguration)
+class FTPConfigurationAdmin(BaseAdmin):
+    list_display = ('host', 'port', 'user', 'network_folder_path')

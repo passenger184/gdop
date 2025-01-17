@@ -17,3 +17,6 @@ uploads/
 
 # IDE settings
 .vscode/
+
+# Certificate
+certbot/

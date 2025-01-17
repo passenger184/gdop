@@ -3,14 +3,12 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GDOP</title>
     <meta name="description" content="" />
     <meta name="keywords" content="" />
-
     <!-- Favicons -->
     <link href="{% static 'assets/img/mint-logo-blue.png' %}" rel="icon" />
-
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com" rel="preconnect" />
     <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin />
@@ -18,9 +16,7 @@
       href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
     />
-
     <!-- Vendor CSS Files -->
-
     <link
       href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}"
       rel="stylesheet"
@@ -34,75 +30,98 @@
       href="{% static 'assets/vendor/glightbox/css/glightbox.min.css' %}"
       rel="stylesheet"
     />
-    <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
-
+    <link
+      href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}"
+      rel="stylesheet"
+    />
     <!-- Main CSS File -->
     <link href="{% static 'assets/css/main.css' %}" rel="stylesheet" />
   </head>
 
   <body class="index-page">
-    {% include 'includes/header.html' %}
-
+    {% include "includes/header.html" %}
     <main class="main">
       <!-- Hero Section -->
-      <section id="hero" class="hero section">
-        <img
-          src="{% static 'assets/img/b.jpg' %}"
-          alt=""
-          data-aos="fade-in"
-          class=""
-        />
+      <section id="hero" class="section" style="padding: 0 0 20px 0">
+        <div>
+          <div class="swiper hero-swiper" style="padding: 0 0 0 0">
+            <div class="swiper-wrapper">
+              {% for slide in slides %}
+              <div
+                class="swiper-slide hero-slide"
+                style="background-image: url('{{ slide.image_url }}');"
+              >
+                <div class="overlay"></div>
+                <div class="slide-content">
+                  <h1 style="color: white">{{ slide.title }}</h1>
+                  <p>{{ slide.subtitle }}</p>
+                  {% if slide.cta_text %}
+                  <div>
+                    <a class="button" href="{{ slide.cta_link }}"
+                      >{{ slide.cta_text }}</a
+                    >
+                  </div>
+                  {% endif %}
+                </div>
+              </div>
 
-        <div class="container">
-          <div class="row justify-content-center" data-aos="zoom-out">
-            <div class="col-xl-8 col-lg-9 text-center">
-              <h2 style="font-weight: bold;" id="hero-title">
-                Government Digital Office Platforms Portal (GDOP)
-              </h2>
-              <p class="pt-2" id="hero-description">
-                Modern Office | Automated Process | Online Services
-              </p>
+              {% endfor %}
             </div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
           </div>
-          <div
-            class="text-center pt-4 pb-5"
-            data-aos="zoom-out"
-            data-aos-delay="100"
-          >
-            <a href="/about" class="btn-get-started" id="hero-btn"
-              >{{ hero_section.button_text }}</a
-            >
-          </div>
+        </div>
+      </section>
 
+      <!-- GDOP Components Section -->
+      <section>
+        <div class="container">
           <div class="grid-container">
             {% for project in projects %}
-            <div
-              class="card glass"
-              data-aos="zoom-out"
-              data-aos-delay="100"
-            >
+            <div class="card glass" data-aos="zoom-out" data-aos-delay="100">
               <div class="card-body text-center">
-                <div class="icon text-primary"><i class="bi {{ project.icon_name }}" style="font-size: 1.5rem"></i></div>
+                <div class="icon text-primary">
+                  <i
+                    class="bi {{ project.icon_name }}"
+                    style="font-size: 1.5rem"
+                  ></i>
+                </div>
                 <p style="font-size: 1rem; font-weight: bold">
                   {{ project.title }}
                 </p>
-                <p style="font-size: .8rem; color: grey" id="visitors-description">
+                <p
+                  style="font-size: 0.8rem; color: grey"
+                  id="visitors-description"
+                >
                   {{ project.subtitle }}
                 </p>
                 {% if project.is_active %}
-                <a href="{{project.redirect_url}}" target="_blank"><button type="button" class="btn btn-link" style="text-decoration: none; margin-top: 12px">Learn More</button></a>
+                <a href="{{ project.redirect_url }}" target="_blank">
+                  <button
+                    type="button"
+                    class="btn btn-link"
+                    style="text-decoration: none; margin-top: 12px"
+                  >
+                    Learn More
+                  </button>
+                </a>
                 {% else %}
-                <button type="button" class="btn btn-link" style="text-decoration: none; margin-top: 12px" disabled>Coming Soon</button>
+                <button
+                  type="button"
+                  class="btn btn-link"
+                  style="text-decoration: none; margin-top: 12px"
+                  disabled
+                >
+                  Coming Soon
+                </button>
                 {% endif %}
               </div>
             </div>
             {% endfor %}
-            </div>
-            <!-- End Icon Box -->
           </div>
         </div>
       </section>
-      <!-- /Hero Section -->
+      <!-- GDOP Components Section -->
 
       <!-- Services Section -->
       <section
@@ -119,7 +138,6 @@
           </p>
         </div>
         <!-- End Section Title -->
-
         <div class="container">
           <div class="row gy-4">
             {% for item in announcements %}
@@ -145,14 +163,19 @@
                   </svg>
                   <i class="bi {{ item.icon_name }}"></i>
                 </div>
-                  <h3>{{item.title}}</h3>
-                <span class="updates_cart"
-                  >{{item.sub_title}}</span
+                <h3>{{ item.title }}</h3>
+                <span class="updates_cart">{{ item.sub_title }}</span>
+                <p
+                  style="
+                    display: -webkit-box;
+                    -webkit-line-clamp: 5;
+                    -webkit-box-orient: vertical;
+                    overflow: hidden;
+                  "
                 >
-                <p style="display: -webkit-box; -webkit-line-clamp: 5; -webkit-box-orient: vertical; overflow: hidden;">
-                  {{item.description}}
+                  {{ item.description }}
                 </p>
-                <a href="announcement/{{item.id}}" class="stretched-link"></a>
+                <a href="announcement/{{ item.id }}" class="stretched-link"></a>
               </div>
             </div>
             {% endfor %}
@@ -161,58 +184,61 @@
         </div>
       </section>
       <!-- /Services Section -->
-
-
       <section
-      id="resources"
-      class="resources resources-slider section light-background"
-      style="margin-top: 100px"
-    >
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Resource Center</h2>
-        <p>Access important documents and forms instantly.</p>
-      </div>
-      <!-- End Section Title -->
-
-      <div class="container">
-        <div class="swiper">
-          <div class="swiper-wrapper">
-            <!-- Card Items -->
-            {% for resource in resources %}
-            <div class="swiper-slide">
-              <div class="service-item position-relative">
-                <div class="icon" id="resouce-icon">
-                  <i class="bi bi-file-earmark-text" style="font-size: 2rem"></i>
-                </div>
-                <h3>{{ resource.title }}</h3>
-                <span class="updates_cart fw-normal fst-italic">
-                  {{ resource.description }}
-                </span>
-                <div class="btn-group-resource mt-5" role="group">
-                  <a href="{% url 'resource_download' resource.id %}" class="btn btn-primary btn-sm me-2">
-                    <i class="bi bi-cloud-arrow-down-fill"></i> Download
-                  </a>
-                  <a href="{% url 'resource_download' resource.id %}" class="btn btn-secondary btn-sm">
-                    <i class="bi bi-eye-fill"></i> Preview
-                  </a>
+        id="resources"
+        class="resources resources-slider section light-background"
+        style="margin-top: 100px"
+      >
+        <!-- Section Title -->
+        <div class="container section-title" data-aos="fade-up">
+          <h2>Resource Center</h2>
+          <p>Access important documents and forms instantly.</p>
+        </div>
+        <!-- End Section Title -->
+        <div class="container">
+          <div class="swiper">
+            <div class="swiper-wrapper">
+              <!-- Card Items -->
+              {% for resource in resources %}
+              <div class="swiper-slide">
+                <div class="service-item position-relative">
+                  <div class="icon" id="resouce-icon">
+                    <i
+                      class="bi bi-file-earmark-text"
+                      style="font-size: 2rem"
+                    ></i>
+                  </div>
+                  <h3>{{ resource.title }}</h3>
+                  <span class="updates_cart fw-normal fst-italic"
+                    >{{ resource.description }}</span
+                  >
+                  <div class="btn-group-resource mt-5" role="group">
+                    <a
+                      href="{% url 'resource_download' resource.id %}"
+                      class="btn btn-primary btn-sm me-2"
+                    >
+                      <i class="bi bi-cloud-arrow-down-fill"></i> Download
+                    </a>
+                    <a
+                      href="{% url 'resource_download' resource.id %}"
+                      class="btn btn-secondary btn-sm"
+                    >
+                      <i class="bi bi-eye-fill"></i> Preview
+                    </a>
+                  </div>
                 </div>
               </div>
+              {% endfor %}
+              <!-- End of swiper -->
             </div>
-            {% endfor %}
-
-            <!-- End of swiper -->
+            <!-- Swiper Pagination -->
+            <div class="swiper-pagination"></div>
+            <!-- Swiper Navigation -->
           </div>
-          <!-- Swiper Pagination -->
-          <div class="swiper-pagination"></div>
-          <!-- Swiper Navigation -->
         </div>
-      </div>
-    </section>
-    <!-- /Downloadable Section -->
-
-
-<!-- FAQ Section -->
+      </section>
+      <!-- /Downloadable Section -->
+      <!-- FAQ Section -->
       <section id="faq" class="faq section light-background">
         <!-- Section Title -->
         <div class="container section-title" data-aos="fade-up">
@@ -225,7 +251,6 @@
           </p>
         </div>
         <!-- End Section Title -->
-
         <div class="container">
           <div class="row justify-content-center">
             <div class="col-lg-10" data-aos="fade-up" data-aos-delay="100">
@@ -234,9 +259,7 @@
                 <div class="faq-item">
                   <h3>{{ item.question }}</h3>
                   <div class="faq-content">
-                    <p>
-                      {{ item.answer }}
-                    </p>
+                    <p>{{ item.answer }}</p>
                   </div>
                   <i class="faq-toggle bi bi-chevron-right"></i>
                 </div>
@@ -250,9 +273,7 @@
       </section>
       <!-- /Faq Section -->
     </main>
-
     {% include 'includes/footer.html' %}
-
     <!-- Scroll Top -->
     <a
       href="#"
@@ -260,10 +281,8 @@
       class="scroll-top d-flex align-items-center justify-content-center"
       ><i class="bi bi-arrow-up-short"></i
     ></a>
-
     <!-- Preloader -->
     <div id="preloader"></div>
-
     <!-- Vendor JS Files -->
     <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
     <script src="{% static 'assets/vendor/aos/aos.js' %}"></script>

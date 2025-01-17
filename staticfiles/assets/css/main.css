@@ -1580,3 +1580,10 @@ herobtn-getstarted
     grid-template-columns: 1fr;
   }
 }
+
+
+/* Hero slider */
+.hero-slide {
+  width: 100vw;
+  height: 70vh;
+}
