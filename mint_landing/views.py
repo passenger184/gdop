@@ -7,7 +7,7 @@ from django.http import FileResponse, JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.core.files.storage import default_storage
 
-from mint_landing.models import FAQ, AboutUs, Announcement, AboutUsFooter, FTPConfiguration, FooterContent, PDFResource, HeroSection, Figure, GDOPComponent, SocialLink, SupportRequest, TeamMember, UsefulLink
+from mint_landing.models import FAQ, AboutUs, Announcement, AboutUsFooter, FTPConfiguration, FooterContent, PDFResource, GDOPModule, SocialLink, SupportRequest, TeamMember, UsefulLink
 
 # Render the homepage
 
@@ -18,7 +18,7 @@ def home(request):
         title = os.path.splitext(image_name)[0].replace('_', ' ').title()
 
         # Save the image content to the media folder
-        file_path = os.path.join(media_folder, image_name)
+        file_path = os.path.join(settings.MEDIA_ROOT, image_name)
         with default_storage.open(file_path, 'wb') as file:
             file.write(image_content)
 
@@ -114,11 +114,10 @@ def home(request):
         }
     ])
 
-    projects = GDOPComponent.objects.all().order_by("-is_active")
+    projects = GDOPModule.objects.all().order_by("-is_active")
     announcements = Announcement.objects.all()
     about_us = AboutUs.objects.last()
     about_us_items = AboutUs.objects.last().bullet_points.split(',')
-    numbers = Figure.objects.all()
     faqs = FAQ.objects.all()
     resources = PDFResource.objects.all()
     members = TeamMember.objects.all()
@@ -136,7 +135,6 @@ def home(request):
             'announcements': announcements,
             'about_us': about_us,
             'about_us_items': about_us_items,
-            'numbers': numbers,
             'faqs': faqs,
             'resources': resources,
             'team_members': members,
@@ -297,7 +295,7 @@ def get_translations(request):
 
 
 def component_detail(request, id):
-    component = get_object_or_404(GDOPComponent, id=id)
+    component = get_object_or_404(GDOPModule, id=id)
     advantages = component.key_advantages.split(',')
     return render(request, 'component.html', {'component': component, 'advantages': advantages})
 

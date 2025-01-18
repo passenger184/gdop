@@ -1,31 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.utils.text import slugify
 
 
-class HeroSection(models.Model):
-    title = models.CharField(
-        max_length=255, help_text="Main heading text for the hero section")
-    subtitle = models.TextField(
-        help_text="Subheading text for the hero section")
-    button_text = models.CharField(
-        max_length=50, help_text="Text for the call-to-action button")
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-    created_by = models.ForeignKey(
-        User, on_delete=models.SET_NULL, null=True, related_name='hero_created_by')
-    updated_by = models.ForeignKey(
-        User, on_delete=models.SET_NULL, null=True, related_name='hero_updated_by')
-
-    class Meta:
-        verbose_name = "Hero Section"
-        verbose_name_plural = "Hero Section"
-
-    def __str__(self):
-        return self.title
-
-
-class GDOPComponent(models.Model):
+class GDOPModule(models.Model):
     title = models.CharField(
         max_length=100, help_text="Title of the component")
     subtitle = models.CharField(
@@ -97,26 +74,6 @@ class AboutUs(models.Model):
 
     def __str__(self):
         return self.title
-
-
-class Figure(models.Model):
-    title = models.CharField(
-        max_length=100, help_text="Title for the figure (e.g., Users, Projects)")
-    value = models.PositiveIntegerField(help_text="Value of the statistic")
-    created_at = models.DateTimeField(
-        auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-    created_by = models.ForeignKey(
-        User, on_delete=models.SET_NULL, null=True, related_name='figure_created_by')
-    updated_by = models.ForeignKey(
-        User, on_delete=models.SET_NULL, null=True, related_name='figure_updated_by')
-
-    class Meta:
-        verbose_name = "Figures"
-        verbose_name_plural = "Figures"
-
-    def __str__(self):
-        return f"{self.title}: {self.value}"
 
 
 class FAQ(models.Model):
@@ -205,7 +162,7 @@ class PDFResource(models.Model):
 class TeamMember(models.Model):
     name = models.CharField(max_length=255)
     role = models.CharField(max_length=255)
-    project = models.ForeignKey(GDOPComponent, on_delete=models.CASCADE)
+    project = models.ForeignKey(GDOPModule, on_delete=models.CASCADE)
     email = models.EmailField(blank=True, null=True)
     phone = models.CharField(max_length=20, blank=True, null=True)
     twitter_link = models.URLField(blank=True, null=True)

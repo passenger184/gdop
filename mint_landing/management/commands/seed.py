@@ -1,5 +1,5 @@
 from django.core.management.base import BaseCommand
-from mint_landing.models import FAQ, AboutUs, Announcement, Figure, GDOPComponent, HeroSection, PDFResource, TeamMember
+from mint_landing.models import FAQ, AboutUs, Announcement, Figure, GDOPModule, HeroSection, PDFResource, TeamMember
 
 
 class Command(BaseCommand):
@@ -69,7 +69,7 @@ class Command(BaseCommand):
             },
         ]
         for component in components:
-            GDOPComponent.objects.get_or_create(
+            GDOPModule.objects.get_or_create(
                 title=component["title"],
                 subtitle=component["subtitle"],
                 description=component["description"],
@@ -223,7 +223,7 @@ class Command(BaseCommand):
         TeamMember.objects.get_or_create(
             name="John Doe",
             role="Project Manager",
-            project=GDOPComponent.objects.get_or_create(
+            project=GDOPModule.objects.get_or_create(
                  title="Test",
                 subtitle="Test",
                 icon_name="bi-people",

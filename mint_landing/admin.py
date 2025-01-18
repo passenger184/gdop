@@ -5,7 +5,7 @@ from django.contrib.auth.models import User, Group
 
 from unfold.admin import ModelAdmin
 
-from .models import FAQ, AboutUs, Announcement, AboutUsFooter, FTPConfiguration, FooterContent, PDFResource, HeroSection, Figure, GDOPComponent, SocialLink, SupportRequest, TeamMember, UsefulLink
+from .models import FAQ, AboutUs, Announcement, AboutUsFooter, FTPConfiguration, FooterContent, PDFResource, GDOPModule, SocialLink, SupportRequest, TeamMember, UsefulLink
 
 
 class BaseAdmin(ModelAdmin):
@@ -45,17 +45,8 @@ class GroupAdmin(BaseGroupAdmin, BaseAdmin):
     pass
 
 
-@admin.register(HeroSection)
-class HeroSectionAdmin(BaseAdmin):
-    list_display = ["title", "subtitle",
-                    "button_text", "created_at", "updated_at", 'created_by', 'updated_by']
-    search_fields = ["title", "subtitle",
-                     "button_text", 'created_by', 'updated_by']
-    list_filter = ["created_at", "updated_at"]
-
-
-@admin.register(GDOPComponent)
-class GDOPComponentsAdmin(BaseAdmin):
+@admin.register(GDOPModule)
+class GDOPModulesAdmin(BaseAdmin):
     list_display = ['title', 'updated_at',
                     'is_active', 'updated_at', 'created_by', 'updated_by']
     list_filter = ('updated_at',)
@@ -75,13 +66,6 @@ class AboutUsAdmin(BaseAdmin):
     search_fields = ['title', 'description_1',
                      'description_2', 'bullet_points']
     list_filter = ['updated_at']
-
-
-@admin.register(Figure)
-class FiguresAdmin(BaseAdmin):
-    list_display = ['title', 'value', 'updated_at', 'created_by', 'updated_by']
-    search_fields = ['title', 'value']
-    list_filter = ['title', 'value', 'updated_at']
 
 
 @admin.register(FAQ)
