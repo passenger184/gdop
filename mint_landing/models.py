@@ -11,7 +11,7 @@ class GDOPModule(models.Model):
     key_advantages = models.CharField(
         max_length=500, help_text="Comma separated list of advantages")
     image = models.ImageField(
-        upload_to='uploads/components/', blank=True, null=True, help_text="Image for the component")
+        upload_to='uploads/components/', help_text="Image for the component")
     redirect_url = models.URLField()
     is_active = models.BooleanField(default=False)
     icon_name = models.CharField(

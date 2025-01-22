@@ -79,6 +79,47 @@
           <div class="grid-container">
             {% for project in projects %}
             <div class="card glass" data-aos="zoom-out" data-aos-delay="100">
+              {% if project.is_active %}
+              <a href="{{ project.redirect_url }}" target="_blank">
+                <div class="card-body text-center">
+                  <div class="icon text-primary">
+                    <i
+                      class="bi {{ project.icon_name }}"
+                      style="font-size: 1.5rem"
+                    ></i>
+                  </div>
+                  <p style="font-size: 1rem; font-weight: bold">
+                    {{ project.title }}
+                  </p>
+                  <p
+                    style="font-size: 0.8rem; color: grey"
+                    id="visitors-description"
+                  >
+                    {{ project.subtitle }}
+                  </p>
+                  {% if project.is_active %}
+                  <a href="/about#{{ project.title|slugify }}">
+                    <button
+                      type="button"
+                      class="btn btn-link"
+                      style="text-decoration: none; margin-top: 12px"
+                    >
+                      Learn More
+                    </button>
+                  </a>
+                  {% else %}
+                  <button
+                    type="button"
+                    class="btn btn-link"
+                    style="text-decoration: none; margin-top: 12px"
+                    disabled
+                  >
+                    Coming Soon
+                  </button>
+                  {% endif %}
+                </div>
+              </a>
+              {% else %}
               <div class="card-body text-center">
                 <div class="icon text-primary">
                   <i
@@ -96,7 +137,7 @@
                   {{ project.subtitle }}
                 </p>
                 {% if project.is_active %}
-                <a href="{{ project.redirect_url }}" target="_blank">
+                <a href="/about#{{ project.title|slugify }}">
                   <button
                     type="button"
                     class="btn btn-link"
@@ -116,6 +157,7 @@
                 </button>
                 {% endif %}
               </div>
+              {% endif %}
             </div>
             {% endfor %}
           </div>

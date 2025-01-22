@@ -24,6 +24,11 @@
   --nav-dropdown-hover-color: #2487ce;
 }
 
+html {
+  scroll-padding-top: 120px;
+  scroll-behavior: smooth;
+}
+
 .light-background {
   --background-color: #f6fafd;
   --surface-color: #ffffff;

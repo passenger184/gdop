@@ -174,10 +174,15 @@ def about(request):
     social_links = SocialLink.objects.all()
     useful_links = UsefulLink.objects.all()
     focus_areas = AboutUsFooter.objects.all()
-    return render(request, 'about.html', {'footer_content': footer_content,
-                                          'social_links': social_links,
-                                          'useful_links': useful_links,
-                                          'focus_areas': focus_areas, })
+
+    active_modules = GDOPModule.objects.filter(is_active=True)
+    return render(request, 'about.html', {
+        'footer_content': footer_content,
+        'social_links': social_links,
+        'useful_links': useful_links,
+        'focus_areas': focus_areas,
+        'modules': active_modules,
+    })
 
 
 def contact(request):
