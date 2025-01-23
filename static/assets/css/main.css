@@ -1294,6 +1294,13 @@ herobtn-getstarted
   align-items: center;
 }
 
+.swiper-slide-1 {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .service-item {
   /* width: 90%;  */
   /* background: #f9f9f9; */
