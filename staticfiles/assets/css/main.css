@@ -24,6 +24,11 @@
   --nav-dropdown-hover-color: #2487ce;
 }
 
+html {
+  scroll-padding-top: 120px;
+  scroll-behavior: smooth;
+}
+
 .light-background {
   --background-color: #f6fafd;
   --surface-color: #ffffff;
@@ -1289,6 +1294,13 @@ herobtn-getstarted
   align-items: center;
 }
 
+.swiper-slide-1 {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .service-item {
   /* width: 90%;  */
   /* background: #f9f9f9; */
@@ -1581,9 +1593,52 @@ herobtn-getstarted
   }
 }
 
+.slide-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-/* Hero slider */
 .hero-slide {
   width: 100vw;
-  height: 70vh;
+  height: 55vh;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  color: white;
+  /* Ensures text is visible */
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  /* Adjust opacity as needed */
+  z-index: 1;
+}
+
+.slide-content {
+  position: relative;
+  z-index: 2;
+  padding: 20px;
+  text-align: center;
+}
+
+.button {
+  background-color: #2487ce;
+  color: white;
+  font-size: 16px;
+  padding: 8px 15px;
+  border-radius: 4px;
+  transition: 0.3s;
+  border: 1px solid #2487ce;
+}
+
+.button:hover {
+  border: 1px solid #1e77b5;
+  background-color: white;
+  color: #2487ce;
 }
