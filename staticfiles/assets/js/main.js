@@ -104,12 +104,6 @@
    */
   new PureCounter();
 
-  /**
-   * Initiate glightbox
-   */
-  const glightbox = GLightbox({
-    selector: ".glightbox",
-  });
 
   /**
    * Init swiper sliders
@@ -187,7 +181,7 @@
   /**
    * Correct scrolling position upon page load for URLs containing hash links.
    */
-  window.addEventListener("load", function (e) {
+  window.addEventListener("load", function () {
     if (window.location.hash) {
       if (document.querySelector(window.location.hash)) {
         setTimeout(() => {
@@ -369,6 +363,24 @@ const swiper = new Swiper(".swiper", {
       slidesPerView: 4, // For larger screens
       spaceBetween: 20,
     },
+  },
+});
+
+const heroSwiper = new Swiper(".hero-swiper", {
+  slidesPerView: 1, // Show 4 cards at a time
+  spaceBetween: 0, // Spacing between slides
+  loop: true, // Enable infinite scrolling
+  autoplay: {
+    delay: 5000,
+    pauseOnMouseEnter: true,
+  },
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
+  pagination: {
+    el: ".swiper-pagination",
+    clickable: true,
   },
 });
 
