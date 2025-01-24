@@ -40,6 +40,8 @@ services:
     container_name: django-docker
     # ports:
     #   - "8000:8000"
+    volumes:
+      - ./uploads:/app/uploads
     networks:
       - gdop_network
     depends_on:
@@ -59,6 +61,7 @@ services:
       - .env
 volumes:
   postgres_data:
+  uploads:
 networks:
   gdop_network:
     driver: bridge

@@ -168,8 +168,17 @@ def resources(request):
     useful_links = UsefulLink.objects.all()
     focus_areas = AboutUsFooter.objects.all()
 
-    resource_list = PDFResource.objects.annotate(filename=F("file"))
-    paginator = Paginator(resource_list, 10)
+    resource_list = PDFResource.objects.annotate(filename=F("file")).order_by(
+        "created_at"
+    )
+
+    per_page = request.GET.get("per_page", 5)
+    try:
+        per_page = int(per_page)
+    except ValueError:
+        per_page = 5
+
+    paginator = Paginator(resource_list, per_page)
 
     page = request.GET.get("page")
     try:
