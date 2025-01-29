@@ -140,16 +140,22 @@ class PDFResourceAdmin(BaseAdmin):
     list_display = [
         "title",
         "description",
-        "file",
         "category",
         "is_featured",
+        "download_count",
         "created_at",
         "updated_at",
         "created_by",
         "updated_by",
     ]
     search_fields = ["title", "description"]
-    list_filter = ["created_at", "updated_at", "is_featured", "category"]
+    list_filter = [
+        "created_at",
+        "updated_at",
+        "is_featured",
+        "category",
+        "download_count",
+    ]
 
 
 @admin.register(TeamMember)

@@ -84,6 +84,7 @@
             </div>
 
             <p style="margin: 0">{{ resource.filesize }} MB</p>
+            <p style="margin: 0">({{resource.download_count}} downloads)</p>
 
             <a href="{% url 'resource_download' resource.id %}">
               <i

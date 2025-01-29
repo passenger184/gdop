@@ -6,6 +6,7 @@ from io import BytesIO
 from django.conf import settings
 from django.core.files.storage import default_storage
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
+from django.db import models
 from django.db.models import F
 from django.http import FileResponse, JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
@@ -418,6 +419,10 @@ def resource_preview(request, id):
 
 def resource_download(request, id):
     resource = get_object_or_404(PDFResource, pk=id)
+
+    resource.download_count = models.F("download_count") + 1
+    resource.save(update_fields=["download_count"])
+
     response = FileResponse(
         resource.file.open("rb"), as_attachment=True, filename=resource.file.name
     )

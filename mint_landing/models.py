@@ -195,6 +195,7 @@ class PDFResource(models.Model):
         related_name="pdf_resources",
     )
     is_featured = models.BooleanField(default=False)
+    download_count = models.PositiveIntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     created_by = models.ForeignKey(
