@@ -4,7 +4,21 @@ from django.contrib.auth.models import User
 from django.db import models
 
 
-class GDOPModule(models.Model):
+class AbstractBaseModel(models.Model):
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    created_by = models.ForeignKey(
+        User, on_delete=models.SET_NULL, null=True, related_name="%(class)s_created_by"
+    )
+    updated_by = models.ForeignKey(
+        User, on_delete=models.SET_NULL, null=True, related_name="%(class)s_updated_by"
+    )
+
+    class Meta:
+        abstract = True
+
+
+class GDOPModule(AbstractBaseModel):
     title = models.CharField(max_length=100, help_text="Title of the component")
     subtitle = models.CharField(max_length=100, help_text="A very short description")
     description = models.TextField(help_text="Description of the component")
@@ -19,15 +33,6 @@ class GDOPModule(models.Model):
     icon_name = models.CharField(
         max_length=100, help_text="Bootstrap icon class name (e.g., bi-people"
     )
-    created_by = models.ForeignKey(
-        User, on_delete=models.SET_NULL, null=True, related_name="component_created_by"
-    )
-    updated_by = models.ForeignKey(
-        User, on_delete=models.SET_NULL, null=True, related_name="component_updated_by"
-    )
-
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
         verbose_name = "GDOP Module"
@@ -37,7 +42,7 @@ class GDOPModule(models.Model):
         return self.title
 
 
-class Announcement(models.Model):
+class Announcement(AbstractBaseModel):
     title = models.CharField(max_length=100, help_text="Title of the announcement")
     sub_title = models.CharField(
         max_length=100, help_text="Subtitle of the announcement"
@@ -52,38 +57,17 @@ class Announcement(models.Model):
     icon_name = models.CharField(
         max_length=100, help_text="Bootstrap icon class name (e.g., bi-people"
     )
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-    created_by = models.ForeignKey(
-        User,
-        on_delete=models.SET_NULL,
-        null=True,
-        related_name="announcement_created_by",
-    )
-    updated_by = models.ForeignKey(
-        User,
-        on_delete=models.SET_NULL,
-        null=True,
-        related_name="announcement_updated_by",
-    )
 
     def __str__(self):
         return self.title
 
 
-class AboutUs(models.Model):
+class AboutUs(AbstractBaseModel):
     title = models.CharField(max_length=100, help_text="Title of the about us section")
     description_1 = models.TextField(help_text="Description of the about us section")
     description_2 = models.TextField(help_text="Description of the about us section")
     bullet_points = models.CharField(
         max_length=255, help_text="Comma separated list of bullet points"
-    )
-    updated_at = models.DateTimeField(auto_now=True)
-    created_by = models.ForeignKey(
-        User, on_delete=models.SET_NULL, null=True, related_name="about_created_by"
-    )
-    updated_by = models.ForeignKey(
-        User, on_delete=models.SET_NULL, null=True, related_name="about_updated_by"
     )
 
     class Meta:
@@ -94,18 +78,12 @@ class AboutUs(models.Model):
         return self.title
 
 
-class FAQ(models.Model):
+class FAQ(AbstractBaseModel):
     question = models.CharField(
         max_length=300, help_text="The frequently asked question"
     )
     answer = models.TextField(help_text="Answer to the question")
     order = models.PositiveIntegerField(default=0, help_text="Display order of the FAQ")
-    created_by = models.ForeignKey(
-        User, on_delete=models.SET_NULL, null=True, related_name="faq_created_by"
-    )
-    updated_by = models.ForeignKey(
-        User, on_delete=models.SET_NULL, null=True, related_name="faq_updated_by"
-    )
 
     class Meta:
         verbose_name = "FAQ"
@@ -131,7 +109,7 @@ class UrgencyLevel(models.TextChoices):
     CRITICAL = "critical", "Critical"
 
 
-class SupportRequest(models.Model):
+class SupportRequest(AbstractBaseModel):
     PENDING = "pending"
     RESOLVED = "resolved"
     STATUS_CHOICES = [
@@ -148,31 +126,15 @@ class SupportRequest(models.Model):
     )
     urgency = models.CharField(max_length=10, choices=UrgencyLevel.choices)
     submitted_at = models.DateTimeField(auto_now_add=True)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-    updated_by = models.ForeignKey(
-        User,
-        on_delete=models.SET_NULL,
-        null=True,
-        related_name="support_request_updated_by",
-    )
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default=PENDING)
 
     def __str__(self):
         return f"{self.name} - {self.support_type}"
 
 
-class ResourceCategory(models.Model):
+class ResourceCategory(AbstractBaseModel):
     name = models.CharField(max_length=100, unique=True)
     description = models.TextField(blank=True, null=True)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-    created_by = models.ForeignKey(
-        User, on_delete=models.SET_NULL, null=True, related_name="category_created_by"
-    )
-    updated_by = models.ForeignKey(
-        User, on_delete=models.SET_NULL, null=True, related_name="category_updated_by"
-    )
 
     class Meta:
         verbose_name = "Resource Category"
@@ -182,7 +144,7 @@ class ResourceCategory(models.Model):
         return self.name
 
 
-class PDFResource(models.Model):
+class PDFResource(AbstractBaseModel):
     icon_name = models.CharField(max_length=100, blank=True, null=True)
     title = models.CharField(max_length=255)
     description = models.TextField()
@@ -196,14 +158,6 @@ class PDFResource(models.Model):
     )
     is_featured = models.BooleanField(default=False)
     download_count = models.PositiveIntegerField(default=0)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-    created_by = models.ForeignKey(
-        User, on_delete=models.SET_NULL, null=True, related_name="pdf_created_by"
-    )
-    updated_by = models.ForeignKey(
-        User, on_delete=models.SET_NULL, null=True, related_name="pdf_updated_by"
-    )
 
     @property
     def filesize(self):
@@ -221,7 +175,7 @@ class PDFResource(models.Model):
         return self.title
 
 
-class TeamMember(models.Model):
+class TeamMember(AbstractBaseModel):
     name = models.CharField(max_length=255)
     role = models.CharField(max_length=255)
     project = models.ForeignKey(GDOPModule, on_delete=models.CASCADE)
@@ -237,53 +191,29 @@ class TeamMember(models.Model):
         return self.name
 
 
-class SocialLink(models.Model):
+class SocialLink(AbstractBaseModel):
     name = models.CharField(max_length=50)
     icon_class = models.CharField(
         max_length=50,
         help_text="CSS class for the social media icon (e.g., 'bi bi-twitter-x')",
     )
     url = models.URLField()
-    created_by = models.ForeignKey(
-        User, on_delete=models.SET_NULL, null=True, related_name="link_created_by"
-    )
-    updated_by = models.ForeignKey(
-        User, on_delete=models.SET_NULL, null=True, related_name="link_updated_by"
-    )
 
     def __str__(self):
         return self.name
 
 
-class UsefulLink(models.Model):
+class UsefulLink(AbstractBaseModel):
     name = models.CharField(max_length=50)
     url = models.URLField()
-    created_by = models.ForeignKey(
-        User,
-        on_delete=models.SET_NULL,
-        null=True,
-        related_name="useful_link_created_by",
-    )
-    updated_by = models.ForeignKey(
-        User,
-        on_delete=models.SET_NULL,
-        null=True,
-        related_name="useful_link_updated_by",
-    )
 
     def __str__(self):
         return self.name
 
 
-class AboutUsFooter(models.Model):
+class AboutUsFooter(AbstractBaseModel):
     name = models.CharField(max_length=50)
     url = models.URLField()
-    created_by = models.ForeignKey(
-        User, on_delete=models.SET_NULL, null=True, related_name="focus_area_created_by"
-    )
-    updated_by = models.ForeignKey(
-        User, on_delete=models.SET_NULL, null=True, related_name="focus_area_updated_by"
-    )
 
     class Meta:
         verbose_name = "About Us (Footer)"
@@ -293,7 +223,7 @@ class AboutUsFooter(models.Model):
         return self.name
 
 
-class FooterContent(models.Model):
+class FooterContent(AbstractBaseModel):
     about_text = models.TextField()
     logo_image = models.ImageField(upload_to="uploads/footer/", blank=True, null=True)
     contact_address_line1 = models.CharField(max_length=255)
@@ -302,24 +232,12 @@ class FooterContent(models.Model):
     phone = models.CharField(max_length=20)
     email = models.EmailField()
     copyright_text = models.CharField(max_length=255)
-    created_by = models.ForeignKey(
-        User,
-        on_delete=models.SET_NULL,
-        null=True,
-        related_name="footer_content_created_by",
-    )
-    updated_by = models.ForeignKey(
-        User,
-        on_delete=models.SET_NULL,
-        null=True,
-        related_name="footer_content_updated_by",
-    )
 
     def __str__(self):
         return "Footer Content"
 
 
-class FTPConfiguration(models.Model):
+class FTPConfiguration(AbstractBaseModel):
     host = models.CharField(max_length=255, help_text="FTP Server Host")
     port = models.IntegerField(help_text="FTP Server Port")
     user = models.CharField(max_length=255, help_text="FTP User", blank=True, null=True)
