@@ -156,6 +156,7 @@ class PDFResourceAdmin(BaseAdmin):
         "category",
         "download_count",
     ]
+    readonly_fields = ["download_count"]
 
 
 @admin.register(TeamMember)
