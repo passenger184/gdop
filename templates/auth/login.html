@@ -1,0 +1,92 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GDOP</title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <!-- Favicons -->
+    <link href="{% static 'assets/img/mint-logo-blue.png' %}" rel="icon" />
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet" />
+    <!-- Vendor CSS Files -->
+    <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" />
+    <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet" />
+    <link href="{% static 'assets/vendor/aos/aos.css' %}" rel="stylesheet" />
+    <link href="{% static 'assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet" />
+    <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet" />
+    <!-- Main CSS File -->
+    <link href="{% static 'assets/css/main.css' %}" rel="stylesheet" />
+</head>
+
+<body class="d-flex justify-content-center align-items-center vh-100">
+
+    <div class="card p-4 shadow" style="width: 500px;">
+        <img src="{% static 'assets/img/mint-logo-blue.png' %}" alt="" />
+        <p class="text-center my-3">Login to continue</p>
+        {% if messages %}
+        <div class="alert alert-danger">
+            {% for message in messages %}
+            {{ message }}
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <form method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="username" class="form-label">Username</label>
+                <input type="text" name="username" id="username" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" name="password" id="password" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Login</button>
+            <p class="py-4 my-0 mx-auto text-center">Or</p>
+            <button class="gsi-material-button"
+                style="width: 100%; -moz-user-select: none; -webkit-user-select: none; -ms-user-select: none; -webkit-appearance: none; background-color: WHITE; background-image: none; border: 1px solid #747775; -webkit-border-radius: 4px; border-radius: 4px; -webkit-box-sizing: border-box; box-sizing: border-box; color: #1f1f1f; cursor: pointer; font-family: 'Roboto', arial, sans-serif; font-size: 14px; height: 40px; letter-spacing: 0.25px; outline: none; overflow: hidden; padding: 0 12px; position: relative; text-align: center; -webkit-transition: background-color .218s, border-color .218s, box-shadow .218s; transition: background-color .218s, border-color .218s, box-shadow .218s; vertical-align: middle; white-space: nowrap; min-width: min-content;">
+                <div class="gsi-material-button-state"
+                    style="transition: opacity .218s; bottom: 0; left: 0; opacity: 0; position: absolute; right: 0; top: 0;">
+                </div>
+                <div class="gsi-material-button-content-wrapper"
+                    style="align-items: center; display: flex; flex-direction: row; flex-wrap: nowrap; height: 100%; justify-content: center; position: relative; width: 100%;">
+                    <div class="gsi-material-button-icon"
+                        style="height: 20px; margin-right: 12px; min-width: 20px; width: 20px;">
+                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"
+                            xmlns:xlink="http://www.w3.org/1999/xlink" style="display: block;">
+                            <path fill="#EA4335"
+                                d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z">
+                            </path>
+                            <path fill="#4285F4"
+                                d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z">
+                            </path>
+                            <path fill="#FBBC05"
+                                d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z">
+                            </path>
+                            <path fill="#34A853"
+                                d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z">
+                            </path>
+                            <path fill="none" d="M0 0h48v48H0z"></path>
+                        </svg>
+                    </div>
+                    <span class="gsi-material-button-contents"
+                        style="flex-grow: 0; font-family: 'Roboto', arial, sans-serif; font-weight: 500; overflow: hidden; text-overflow: ellipsis; vertical-align: top;">Sign
+                        in with Google</span>
+                    <span style="display: none;">Sign in with Google</span>
+                </div>
+            </button>
+
+        </form>
+    </div>
+    <script src="{% static 'assets/js/main.js' %}"></script>
+</body>
+
+</html>

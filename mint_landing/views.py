@@ -4,6 +4,9 @@ from ftplib import FTP
 from io import BytesIO
 
 from django.conf import settings
+from django.contrib import messages
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.core.files.storage import default_storage
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.db import models
@@ -29,6 +32,7 @@ from mint_landing.models import (
 # Render the homepage
 
 
+@login_required
 def home(request):
     # Function to create a default slide entry from an image filename
     def create_slide_from_image(image_name, image_content):
@@ -163,6 +167,7 @@ def home(request):
     )
 
 
+@login_required
 def resources(request):
     footer_content = FooterContent.objects.first()
     social_links = SocialLink.objects.all()
@@ -202,6 +207,7 @@ def resources(request):
     )
 
 
+@login_required
 def news(request):
     footer_content = FooterContent.objects.first()
     social_links = SocialLink.objects.all()
@@ -219,6 +225,7 @@ def news(request):
     )
 
 
+@login_required
 def announcement_detail(request, id):
     announcement = get_object_or_404(Announcement, id=id)
     footer_content = FooterContent.objects.first()
@@ -238,6 +245,7 @@ def announcement_detail(request, id):
     )
 
 
+@login_required
 def about(request):
     footer_content = FooterContent.objects.first()
     social_links = SocialLink.objects.all()
@@ -258,6 +266,7 @@ def about(request):
     )
 
 
+@login_required
 def contact(request):
     footer_content = FooterContent.objects.first()
     social_links = SocialLink.objects.all()
@@ -275,6 +284,7 @@ def contact(request):
     )
 
 
+@login_required
 def submit_support_request(request):
     if request.method == "POST":
         name = request.POST.get("name")
@@ -297,6 +307,7 @@ def submit_support_request(request):
     return render(request, "contact.html")
 
 
+@login_required
 def success_view(request):
     footer_content = FooterContent.objects.first()
     social_links = SocialLink.objects.all()
@@ -314,6 +325,7 @@ def success_view(request):
     )
 
 
+@login_required
 def v_m_s(request):
     footer_content = FooterContent.objects.first()
     social_links = SocialLink.objects.all()
@@ -331,6 +343,7 @@ def v_m_s(request):
     )
 
 
+@login_required
 def o_s(request):
     footer_content = FooterContent.objects.first()
     social_links = SocialLink.objects.all()
@@ -348,6 +361,7 @@ def o_s(request):
     )
 
 
+@login_required
 def p_d(request):
     footer_content = FooterContent.objects.first()
     social_links = SocialLink.objects.all()
@@ -366,8 +380,7 @@ def p_d(request):
 
 
 # Load translations from the specified language file
-
-
+@login_required
 def load_translation(language_code):
     translations_dir = os.path.join(settings.BASE_DIR, "translations")
     lang_file_mapping = {
@@ -391,8 +404,7 @@ def load_translation(language_code):
 
 
 # Handle translation requests
-
-
+@login_required
 def get_translations(request):
     # Default to English if no lang parameter
     lang = request.GET.get("lang", "en")
@@ -404,6 +416,7 @@ def get_translations(request):
     return JsonResponse(translations)
 
 
+@login_required
 def component_detail(request, id):
     component = get_object_or_404(GDOPModule, id=id)
     advantages = component.key_advantages.split(",")
@@ -412,11 +425,7 @@ def component_detail(request, id):
     )
 
 
-def resource_preview(request, id):
-    resource = get_object_or_404(PDFResource, pk=id)
-    return render(request, "resource_preview.html", {"resource": resource})
-
-
+@login_required
 def resource_download(request, id):
     resource = get_object_or_404(PDFResource, pk=id)
 
@@ -429,6 +438,35 @@ def resource_download(request, id):
     return response
 
 
+@login_required
 def team_members(request):
     team_members = TeamMember.objects.all()
     return render(request, "team.html", {"team_members": team_members})
+
+
+def custom_login_view(request):
+    if request.user.is_authenticated:
+        return redirect("/")
+
+    if request.method == "POST":
+        username = request.POST["username"]
+        password = request.POST["password"]
+        user = authenticate(request, username=username, password=password)
+
+        if user is not None:
+            login(request, user)
+            return redirect("/")
+        else:
+            messages.error(request, "Invalid username or password.")
+
+    return render(request, "auth/login.html")
+
+
+@login_required
+def profile_view(request):
+    return render(request, "profile.html")
+
+
+def logout_view(request):
+    logout(request)
+    return redirect("login")
