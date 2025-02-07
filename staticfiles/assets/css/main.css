@@ -1009,10 +1009,8 @@ herobtn-getstarted
 /* Services Section */
 .services .service-item {
   background-color: var(--surface-color);
-  box-shadow: 0px 5px 90px 0px rgba(0, 0, 0, 0.1);
   height: 100%;
-  padding: 60px 30px;
-  text-align: center;
+  padding: 30px 30px;
   transition: 0.3s;
   border-radius: 5px;
 }

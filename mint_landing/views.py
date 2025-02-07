@@ -4,7 +4,6 @@ from ftplib import FTP
 from io import BytesIO
 
 from django.conf import settings
-from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.core.files.storage import default_storage
@@ -13,7 +12,10 @@ from django.db import models
 from django.db.models import F
 from django.http import FileResponse, JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
+from django.views.decorators.http import require_GET
+from google.cloud import recaptchaenterprise_v1
 
+from mint_landing.forms import LoginForm
 from mint_landing.models import (
     FAQ,
     AboutUs,
@@ -29,7 +31,43 @@ from mint_landing.models import (
     UsefulLink,
 )
 
-# Render the homepage
+
+def get_paginated_announcements(request):
+    page_number = request.GET.get("page", 1)
+    announcements = Announcement.objects.all().order_by("-created_at")
+
+    paginator = Paginator(announcements, 3)  # Show 5 announcements per page
+    page_obj = paginator.get_page(page_number)
+
+    announcements_data = list(page_obj)  # Convert the page object to a list
+    is_more = page_obj.has_next()  # Check if there is another page
+    next_page = page_obj.next_page_number() if is_more else None
+
+    return {
+        "announcements": announcements_data,
+        "is_more": is_more,
+        "next_page": next_page,
+    }
+
+
+def load_more_announcements(request):
+    announcements_data = get_paginated_announcements(request)
+
+    return JsonResponse(
+        {
+            "announcements": [
+                {
+                    "title": a.title,
+                    "sub_title": a.sub_title,
+                    "description": a.description,
+                    "created_at": a.created_at,
+                }
+                for a in announcements_data["announcements"]
+            ],
+            "is_more": announcements_data["is_more"],
+            "next_page": announcements_data["next_page"],
+        }
+    )
 
 
 @login_required
@@ -134,8 +172,9 @@ def home(request):
         ]
     )
 
+    announcements_data = get_paginated_announcements(request)
+
     projects = GDOPModule.objects.all().order_by("-is_active")
-    announcements = Announcement.objects.all()
     about_us = AboutUs.objects.last()
     about_us_items = AboutUs.objects.last().bullet_points.split(",")
     faqs = FAQ.objects.all()
@@ -153,7 +192,9 @@ def home(request):
         {
             "slides": slides,
             "projects": projects,
-            "announcements": announcements,
+            "announcements": announcements_data["announcements"],
+            "is_more_announcements": announcements_data["is_more"],
+            "next_page_announcements": announcements_data["next_page"],
             "about_us": about_us,
             "about_us_items": about_us_items,
             "faqs": faqs,
@@ -444,22 +485,48 @@ def team_members(request):
     return render(request, "team.html", {"team_members": team_members})
 
 
-def custom_login_view(request):
-    if request.user.is_authenticated:
-        return redirect("/")
+def verify_recaptcha(token: str, recaptcha_action: str) -> bool:
+    """Verifies a reCAPTCHA Enterprise token."""
 
+    client = recaptchaenterprise_v1.RecaptchaEnterpriseServiceClient()
+
+    event = recaptchaenterprise_v1.Event(
+        site_key=settings.RECAPTCHA_ENTERPRISE_KEY, token=token
+    )
+    assessment = recaptchaenterprise_v1.Assessment(event=event)
+
+    request = recaptchaenterprise_v1.CreateAssessmentRequest(
+        parent=f"projects/{settings.GOOGLE_CLOUD_PROJECT_ID}",
+        assessment=assessment,
+    )
+
+    response = client.create_assessment(request)
+
+    if not response.token_properties.valid:
+        print("Invalid reCAPTCHA token:", response.token_properties.invalid_reason)
+        return False
+
+    if response.token_properties.action != recaptcha_action:
+        print("Mismatched reCAPTCHA action.")
+        return False
+
+    # Recommended: Consider a threshold (e.g., score >= 0.5 as valid)
+    return response.risk_analysis.score >= 0.5
+
+
+def login_view(request):
     if request.method == "POST":
-        username = request.POST["username"]
-        password = request.POST["password"]
-        user = authenticate(request, username=username, password=password)
-
-        if user is not None:
-            login(request, user)
-            return redirect("/")
-        else:
-            messages.error(request, "Invalid username or password.")
-
-    return render(request, "auth/login.html")
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data["username"]
+            password = form.cleaned_data["password"]
+            user = authenticate(request, username=username, password=password)
+            if user is not None:
+                login(request, user)
+                return redirect("home")
+    else:
+        form = LoginForm()
+    return render(request, "login.html", {"form": form})
 
 
 @login_required

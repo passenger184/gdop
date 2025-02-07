@@ -9,6 +9,11 @@ urlpatterns = [
     path(
         "announcement/<int:id>", views.announcement_detail, name="announcement_detail"
     ),
+    path(
+        "load-more-announcements/",
+        views.load_more_announcements,
+        name="load_more_announcements",
+    ),
     path("about", views.about, name="about"),
     path("request-support", views.contact, name="contact"),
     path(

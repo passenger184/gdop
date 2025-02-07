@@ -27,6 +27,8 @@ LOGIN_URL = "/login/"
 LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/login/"
 
+SITE_ID = 1
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
@@ -45,8 +47,8 @@ CSRF_COOKIE_SECURE = True
 SESSION_COOKIE_SECURE = True
 CSRF_TRUSTED_ORIGINS = ["https://www.gdop.gov.et", "http://127.0.0.0.1"]
 
-RECAPTCHA_PUBLIC_KEY = "6LclFMwqAAAAALmKlpcq0JyNhskmuXIMS4m-CIAJ"
-RECAPTCHA_PRIVATE_KEY = "6LclFMwqAAAAAO1rJ5r8Cn4v48X0WZJomZUacYgl"
+RECAPTCHA_PUBLIC_KEY = os.getenv("RECAPTCHA_PUBLIC_KEY")
+RECAPTCHA_PRIVATE_KEY = os.getenv("RECAPTCHA_PRIVATE_KEY")
 
 
 # Application definition
@@ -64,6 +66,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "social_django",
     "mint_landing",
 ]
 
@@ -76,7 +79,14 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "social_django.middleware.SocialAuthExceptionMiddleware",
 ]
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.getenv("SOCIAL_AUTH_GOOGLE_OAUTH2_KEY")
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.getenv("SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET")
+SOCIAL_AUTH_GOOGLE_OAUTH2_REDIRECT_URI = os.getenv(
+    "SOCIAL_AUTH_GOOGLE_OAUTH2_REDIRECT_URI"
+)
 
 ROOT_URLCONF = "landing_page_mint.urls"
 
@@ -91,6 +101,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "social_django.context_processors.backends",
             ],
         },
     },
@@ -193,11 +204,13 @@ UNFOLD = {
 
 
 # LDAP configurations
-AUTH_LDAP_SERVER_URI = "ldap://127.0.0.1:389"
-AUTH_LDAP_BIND_DN = "cn=admin,dc=mint,dc=gov,dc=et"
-AUTH_LDAP_BIND_PASSWORD = "admin"
+AUTH_LDAP_SERVER_URI = os.getenv("AUTH_LDAP_SERVER_URI")
+AUTH_LDAP_BIND_DN = os.getenv("AUTH_LDAP_BIND_DN")
+AUTH_LDAP_BIND_PASSWORD = os.getenv("AUTH_LDAP_BIND_PASSWORD")
 AUTH_LDAP_USER_SEARCH = LDAPSearch(
-    "ou=users,dc=mint,dc=gov,dc=et", ldap.SCOPE_SUBTREE, "(uid=%(user)s)"
+    os.getenv("AUTH_LDAP_USER_SEARCH_BASE"),
+    ldap.SCOPE_SUBTREE,
+    os.getenv("AUTH_LDAP_USER_SEARCH_FILTER"),
 )
 AUTH_LDAP_USER_ATTR_MAP = {
     "first_name": "cn",
@@ -206,6 +219,7 @@ AUTH_LDAP_USER_ATTR_MAP = {
 
 AUTHENTICATION_BACKENDS = (
     "django_auth_ldap.backend.LDAPBackend",
+    "social_core.backends.google.GoogleOAuth2",
     "django.contrib.auth.backends.ModelBackend",  # Keep Django's default user model
 )
 AUTH_LDAP_ALWAYS_UPDATE_USER = True
