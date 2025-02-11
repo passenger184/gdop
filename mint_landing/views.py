@@ -70,7 +70,7 @@ def load_more_announcements(request):
     )
 
 
-@login_required
+# @login_required
 def home(request):
     # Function to create a default slide entry from an image filename
     def create_slide_from_image(image_name, image_content):
@@ -208,7 +208,7 @@ def home(request):
     )
 
 
-@login_required
+# @login_required
 def resources(request):
     footer_content = FooterContent.objects.first()
     social_links = SocialLink.objects.all()
@@ -248,7 +248,7 @@ def resources(request):
     )
 
 
-@login_required
+# @login_required
 def news(request):
     footer_content = FooterContent.objects.first()
     social_links = SocialLink.objects.all()
@@ -266,7 +266,7 @@ def news(request):
     )
 
 
-@login_required
+# @login_required
 def announcement_detail(request, id):
     announcement = get_object_or_404(Announcement, id=id)
     footer_content = FooterContent.objects.first()
@@ -286,7 +286,7 @@ def announcement_detail(request, id):
     )
 
 
-@login_required
+# @login_required
 def about(request):
     footer_content = FooterContent.objects.first()
     social_links = SocialLink.objects.all()
@@ -307,7 +307,7 @@ def about(request):
     )
 
 
-@login_required
+# @login_required
 def contact(request):
     footer_content = FooterContent.objects.first()
     social_links = SocialLink.objects.all()
@@ -325,7 +325,7 @@ def contact(request):
     )
 
 
-@login_required
+# @login_required
 def submit_support_request(request):
     if request.method == "POST":
         name = request.POST.get("name")
@@ -348,7 +348,7 @@ def submit_support_request(request):
     return render(request, "contact.html")
 
 
-@login_required
+# @login_required
 def success_view(request):
     footer_content = FooterContent.objects.first()
     social_links = SocialLink.objects.all()
@@ -366,7 +366,7 @@ def success_view(request):
     )
 
 
-@login_required
+# @login_required
 def v_m_s(request):
     footer_content = FooterContent.objects.first()
     social_links = SocialLink.objects.all()
@@ -384,7 +384,7 @@ def v_m_s(request):
     )
 
 
-@login_required
+# @login_required
 def o_s(request):
     footer_content = FooterContent.objects.first()
     social_links = SocialLink.objects.all()
@@ -402,7 +402,7 @@ def o_s(request):
     )
 
 
-@login_required
+# @login_required
 def p_d(request):
     footer_content = FooterContent.objects.first()
     social_links = SocialLink.objects.all()
@@ -421,7 +421,7 @@ def p_d(request):
 
 
 # Load translations from the specified language file
-@login_required
+# @login_required
 def load_translation(language_code):
     translations_dir = os.path.join(settings.BASE_DIR, "translations")
     lang_file_mapping = {
@@ -445,7 +445,7 @@ def load_translation(language_code):
 
 
 # Handle translation requests
-@login_required
+# @login_required
 def get_translations(request):
     # Default to English if no lang parameter
     lang = request.GET.get("lang", "en")
@@ -457,7 +457,7 @@ def get_translations(request):
     return JsonResponse(translations)
 
 
-@login_required
+# @login_required
 def component_detail(request, id):
     component = get_object_or_404(GDOPModule, id=id)
     advantages = component.key_advantages.split(",")
@@ -466,7 +466,7 @@ def component_detail(request, id):
     )
 
 
-@login_required
+# @login_required
 def resource_download(request, id):
     resource = get_object_or_404(PDFResource, pk=id)
 
@@ -479,7 +479,7 @@ def resource_download(request, id):
     return response
 
 
-@login_required
+# @login_required
 def team_members(request):
     team_members = TeamMember.objects.all()
     return render(request, "team.html", {"team_members": team_members})
@@ -529,7 +529,7 @@ def login_view(request):
     return render(request, "login.html", {"form": form})
 
 
-@login_required
+# @login_required
 def profile_view(request):
     return render(request, "profile.html")
 
